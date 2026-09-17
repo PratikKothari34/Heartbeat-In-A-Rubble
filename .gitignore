@@ -8,3 +8,8 @@ data/raw/
 *.wav
 .DS_Store
 Thumbs.db
+
+# local-only: instructions, tooling, docs
+.claude/
+CLAUDE.md
+docs/

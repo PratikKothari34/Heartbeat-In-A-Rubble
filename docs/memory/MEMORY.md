@@ -1,2 +1,0 @@
-- Portable mirror of this directory: `docs/memory/` in the workspace. Keep both in sync.
-- [Heartbeat In The Rubble is a real build](heartbeat-rubble-is-a-real-build.md) — old doc, hackathon framing is stale; treat as engineering work.
