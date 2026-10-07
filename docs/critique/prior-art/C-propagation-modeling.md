@@ -224,8 +224,8 @@ both the legacy and current host). Listed under hand-retrieval.
 | # | Our value | Literature value | Full citation | Access | Verdict |
 |---|---|---|---|---|---|
 | 1 | Footstep anchor: **3 µm/s at 3 m** | *"did not exceed 3 × 10⁻⁶ m/s, even very close (3 metres) to the walker"* | Sabatier & Ekimov, Proc. SPIE 6963, 69630V (2008), DOI 10.1117/12.785235 | READ-ABSTRACT | **SUPPORTED** — exact match. Note it is an *upper bound* ("did not exceed"), used correctly as such. |
-| 2 | Anchor frequency **19 Hz** | *"maxima of the ground vibration responses for the Z component of acceleration to footsteps are in the frequency band **near 17 Hz** for all walking styles"*; separately *"most of the energy is in the band from 10 to 100 Hz"* | Ekimov & Sabatier, "Vibration and sound signatures of human footsteps in buildings," *JASA* 120(2):762 (2006); + "Broad frequency acoustic response of ground/floor to human footsteps," Proc. SPIE 6241 (2006), DOI 10.1117/12.663978 | READ-ABSTRACT | **SUPPORTED, minor correction.** Measured peak is **17 Hz**, not 19. Using 19 Hz *overstates* a = 2πfv by 12 % (+0.9 dB). Recommend restating the anchor at 17 Hz: a = 2π·17·3e-6 = **32.0 µg**, not 36.5 µg. Direction: makes the bound slightly more conservative. |
-| 3 | **a = 2πf·v** (36.5 µg) | Standard harmonic relation; independent cross-check from the same authors: regular walking **−85.7 dB re 1 g @ 17 Hz at 1 m** ⇒ 5.2e-5 g = **52 µg at 1 m** | Ekimov & Sabatier, *JASA* 120(2):762 (2006); dB reference confirmed as *"Magnitude dB re 1g"* in the UGS literature (ADA584491) | READ-ABSTRACT | **SUPPORTED.** [COMPUTED HERE] 52 µg at 1 m, geometrically spread as 1/r to 3 m, gives **17 µg** — same order as our 32–36.5 µg, within the spread of walking style and soil. Two independent routes from the same measurement family agree to a factor of ~2. |
+| 2 | Anchor frequency **19 Hz** | **WITHDRAWN 2026-10-08.** The full text of *JASA* 120(2):762 was retrieved and **contains no "17 Hz" figure and no "Z component" sentence.** What it states is: *"The maximum vibration response for the footstep in the low-frequency range (below 500 Hz) was **near 40 Hz** for the regular walking style"*, and that the site transfer function is band-pass *"with the maximum within the frequency band **20-90 Hz**."* The *"1-4 Hz"* figure in that paper is the **force of multiple footsteps** (Galbraith & Barton 1970), **not** the per-footstep vibration response - conflating the two is the original rate-vs-bandwidth error in a new place. | Ekimov & Sabatier, *JASA* 120(2):762 (2006) | **FULL TEXT 2026-10-08** | **OVERTURNED.** Correct anchor is **40 Hz -> 76.9 ug**, i.e. **+6.47 dB** on 19 Hz. This moves *against* the kill and is the first correction to do so; the cardiac deficit still stands at ~31-53 dB. The 17 Hz figure was a mis-citation produced while reading abstracts and must not be reused. |
+| 3 | **a = 2pi*f*v** (36.5 ug) | Standard harmonic relation. **The cross-check that was cited here ("-85.7 dB re 1 g @ 17 Hz at 1 m") is NOT in *JASA* 120(2):762** - full text checked, zero matches for `85.7`, `re 1 g` and `17 Hz`. It may belong to the Proc. SPIE 6241 (2006) companion paper, which has not been retrieved. | - | **WITHDRAWN** | **The relation itself is unaffected** (it is textbook). Only the independent cross-check is withdrawn. Do not cite the -85.7 dB figure to this DOI. |
 | 4 | Cardiac impulse **1–4 N** | BCG is measured in newtons on force plates with *"a precision of 0.1 N"*; J-peak amplitude reported in N | Inan et al., "Ballistocardiography and Seismocardiography: A Review of Recent Advances," *IEEE JBHI* 19(4):1414 (2015); Wiard et al., "Force plate monitoring of human hemodynamics," *Nonlinear Biomed. Phys.* 2:1 (2008), DOI 10.1186/1753-4631-2-1 | READ-ABSTRACT | **NO SPECIFIC VALUE CONFIRMED.** The N-unit framing and force-plate method are confirmed; I did **not** retrieve a numeric peak-force figure to validate 1–4 N. Flag as the weakest-sourced input in the chain. The project's own independent momentum-conservation route (1 mm/s body recoil) is the better support and does not depend on a literature N value. |
 | 5 | Footstep GRF **~700 N** | Not separately verified here; whole-body-weight normal impulse is uncontroversial (70 kg × 9.81 = 687 N static) | — | CITED-ONLY | **SUPPORTED by inspection** (bodyweight), though peak GRF in walking is typically 1.0–1.2× bodyweight, i.e. **690–840 N**. Using 700 N is central and fine. |
 | 6 | ADXL355 **25 µg/√Hz** | 25 µg/√Hz stated in the ADI datasheet, held in-project and independently cited in `03-hardware-kill-attempt.md` as PDF-fetched and text-extracted | Analog Devices, ADXL354/ADXL355 datasheet Rev. A, Table 5 | CITED-ONLY (this pass) / READ-FULL in prior project pass | **SUPPORTED.** Caveat already in-project: it is a white-noise-region figure, not valid at 1 Hz. |
@@ -584,7 +584,7 @@ listed failure is the access state I observed, not a judgement on the paper.
 | **1** | **Arosio, D. et al. (2010), "A microseismic approach to locate survivors trapped under rubble," *Near Surface Geophysics* 8(6):623–633** — the single most important citation in this report (rubble velocity 200–600 m/s; prior-art bound) | DOI **10.3997/1873-0604.2010051** · `https://onlinelibrary.wiley.com/doi/10.3997/1873-0604.2010051` · RG mirror: `researchgate.net/publication/275942059` | Wiley **HTTP 403** |
 | **2** | **Sabatier & Ekimov (2008), "Range limitation for seismic footstep detection," Proc. SPIE 6963, 69630V** — our anchor's primary source | DOI **10.1117/12.785235** · `https://www.spiedigitallibrary.org/conference-proceedings-of-spie/6963/69630V/Range-limitation-for-seismic-footstep-detection/10.1117/12.785235.short` · RG mirror: `researchgate.net/publication/252566889` | SPIE returned **empty body** (botwall); WebFetch got no content |
 | **3** | **Krohn, C.E. (1984), "Geophone ground coupling," *Geophysics* 49(6):722–731** — the coupling citation; needed to replace the 500 Hz–67 kHz window with measured values | DOI **10.1190/1.1441700** · `https://library.seg.org/doi/10.1190/1.1441700` | SEG paywall (abstract only) |
-| **4** | **Ekimov & Sabatier (2006), "Vibration and sound signatures of human footsteps in buildings," *JASA* 120(2):762** — the −85.7 dB re 1 g @17 Hz figure and the 17 Hz peak | `https://pubs.aip.org/asa/jasa/article-abstract/120/2/762/893348` | AIP paywall |
+| ~~**4**~~ **RETRIEVED 2026-10-08** | **Ekimov & Sabatier (2006), "Vibration and sound signatures of human footsteps in buildings," *JASA* 120(2):762** — **full text read. Peak is 40 Hz, not 17. The −85.7 dB re 1 g figure is NOT in this paper** (zero matches); it may be in Proc. SPIE 6241, item 5, still unretrieved. | `https://pubs.aip.org/asa/jasa/article-abstract/120/2/762/893348` | AIP paywall |
 | **5** | **Ekimov & Sabatier (2006), "Broad frequency acoustic response of ground/floor to human footsteps," Proc. SPIE 6241** | DOI **10.1117/12.663978** · `https://www.spiedigitallibrary.org/proceedings/Download?fullDOI=10.1117/12.663978` | SPIE returned **empty body** |
 | **6** | **DTIC ADA584491, "Robust Personnel Detection using PIR and Seismic Sensors"** — US Army, likely contains measured footstep amplitudes in dB re 1 g at stated ranges | `https://apps.dtic.mil/sti/tr/pdf/ADA584491.pdf` | **HTTP 403** via WebFetch; curl with browser UA returned **HTTP 200 but an HTML page, not a PDF** — a textbook soft-200. Hand-retrieve in a browser. |
 | **7** | **DTIC ADA562080, "Target Detection and Classification Using Seismic and PIR Sensors"** (ARL-TR, the "footsteps reliably detected at ranges up to 30 m" and "7.5 dB / 12.5 dB walking style" figures) | `https://apps.dtic.mil/sti/pdfs/ADA562080.pdf` | **HTTP 403** |
@@ -606,13 +606,15 @@ Wiley / Taylor & Francis / EarthDoc / AIP return clean **403**s. PMC's legacy `/
 
 Worst first.
 
-1. **Four of my most load-bearing citations are READ-ABSTRACT, not READ-FULL** — Arosio (200–600 m/s),
-   Sabatier & Ekimov (the 3 µm/s anchor), Krohn (100–500 Hz coupling), and the Ekimov 17 Hz / −85.7 dB
-   figures. The numbers came through indexed abstracts and search extracts, which is one remove from
-   the primary document. **Every one of them should be hand-retrieved before the proposal is
-   signed.** I have quoted them verbatim and marked them, but a verbatim quote of an abstract is not
-   a reading of a methods section — in particular I cannot confirm *how* Arosio's 200–600 m/s was
-   measured beyond "hammer source, triggered records," nor at what ranges.
+1. ~~**Four of my most load-bearing citations are READ-ABSTRACT, not READ-FULL**~~ — **RESOLVED
+   2026-10-08 for three of the four, and the worry was justified: one of them was wrong.** Full
+   texts of Arosio 2010, Sabatier & Ekimov 2008 and *JASA* 120(2):762 were retrieved by hand.
+   **Confirmed verbatim:** the 3 µm/s @ 3 m anchor, Arosio's "limited spatial extension of the
+   sensor array", Arosio's ≤2 m accuracy and 200–600 m/s velocity. **Overturned:** the 17 Hz peak
+   and the −85.7 dB re 1 g cross-check, neither of which appears in the paper they were cited to
+   (see rows 2 and 3). The real peak is **40 Hz**. **Krohn 1984 remains unretrieved** (SEG paywall,
+   $42) — the 100–500 Hz coupling window is still abstract-only, and it is now the *only*
+   load-bearing figure in that state.
 2. **The 100–500 Hz coupling-resonance range is for spiked/buried geophones in soil, and I am
    applying it to a free-laid puck on debris.** That extrapolation could go either way: debris
    contact might be *stiffer* than soil (concrete-on-concrete point contact, high local `k` ⇒ higher
@@ -655,8 +657,11 @@ Worst first.
    is consistent with the project's earlier finding that nobody has done this, but **absence of
    evidence from one pass of searching is not evidence of absence**, and the proposal should not
    claim world-first on the strength of it without a dedicated systematic search.
-8. **The 17 Hz vs 19 Hz correction is small and I may be over-stating its cleanliness.** The
-   "near 17 Hz" figure is for the Z-component ground response in Ekimov & Sabatier's building/ground
-   measurements; the 19 Hz the project uses may come from a different measurement in the same family
-   with a different soil. Both are within the plausible spread. **I recommended 17 Hz because it is
-   the figure I could quote verbatim, not because I proved 19 Hz wrong.**
+8. ~~**The 17 Hz vs 19 Hz correction is small and I may be over-stating its cleanliness.**~~
+   **This caveat was correct and understated — the correction was not merely unclean, it was wrong.**
+   Full text (2026-10-08) shows *JASA* 120(2):762 contains **no 17 Hz figure and no Z-component
+   sentence at all.** It reports the low-frequency vibration maximum **near 40 Hz** and a site
+   transfer function peaking over **20–90 Hz**; its "1–4 Hz" figure is the *force of multiple
+   footsteps*, not a vibration response. **Lesson: a verbatim-looking quote assembled from abstracts
+   and search snippets can be a quote of a paper that does not contain it.** The anchor is now
+   **40 Hz → 76.9 µg**, +6.47 dB on 19 Hz.

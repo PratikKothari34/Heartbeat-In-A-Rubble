@@ -309,8 +309,12 @@ instead of 47-69. Unchanged in kind: nothing recovers 38 dB. And the feared "wha
 plausibly weaker than this verdict assumed, not stronger.
 
 **Two numbers in this document are wrong** - see the amended register row above (coupling
-100-500 Hz) and `00b`'s amendment header (anchor 17 Hz -> 32.7 ug, not 19 Hz -> 36.5 ug;
-Ekimov & Sabatier, *JASA* 120(2):762).
+100-500 Hz) and `00b`'s amendment header. **Amended again 2026-10-08 on full text:** the anchor is
+**40 Hz -> 76.9 ug**, not 19 Hz -> 36.5 ug and not the interim 17 Hz -> 32.7 ug, which was a
+mis-citation. *JASA* 120(2):762 states the low-frequency vibration maximum is *"near 40 Hz"*, with
+the site transfer function peaking over **20-90 Hz**. Effect: **+6.47 dB on every amplitude in the
+chain.** This is the first correction that moves *against* the kill; it is not close to sufficient
+(cardiac deficit ~31-53 dB) but it *improves every tap and voice margin by 6.5 dB*.
 
 **"Force-ratio scaling" must be renamed.** The method is sound but the name is not standard.
 It is **linear transfer-mobility scaling** (FTA ground-borne vibration method; ASTM/FHWA

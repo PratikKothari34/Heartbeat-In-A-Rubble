@@ -48,7 +48,7 @@ automated-localization requirement - a capability gap in the procuring agency's 
 | Was | Is | Source |
 |---|---|---|
 | Coupling resonance 500 Hz - 67 kHz | **100-500 Hz** | Krohn 1984, DOI 10.1190/1.1441700 |
-| Footstep anchor 19 Hz -> 36.5 ug | **17 Hz -> 32.7 ug** | Ekimov & Sabatier, *JASA* 120(2):762 |
+| Footstep anchor 19 Hz -> 36.5 ug | **40 Hz -> 76.9 ug** | Ekimov & Sabatier, *JASA* 120(2):762, **full text 2026-10-08** (the interim "17 Hz -> 32.7 ug" was a mis-citation; see `C` row 2) |
 | SM-24 "0.1 ug/rtHz, vendor-verify it" | **No vendor noise spec exists.** Computed element floor 0.003-0.005 ug/rtHz | SM-24 brochure, re-extracted |
 
 The coupling correction **partially reinstates `01`'s struck condition C4**: our claimed floor was
@@ -89,7 +89,8 @@ explicitly declined rather than laundered as measured. Measure these before trus
 Every claim in these files is tagged **READ-FULL** (full text read), **READ-ABSTRACT** (abstract
 only), or **CITED-ONLY** (known via another source). This matters: **four of the most load-bearing
 citations are READ-ABSTRACT** - Arosio's 200-600 m/s rubble velocity, the 3 um/s anchor, Krohn's
-100-500 Hz window, and the 17 Hz footstep peak. The hand-retrieval list with exact URLs and verified
+100-500 Hz window, and the 17 Hz footstep peak. **Updated 2026-10-08: three of the four are now full
+text; the 17 Hz peak was overturned (real value 40 Hz) and Krohn alone remains unverified.** The hand-retrieval list with exact URLs and verified
 block states is at the end of `C-propagation-modeling.md`, priority-ordered.
 
 **Hand-retrieve those four before a faculty signature.** An abstract is enough to correct a number

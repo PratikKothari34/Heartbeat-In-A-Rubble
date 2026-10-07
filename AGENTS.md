@@ -31,7 +31,9 @@ adversarial review on 2026-10-07 established that this **cannot work**:
 ### What replaced it
 
 Same hardware, different target. Retargeting to **tapping / voice from a responsive survivor**
-clears the noise floor by **+23 to +41 dB**, and reuses the drone, LoRa mesh, TDoA solver, time sync
+clears the noise floor by **+23 to +41 dB** (conservative by ~6.5 dB since the 2026-10-08 anchor
+correction — see the *Anchor correction* note in `docs/critique/00b-verification-arithmetic.md`;
+deliberately not restated while tap force is unmeasured), and reuses the drone, LoRa mesh, TDoA solver, time sync
 and dashboard almost unchanged.
 
 Read in this order:
@@ -222,7 +224,7 @@ and is better evidenced** (see §1). What changed is **what counts as novel**.
 | Was | Is | Source |
 |---|---|---|
 | Coupling resonance 500 Hz – 67 kHz | **100–500 Hz** | Krohn 1984, DOI 10.1190/1.1441700 |
-| Footstep anchor 19 Hz → 36.5 µg | **17 Hz → 32.7 µg** | Ekimov & Sabatier, *JASA* 120(2):762 |
+| Footstep anchor 19 Hz → 36.5 µg | **40 Hz → 76.9 µg** | Ekimov & Sabatier, *JASA* 120(2):762, **full text retrieved 2026-10-08**. The interim "17 Hz → 32.7 µg" was a **mis-citation** — that figure is not in the paper. Real text: *"maximum vibration response … was near 40 Hz"*, transfer function **20–90 Hz**. **+6.47 dB on every amplitude**, the only correction so far that favours the project |
 | SM-24 “0.1 µg/√Hz, vendor-verify it” | **No vendor noise spec exists**; computed floor 0.003–0.005 µg/√Hz | SM-24 brochure, re-extracted |
 
 The coupling correction **partially reinstates `01`'s struck condition C4**: our claimed *floor* was
@@ -258,7 +260,16 @@ figures span USD 2,000–28,500, far too wide to support any cost-ratio claim.
 minutes” with **no stated duration** — literally 5–13 %. At 10 min/hour it is ~17 %, a 2–3× power-budget
 error. Mark it [ASSERTED].
 
-**Four load-bearing citations are READ-ABSTRACT only** — Arosio's rubble velocity, the 3 µm/s anchor,
-Krohn's 100–500 Hz window, and the 17 Hz peak. Enough to correct a number internally; **not** enough
-to defend one in a funded proposal. The priority-ordered hand-retrieval list with verified block
-states is at the end of `prior-art/C-propagation-modeling.md`.
+~~**Four load-bearing citations are READ-ABSTRACT only**~~ — **three were retrieved and read in full
+on 2026-10-08, and doing so overturned one of them.**
+
+| Citation | State | Outcome |
+|---|---|---|
+| Arosio et al. 2010 | ✅ full text | **Confirmed.** *"the limited spatial extension of the sensor array"* verbatim — the novelty claim is now first-hand. Accuracy **≤2 m**; rubble velocity **200–600 m/s**; 20 m × 20 m in ~15 min |
+| Sabatier & Ekimov 2008 | ✅ full text | **Confirmed verbatim**, and correctly used as an *upper* bound: *"did not exceed 3 x 10-6 m/s, even very close (3 meters)"* |
+| Ekimov & Sabatier, *JASA* 120(2):762 | ✅ full text | **OVERTURNED.** No 17 Hz peak and no *"−85.7 dB re 1 g"* figure exist in this paper. Real peak **near 40 Hz**; transfer function **20–90 Hz**. Anchor → **76.9 µg, +6.47 dB** |
+| **Krohn 1984** | ❌ **still abstract-only** | SEG paywall, USD 42. **Now the only unverified load-bearing figure.** The 100–500 Hz coupling window — which reinstates the coupling risk — rests on it |
+
+**The lesson is worth keeping:** a verbatim-*looking* quote assembled from abstracts and search
+snippets can be a quote of a paper that does not contain it. Two of the three figures attributed to
+*JASA* 120(2):762 were not in it. Treat READ-ABSTRACT as unverified, not as weakly verified.

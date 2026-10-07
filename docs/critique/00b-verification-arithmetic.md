@@ -17,7 +17,7 @@ All figures from `scratchpad/verify.py` and `scratchpad/salvage.py` under `py -3
 >
 > | Below | Corrected | Source | Effect |
 > |---|---|---|---|
-> | anchor **19 Hz** -> 36.5 ug | **17 Hz** -> **32.7 ug** | Ekimov & Sabatier, *JASA* 120(2):762 (2006), measured peak "near 17 Hz" | -0.97 dB. Conservative direction. |
+> | anchor **19 Hz** -> 36.5 ug | **40 Hz** -> **76.9 ug** | Ekimov & Sabatier, *JASA* 120(2):762 (2006), **full text retrieved 2026-10-08**: *"The maximum vibration response for the footstep in the low-frequency range (below 500 Hz) was near 40 Hz for the regular walking style"* | **+6.5 dB.** Anti-conservative direction, but does not rescue the premise. **Supersedes the 17 Hz figure**, which was a mis-citation. |
 > | coupling resonance **500 Hz - 67 kHz** | **100-500 Hz** | Krohn (1984), *Geophysics* 49(6):722, DOI 10.1190/1.1441700 | **Our floor was the literature's ceiling.** See below. |
 > | SM-24 **0.1 ug/rtHz** "MASTER's own figure" | not a vendor figure at all - **the datasheet has no noise spec** | SM-24 brochure re-extracted, regex `nois` = 0 matches | Element thermal floor computed at **0.003-0.005 ug/rtHz** - our figure is **conservative by 23-30x, not optimistic**. |
 >
@@ -51,21 +51,50 @@ velocity at 19 Hz, 3 m range. Converting to acceleration (a = 2*pi*f*v):
 
 ```
 a = 2*pi * 19 * 3e-6 = 3.581e-4 m/s2 = 0.0365 mg = 36.5 ug
-   [AMENDED: measured peak is 17 Hz -> 2*pi*17*3e-6 = 3.204e-4 = 32.7 ug]
+   [AMENDED 2026-10-08, full text: measured peak is 40 Hz, not 17 or 19
+    -> 2*pi*40*3e-6 = 7.540e-4 m/s2 = 76.9 ug. The site transfer function
+    peaks over 20-90 Hz; the 1-4 Hz figure in the literature is the FORCE of
+    MULTIPLE footsteps, not the per-footstep vibration response.]
 ```
 
 Scaling to cardiac by force ratio - ground-reaction force ~700 N for a footstep, **1-4 N** for the
 ballistocardiographic impulse transmitted into a substrate:
 
-| Source | Force | Scaled amplitude @ 3 m | **AMENDED (17 Hz anchor)** |
-|---|---|---|---|
-| Footstep (anchor) | 700 N | 36.5 ug | **32.7 ug** |
-| Cardiac, optimistic | 4 N | **0.209 ug** | **0.187 ug** |
-| Cardiac, realistic | 1 N | **0.052 ug** | **0.047 ug** |
-| Cardiac, worst healthy subject (measured) | **10.95 N** | - | **0.511 ug** |
+| Source | Force | Scaled amplitude @ 3 m | ~~AMENDED (17 Hz)~~ | **AMENDED (40 Hz, full text)** |
+|---|---|---|---|---|
+| Footstep (anchor) | 700 N | 36.5 ug | ~~32.7 ug~~ | **76.9 ug** |
+| Cardiac, optimistic | 4 N | **0.209 ug** | ~~0.187 ug~~ | **0.439 ug** |
+| Cardiac, realistic | 1 N | **0.052 ug** | ~~0.047 ug~~ | **0.110 ug** |
+| Cardiac, worst healthy subject (measured) | **10.95 N** | - | ~~0.511 ug~~ | **1.202 ug** |
 
-*The whole column scales linearly off the anchor, so the 17 Hz correction moves every row by the
-same -0.97 dB. The added row is Inan (2009)'s maximum single healthy subject - the most
+*The whole column scales linearly off the anchor, so the 40 Hz correction moves every row by the
+same **+6.47 dB** (relative to 19 Hz) or **+7.43 dB** (relative to the withdrawn 17 Hz figure).
+**This is the one correction so far that moves against the kill, and it is not enough:** the
+deficit goes from 38-60 dB to roughly **31-53 dB**, so the heartbeat premise stays dead by a wide
+margin. It does, however, *improve* every tap/voice margin by the same 6.5 dB.
+
+> ### Anchor correction 2026-10-08 — effect on the headline numbers
+>
+> The **+6.47 dB** anchor correction (19 Hz → 40 Hz, full text) raises **every amplitude in the
+> chain by the same factor**, because the scaling is linear. Consequences:
+>
+> | Claim as written elsewhere | After the correction | Changes the conclusion? |
+> |---|---|---|
+> | Cardiac deficit **38–60 dB** | **~31–53 dB** | **No.** Nothing recovers 31 dB. |
+> | Tap margin **+23 to +41 dB** (SM-24) | **~+29 to +47 dB** | **No** — improves it. |
+> | Tap on ADXL355 **−7 to −25 dB** | **~−1 to −19 dB** | **No** — still buried. |
+>
+> **The repo has deliberately NOT been bulk-edited to these new figures**, for one reason: the tap
+> margins scale off **tap force and tap spectrum, which are still [ASSERTED] with no source**
+> (50–300 N / 60–80 Hz). Re-deriving a margin from a corrected anchor and an unmeasured force would
+> manufacture false precision. **The anchor correction is settled; the margins stay as they are
+> until the bench measurement lands**, at which point every margin gets recomputed once, from
+> measured inputs, in a single pass.
+>
+> Direction is what matters for the proposal: the correction is **favourable and the kill is
+> unaffected.** Do not quote the 31–53 dB or +29/+47 dB figures as measured — they are this note's
+> arithmetic on an unmeasured force.
+ The added row is Inan (2009)'s maximum single healthy subject - the most
 favourable case the measured literature permits, included so the bound cannot be accused of
 using a convenient average. Method: linear transfer-mobility scaling (see `07` section 9 on the
 naming). Against the ADXL355 at B = 35 Hz the cardiac SNR is **-70.0 / -58.0 / -49.2 dB** at

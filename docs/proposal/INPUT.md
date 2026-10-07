@@ -72,6 +72,11 @@ person. The honest output is **DETECTED / NO DETECTION / BLIND, per 2–5 m cell
 
 - **H1.** Tap and voice from a responsive survivor exceed a geophone's noise floor by **+23 to
   +41 dB** at relevant ranges. [COMPUTED]
+  > ⚠ **These margins are conservative by ~6.5 dB** after the 2026-10-08 anchor correction
+  > (19 Hz → 40 Hz, full text of *JASA* 120(2):762). They are **deliberately not restated**, because
+  > they also scale off a tap force that is still [ASSERTED] with no source. See the
+  > *Anchor correction* note in `docs/critique/00b-verification-arithmetic.md`. **Quote the figures
+  > as written here**; do not substitute the improved ones until the bench measurement lands.
 - **H2.** Cardiac signal sits **38–60 dB below** the same floor and is unrecoverable by any filter,
   averaging scheme or learned model. [COMPUTED from MEASURED source forces]
 - **H3.** Localization accuracy is bounded by **node position uncertainty**, not clock error.
@@ -263,10 +268,10 @@ to defend one in a funded proposal. Paywalled or bot-walled — they need hand r
 
 | Priority | Citation | Why it matters | Access |
 |---|---|---|---|
-| 1 | **Arosio et al. 2010**, DOI 10.3997/1873-0604.2010051 | The closest prior art, the array-extent limitation, and the accuracy bar we must beat. A ResearchGate copy of *"A microseismic approach to locate survivors trapped under rubble"* exists — cheapest route | Wiley 403 |
-| 2 | **Sabatier & Ekimov 2008**, DOI 10.1117/12.785235 | The 3 µm/s @ 3 m anchor **the entire amplitude chain rests on** | SPIE empty body |
-| 3 | **Krohn 1984**, DOI 10.1190/1.1441700 | The 100–500 Hz coupling window that reinstates the coupling risk | SEG paywall |
-| 4 | **Ekimov & Sabatier**, *JASA* 120(2):762 | The 17 Hz footstep peak | AIP paywall |
+| ~~1~~ **DONE** | **Arosio et al. 2010**, DOI 10.3997/1873-0604.2010051 | **Retrieved and read 2026-10-08.** Confirms verbatim: *"the limited spatial extension of the sensor array"* as a stated limitation; accuracy **≤2 m**; rubble velocity **200–600 m/s**; 20 m × 20 m in ~15 min, 3× faster than incumbents | ✅ full text |
+| ~~2~~ **DONE** | **Sabatier & Ekimov 2008**, DOI 10.1117/12.785235 | **Retrieved and read 2026-10-08.** Anchor confirmed verbatim: *"did not exceed 3 x 10-6 m/s, even very close (3 meters) to the walker"* — and correctly used as an **upper bound** | ✅ full text |
+| **1 (now top)** | **Krohn 1984**, DOI 10.1190/1.1441700 | The 100–500 Hz coupling window that reinstates the coupling risk. **The only load-bearing citation still unverified** — everything else is now full text | SEG paywall, **USD 42**; try an institutional library login first |
+| ~~4~~ **DONE — and it overturned a number** | **Ekimov & Sabatier**, *JASA* 120(2):762 | **Retrieved and read 2026-10-08.** The paper contains **no 17 Hz peak**; the real figure is *"near 40 Hz"*, transfer function **20–90 Hz**. Anchor corrected to **40 Hz → 76.9 µg, +6.47 dB**. The *"−85.7 dB re 1 g"* cross-check is **not in this paper** — do not cite it to this DOI | ✅ full text |
 | 5 | **Delsar LD3 official specs and price** — `https://www.savox.com/products/search-and-rescue-kits/delsar` | The only way to make any cost comparison citable | Needs a vendor page capture or quote |
 
 Also worth having: **Wiard et al. 2008**, DOI 10.1186/1753-4631-2-1 (open access, free), and
