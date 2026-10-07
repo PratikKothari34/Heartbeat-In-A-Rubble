@@ -1,6 +1,6 @@
 # 03 — Annotated Literature
 
-Six papers, all downloaded to `papers/` and read (text extracts in `extracts/`).
+Six papers, all retrieved and read. **Full text lives in `extracts/`** — the source PDFs were deleted 2026-10-08 (`*.pdf` is gitignored), so the extracts are the only in-repo record.
 Ordered by how much they change the project.
 
 ---
@@ -10,7 +10,7 @@ Ordered by how much they change the project.
 **Jia, Bonde, Li, Xu, Wang, Zhang, Howard, Zhang.** "Monitoring a Person's Heart Rate and
 Respiratory Rate on a Shared Bed Using Geophones." *ACM SenSys '17*, Delft, 6–8 Nov 2017.
 DOI [10.1145/3131672.3131679](https://doi.org/10.1145/3131672.3131679)
-`papers/SenSys2017_geophone_heartrate_shared_bed.pdf`
+`docs/research/MEMS/extracts/SenSys2017_geophone_heartrate_shared_bed.md`
 
 Rutgers / CMU / Peking. Geophones under a bed sense **ballistic force** from the heartbeat.
 Handles the hard case: **two people on one mattress**, free to move and change position.
@@ -36,7 +36,7 @@ not ours.
 **Dong, Codling, Rohrer, Miles, Sharma, Brown-Brandl, Zhang, Noh.** "PigV²: Monitoring Pig Vital
 Signs through Ground Vibrations Induced by Heartbeat and Respiration." 2022.
 arXiv [2212.03378](https://arxiv.org/abs/2212.03378)
-`papers/PigV2_pig_vital_signs_ground_vibration.pdf`
+`docs/research/MEMS/extracts/pigv2.md`
 
 Stanford / Michigan / USDA-ARS / Nebraska. Geophone array under a pig pen floor, estimating heart
 and respiratory rate of a live animal through the structure. **The closest published analogue to
@@ -65,9 +65,9 @@ Not FFT on a bandpassed signal.
 ## 3. Sercel QuietSeis — what MEMS noise specs actually mean ⭐ decisive
 
 **Sercel / EGU General Assembly 2018.** "QuietSeis: ultra-low-noise MEMS for seismology."
-`papers/EGU2018_QuietSeis_ultralow_noise_MEMS_seismology.pdf`
-Supporting: `datasheets/Sercel_understanding_MEMS_digital_seismic_sensors.pdf`,
-`datasheets/Sercel_MEMS_3C_accelerometers_land_seismic.pdf`
+`docs/research/MEMS/extracts/EGU2018_QuietSeis_ultralow_noise_MEMS_seismology.md`
+Supporting: `docs/research/MEMS/extracts/Sercel_understanding_MEMS_digital_seismic_sensors.md`,
+`docs/research/MEMS/extracts/Sercel_MEMS_3C_accelerometers_land_seismic.md`
 
 A manufacturer being unusually candid about the limits of their own technology.
 
@@ -99,7 +99,7 @@ loses above it. Since the signal is above it, that favours the geophone — on n
 
 **J. R. Evans, R. M. Allen, A. I. Chung, E. S. Cochran, R. Guy, M. Hellweg, J. F. Lawrence.**
 "Performance of Several Low-Cost Accelerometers." *Seismological Research Letters*, 2014.
-`papers/Evans2014_performance_low_cost_accelerometers_SRL.pdf`
+`docs/research/MEMS/extracts/evans.md`
 
 Independent shake-table and box-flip testing of five triaxial low-cost sensors, by USGS/Berkeley/
 Caltech people. The paper that defines the cost/performance tiers everyone else cites:
@@ -126,7 +126,7 @@ near-field biological micro-vibration. The tier costs are 2014 dollars.
 "MEMS Accelerometer Mini-Array (MAMA): A Low-Cost Implementation for Earthquake Early Warning
 Enhancement." *Earthquake Spectra* **35**(1):21–38, Feb 2019.
 DOI [10.1193/021218EQS036M](https://doi.org/10.1193/021218EQS036M)
-`papers/Nof2019_MEMS_accelerometer_mini_array_MAMA.pdf`
+`docs/research/MEMS/extracts/Nof2019_MEMS_accelerometer_mini_array_MAMA.md`
 
 Berkeley Seismology Lab + Geological Survey of Israel + Humboldt State. Two mini-arrays of low-cost
 MEMS accelerometers, with a **<US$150 data acquisition unit**, solving **back-azimuth** for seven
@@ -146,7 +146,7 @@ data rather than simulation.
 
 **D. E. McNamara and R. I. Boaz.** "Seismic Noise Analysis System Using Power Spectral Density
 Probability Density Functions: A Stand-Alone Software Package." *USGS Open-File Report 2005-1438*.
-`papers/USGS_OFR2005-1438_seismic_noise_PSD.pdf`
+`docs/research/MEMS/extracts/USGS_OFR2005-1438_seismic_noise_PSD.md`
 
 The PQLX methodology: compute PSDs over long records, bin them into **probability density
 functions**, and read off the station's noise character against the Peterson **NLNM/NHNM** models

@@ -139,13 +139,37 @@ packet size (needs 82–156 B, not 24 B), power (receive current budgeted at zer
 - **State what you could be wrong about.** Every critique document ends with that section; match it.
 - Markdown docs, LF endings (`.gitattributes` enforces it).
 - **Don't commit PDFs.** `*.pdf` is gitignored globally — third-party datasheets and papers are not
-  ours to redistribute. Add an `.md` extract with the source URL instead.
+  ours to redistribute. Convert to an `.md` extract with a provenance header naming the source URL,
+  the DOI, and the figures the extract preserves, then delete the PDF.
 - Never commit secrets, env files, or build output.
-- **Extracts exist because the PDFs are gitignored.** Before deleting one, check whether a figure
-  cited elsewhere survives only there. Two orphaned extracts (`mpu6050`, `sensys`) were removed
-  2026-10-08 after confirming their figures are preserved in `research/MEMS/`; `USGS_SIR2023-5061`
-  was **kept** despite looking unreferenced, because it holds the 200–1000 m/s velocity bracket that
-  every position-error conversion in `02` depends on.
+- **Extracts are now the only in-repo record of every source. There are no PDFs left in the tree.**
+  All **33** source PDFs were converted to Markdown and deleted 2026-10-08; the directories that
+  held them (`research/BUDGET/papers/`, `research/MEMS/papers/`, `research/MEMS/datasheets/`) are
+  gone. Every `[DS]` and `[PAPER]` tag now resolves to a file in the sibling `extracts/` directory:
+
+  | Directory | Extracts | Holds |
+  |---|---|---|
+  | `docs/research/MEMS/extracts/` | 18 | 15 datasheets + 6 papers (`adxl355`, `epson` and `evans` each cover several sources) |
+  | `docs/research/BUDGET/extracts/` | 12 | LoRa sync/mesh, UAV deployment, velocity, BCG/victim-detection |
+  | `docs/critique/prior-art/extracts/` | 3 | Arosio 2010, Ekimov & Sabatier 2006, Sabatier & Ekimov 2008 |
+
+  **Before deleting an extract, check whether a figure cited elsewhere survives only there.** Two
+  were removed as orphaned earlier on 2026-10-08 (`mpu6050`, `sensys`) and then **restored as full
+  text**, because both are substantively cited — MPU-6050's **400 µg/√Hz** appears in three docs and
+  SenSys'17 in five. `USGS_SIR2023-5061` was kept for the same reason: it holds the
+  **200–1000 m/s** velocity bracket every position-error conversion in `02` depends on.
+
+  **Two gotchas when reading an extract:**
+  - **The PDF text layer drops the micro sign.** `TDK_MPU-6050_datasheet.md` renders its noise
+    density as `400 g/√Hz`; the unit is **µg/√Hz**. Do not "correct" the docs to `g`.
+  - **Two-column PDFs interleave columns.** A sentence can be split across the gutter, so a
+    verbatim quote that greps to nothing may still be present. Flatten whitespace and re-search
+    before concluding a figure is absent — that distinction is what separates a real
+    mis-citation from a conversion artifact.
+
+  An extract whose header says a row was **HELD but never read** means exactly that: the paper was
+  retrieved as corroboration and no figure was taken from it. Do not cite a number out of one
+  without reading it first.
 
 ---
 

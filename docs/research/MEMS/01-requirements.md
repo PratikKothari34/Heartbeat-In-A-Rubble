@@ -1,7 +1,7 @@
 # 01 — Sensor Requirement, Derived From Physics and Literature
 
 > Research date: 2026-09-17. Every number below is tagged:
-> **[DS]** = read out of a datasheet PDF in `datasheets/` · **[PAPER]** = quoted from a PDF in `papers/`
+> **[DS]** = read out of a datasheet extract in `extracts/` · **[PAPER]** = quoted from a paper extract in `extracts/`
 > **[CALC]** = my arithmetic from tagged inputs · **[UNVERIF]** = single-source, not confirmed.
 > See `05-verification-log.md` for the two audit passes behind each.
 

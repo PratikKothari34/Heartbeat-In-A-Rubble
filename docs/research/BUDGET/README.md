@@ -106,8 +106,7 @@ link**, one fewer joint to survive a 15–20 G impact. → `02-vendor-register.m
 
 | Folder | Contents |
 |---|---|
-| `papers/` | **12 PDFs** — LoRa sync/mesh ×5, UAV deployment ×3, velocity ×2, BCG/victim ×2 |
-| `extracts/` | markitdown conversions. Working files, not sources |
+| `extracts/` | **12 full-text Markdown extracts** — LoRa sync/mesh ×5, UAV deployment ×3, velocity ×2, BCG/victim ×2. **The source PDFs were converted and deleted 2026-10-08** (`*.pdf` is gitignored project-wide); the extracts are the only in-repo record. |
 
 ---
 

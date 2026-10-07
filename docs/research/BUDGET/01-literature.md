@@ -8,13 +8,13 @@ Every link was machine-verified **2026-10-06** with three-state classification
 
 | Tag | Meaning |
 |---|---|
-| 📄 **HELD** | PDF downloaded to `papers/`, converted, **and read** — quotes below are from the file |
+| 📄 **HELD** | PDF retrieved and converted; full text now in `extracts/` (source PDFs deleted 2026-10-08, `*.pdf` gitignored). A **HELD** row with a quote was read; a bare **HELD** row was held as corroboration and never read — see the extract header. |
 | ✅ **LIVE** | Landing page verified live; abstract/metadata read, full text not downloaded |
 | 🔒 **BOTWALL** | Paper exists, publisher blocks scripted access (Cloudflare/reCAPTCHA/403-to-UA). **Opens in a human browser.** Cited by DOI |
 | ❌ **DEAD** | Not found — **nothing in this document carries this tag** |
 
-**Honest count, stated plainly.** 12 PDFs are **HELD and read** in `papers/` (plus 6 in
-`../MEMS/papers/`, 18 total). The reference lists below run to **20+ citations per concept**, but
+**Honest count, stated plainly.** 12 papers are **HELD** in `extracts/` (plus 6 in
+`../MEMS/extracts/`, 18 total). **Of the 12, only LongShoT and USGS SIR 2023-5061 were read closely enough to quote a figure**; the other 10 were held as corroboration and are now full-text searchable in `extracts/`. The reference lists below run to **20+ citations per concept**, but
 the majority are **LIVE/BOTWALL** — verified to exist and read at abstract level, **not** full-text
 read. **I am not claiming 20 deeply-read papers per concept.** Where a number drives a budget
 decision it comes from a 📄 HELD source and is quoted; everything else is context.
@@ -207,7 +207,7 @@ tweak**, and it is logged as an action in `03-budget.md` rather than silently re
 | 9 | Seismic Sense / RP2350 P-wave detection | **~9 ms inference, ~95 % val accuracy on a Pi Pico 2** | ✅ |
 | 10 | Hazard detection on the edge (arXiv 2003.04116) | Edge DL deployment | ✅ |
 | 11 | VAE out-of-distribution detection, embedded real-time (arXiv 2107.11750) | Novelty rejection — relevant to false alarms | ✅ |
-| 12–21 | *(ArduPilot/PX4 companion-computer docs, Raspberry Shake specs from `../MEMS/datasheets/`, Nof 2019 back-azimuth, PSD-PDF method, and C1 sources 8/9 for multi-modal fusion)* | | 📄/✅ |
+| 12–21 | *(ArduPilot/PX4 companion-computer docs, Raspberry Shake specs from `../MEMS/extracts/`, Nof 2019 back-azimuth, PSD-PDF method, and C1 sources 8/9 for multi-modal fusion)* | | 📄/✅ |
 
 ### ⭐ C5 reframes MASTER §7 and §10.5
 

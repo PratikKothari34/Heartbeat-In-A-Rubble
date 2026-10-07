@@ -75,7 +75,7 @@ unconfirmed — element14 IN and Robu both block automated checks.
 > current prices. **Lesson: an inventory claim is perishable and must carry a date.**
 
 **✅ Updated 2026-09-17 — there is now a fully verified way out of both problems.** The ST
-**IIS2ICLX** datasheet is in `datasheets/` and its specs are first-hand (`02` B3): **15 µg/√Hz typ,
+**IIS2ICLX** datasheet is in `extracts/ST_IIS2ICLX_datasheet.md` and its specs are first-hand (`02` B3): **15 µg/√Hz typ,
 420 µA, $26.51, 421 in stock.** Non-sensor node cost is **$14.00** [CALC], so:
 
 | Sensor | Per node | 9 nodes | System |
@@ -247,7 +247,7 @@ needs most.** A 2-axis part degrades precisely the arrival picks that set the lo
 2. **3 axes buy a capability 2 cannot.** With attitude recoverable from the DC gravity vector, each
    node can rotate into the world frame and yield **per-node back-azimuth from particle-motion
    polarisation** — an independent constraint on position alongside TDoA. **Nof et al.
-   (`papers/`) do exactly this with low-cost MEMS mini-arrays.**
+   (`extracts/`) do exactly this with low-cost MEMS mini-arrays.**
 
 **Decision: 3-axis. The ST IIS2ICLX is eliminated** — not on noise or price, on geometry. The $330
 saving in A2 was buying a constraint that fights coupling.

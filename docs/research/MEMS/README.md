@@ -103,9 +103,8 @@ ambient on a demolition site.** It either justifies the $63 part or eliminates i
 
 | Path | Contents |
 |---|---|
-| `datasheets/` | 15 manufacturer PDFs — Epson ×5, ADI ×2, Colibrys, Sercel ×2, Geospace, Raspberry Shake, TDK, **ST**, **Murata** |
-| `papers/` | 6 research PDFs — SenSys'17, PigV², EGU2018, Evans 2014 SRL, Nof 2019, USGS OFR 2005-1438 |
-| `extracts/` | markitdown text conversions used for reading. **Working files, not sources** |
+| `extracts/` | **18 full-text Markdown extracts** — 15 manufacturer datasheets (Epson ×5, ADI ×2, Colibrys, Sercel ×2, Geospace, Raspberry Shake, TDK, **ST**, **Murata** |
+| | plus 6 research papers — SenSys'17, PigV², EGU2018, Evans 2014 SRL, Nof 2019, USGS OFR 2005-1438. **The source PDFs were converted and deleted 2026-10-08** (`*.pdf` is gitignored project-wide; third-party material is not ours to redistribute). The extracts are the only in-repo record. |
 
 ---
 
@@ -143,7 +142,7 @@ All limits stated explicitly in **[05 — Verification Log](05-verification-log.
 
 ## Conventions
 
-**[DS]** datasheet PDF in `datasheets/` · **[PAPER]** paper PDF in `papers/` ·
+**[DS]** datasheet extract in `extracts/` · **[PAPER]** paper extract in `extracts/` ·
 **[CALC]** my arithmetic from tagged inputs · **[LIVE]** pulled from the vendor page's own price
 payload today · **[UNVERIF]** single-source, do not trust ·
 ✅ link returned HTTP 200 **and its body was inspected for soft-404 markers** today ·

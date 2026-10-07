@@ -1,7 +1,7 @@
 # 02 — Sensor Survey: Specs, Price, Vendors
 
 > **All prices captured 2026-09-17.** Semiconductor pricing moves; re-check before any PO.
-> Tags: **[DS]** from the datasheet PDF in `datasheets/` · **[LIVE]** pulled from the vendor page's
+> Tags: **[DS]** from the datasheet extract in `extracts/` · **[LIVE]** pulled from the vendor page's
 > own price payload today · **[UNVERIF]** single-source or search-snippet only, **do not trust**.
 > **Link check:** ✅ = returned HTTP 200 today. ⚠️ = bot-blocked (403/timeout) from this machine;
 > the URL is the canonical one but I could not confirm it live — verify in a browser.
@@ -107,7 +107,7 @@ Right domain, wrong power envelope.
   - **Europe/EMEA** — Texim Europe, Amcoris
   - **Asia / India — none listed.** ⚠️ Procurement would go through Epson global sales or an EMEA
     distributor. This is a real obstacle, independent of price.
-- Brief sheets downloaded to `datasheets/Epson_M-A3*_briefsheet.pdf`
+- Brief sheets converted to `docs/research/MEMS/extracts/epson.md` and `Epson_M-A352AD10_briefsheet.md` / `Epson_M-A370AD10_briefsheet.md` (source PDFs deleted 2026-10-08; `*.pdf` is gitignored)
 
 **Verdict — disqualified on three counts:**
 - **13.2–20 mA** against a **~9 mA whole-node budget** (MASTER §4.1). The sensor alone exceeds the node.
@@ -206,7 +206,7 @@ Sits in the **Class A ($2,000–4,000)** tier of Evans et al. 2014 [PAPER]. Refe
   (both bot-blocked from here; India stock **unconfirmed**)
 
 **Also available:** EVAL-ADXL355-PMDZ Pmod breakout — user guide in
-`datasheets/ADI_ADXL355_PMOD_userguide.pdf`. This is the sane way to get first data without
+`docs/research/MEMS/extracts/adxl355.md`. This is the sane way to get first data without
 laying out a board.
 
 **Verdict:**
@@ -225,11 +225,11 @@ laying out a board.
 Analog-output sibling of the ADXL355. **20 µg/√Hz @±2 g** [DS], ±2/4/8 g.
 Quieter on paper, but needs an external ADC + reference per node — added cost, power and noise
 that will erase the 5 µg/√Hz advantage. ~$51.30 ⚠️ [UNVERIF].
-Datasheet is the same file: `datasheets/ADI_ADXL354_ADXL355_datasheet.pdf`.
+Datasheet is the same file: `docs/research/MEMS/extracts/adxl355.md`.
 
 ### B3. ST IIS2ICLX — **datasheet obtained, specs now first-hand** ✅
 
-`datasheets/ST_IIS2ICLX_datasheet.pdf` (3.5 MB, supplied by the user 2026-09-17 — st.com blocks
+`docs/research/MEMS/extracts/ST_IIS2ICLX_datasheet.md` (3.5 MB, supplied by the user 2026-09-17 — st.com blocks
 automated access). Every row below is now **[DS]**; the whole table was previously [UNVERIF].
 
 | Spec | Value | Src |
@@ -300,7 +300,7 @@ limitation:**
 
 ### B4. Murata SCA3300-D01 — **noise density finally published** ✅
 
-`datasheets/Murata_SCA3300-D01_datasheet.pdf` (Doc.No. 3165 Rev. 3, 1.6 MB, downloaded from the
+`docs/research/MEMS/extracts/Murata_SCA3300-D01_datasheet.md` (Doc.No. 3165 Rev. 3, 1.6 MB, downloaded from the
 exact URL exposed by the user's page source 2026-09-17). **This closes the gap that previously
 disqualified the part.**
 
@@ -421,7 +421,7 @@ sales contact.
 ❌ **DEAD — corrected 2026-09-17.** This was previously tagged ✅ in error. The URL returns
 **HTTP 200 with a "Page Not Found" body** (a *soft 404*), which defeated the status-code-only link
 check used in the first pass. See `05-verification-log.md` **E9**. The datasheet in
-`datasheets/TDK_MPU-6050_datasheet.pdf` is unaffected — it was obtained earlier and every [DS] row
+`docs/research/MEMS/extracts/TDK_MPU-6050_datasheet.md` is unaffected — it was obtained earlier and every [DS] row
 above still reads from it. **Only the link is wrong, not the specs.**
 
 **Verdict — 16× too noisy for the `01-requirements.md` §7 target of <50 µg rms** (it gives 3.8 mg rms
@@ -470,7 +470,7 @@ that needs correcting in MASTER.
 ### R1. Raspberry Shake RS1D / RS4D
 
 A packaged geophone + 24-bit digitiser + Pi seismograph. Specs in
-`datasheets/RaspberryShake_technical_specifications.pdf`. Pricing not confirmed ⚠️ (~$500+ [UNVERIF]).
+`docs/research/MEMS/extracts/RaspberryShake_technical_specifications.md`. Pricing not confirmed ⚠️ (~$500+ [UNVERIF]).
 **Vendor:** <https://raspberryshake.org/> ✅
 
 **Recommended purchase — not as a node, as the instrument that answers

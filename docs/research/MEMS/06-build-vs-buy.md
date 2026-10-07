@@ -48,7 +48,7 @@ matching and no trim. **There is no version of this that beats the integrated pa
 
 ### Why it is tempting
 
-- **Both working heartbeat-through-structure systems in `papers/` used geophones, not MEMS.**
+- **Both working heartbeat-through-structure systems in `extracts/` used geophones, not MEMS.**
   VitalMon achieved **1.90 BPM mean error with an SM-24** — the exact part already surveyed in
   `02` G1. PigV² used the same class.
 - **~0.001 µg/√Hz**, ≈32 ng rms integrated over 10–100 Hz [CALC] — **~77 dB below the ADXL355.**
@@ -160,7 +160,7 @@ transducer. It is to put the geophone where its constraints are free:
 - **Interior nodes** — many cheap drone-dropped MEMS units across the field, where only node count
   and coupling matter.
 
-This matches the **Evans Class A/B/C tiering** already in `papers/`, and it is how real seismic
+This matches the **Evans Class A/B/C tiering** already in `extracts/evans.md`, and it is how real seismic
 arrays are actually built.
 
 **Costed** (interior node = SCA3300 at $52.98; non-node system cost $380–880 from `04` A2):
