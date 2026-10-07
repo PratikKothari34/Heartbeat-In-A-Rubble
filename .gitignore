@@ -20,3 +20,7 @@ docs/memory/
 docs/decisions/
 # Third-party datasheets and papers: not ours to redistribute.
 *.pdf
+
+# Faculty proposal template: third-party form, not ours to redistribute.
+# Lives in the repo root for local reference only.
+Research proposal format.docx
