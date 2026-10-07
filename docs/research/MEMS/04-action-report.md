@@ -100,7 +100,7 @@ Two problems:
    it is at the edge of it. **The SM-24 is the exact part VitalMon used to measure heart rate, and
    the same class PigV² used.** Two of the three working systems in `03-literature.md` used a
    geophone.
-2. **The noise figure is understated by ~100×.** MASTER says 0.1 µg/√Hz. Coil Johnson noise from
+2. **The noise figure is understated by ~100×.** MASTER says 0.1 µg/√Hz. **[CONFIRMED 2026-10-08 by independent re-extraction of the brochure: it contains NO noise specification — regex `nois` returns zero matches over the full text. So 0.1 µg/√Hz is not a vendor figure and never was. This report's computed value is the right one; treat 0.1 as a conservative system-level (element + preamp) assumption, never as a datasheet number.]** Coil Johnson noise from
    the brochure's own 375 Ω / 28.8 V/m/s gives **~1 ng/√Hz at 20 Hz** — about **0.001 µg/√Hz**
    (`01-requirements.md` §5, my calculation, caveats stated there).
 

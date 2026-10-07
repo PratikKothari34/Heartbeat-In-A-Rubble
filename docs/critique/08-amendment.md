@@ -226,7 +226,11 @@ return good news or no news.
 4. **Persistence: 20 present / 20 absent windows, scored as detections.** Tests the one surviving
    advantage, and calibrates the >=60%-of-looks threshold computed in section 2.3.
 
-**Then, before any spend:** confirm the SM-24's 0.1 ug/rtHz with the vendor (`00b` G - the one number
+**Then, before any spend:** ~~confirm the SM-24's 0.1 ug/rtHz with the vendor~~ **AMENDED 2026-10-08:
+impossible - the SM-24 datasheet carries no noise specification at all, so 0.1 ug/rtHz was never a
+vendor figure. The computed element floor is 0.003-0.005 ug/rtHz, making the assumption conservative
+by 23-30x. Specify the preamplifier instead; it sets the system floor. See `prior-art/C`.** The
+superseded text read: confirm the SM-24's 0.1 ug/rtHz with the vendor (`00b` G - the one number
 the architecture rests on), and get a written ETA quote from an accredited lab to replace `04`'s
 [EST].
 

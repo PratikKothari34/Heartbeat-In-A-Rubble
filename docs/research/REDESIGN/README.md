@@ -1,5 +1,20 @@
 # Redesign Proposals — SUGGESTIONS ONLY
 
+
+> ## ⚠ PARTLY SUPERSEDED — 2026-10-08
+>
+> **Nothing in this folder was ever applied** (as its own heading says), and the premise it proposed
+> redesigns for — heartbeat detection — is **disproven**: see `docs/critique/07-verdict.md`.
+>
+> **The one finding below that survives and matters is the regulatory one** (G.S.R. 853(E) Table-II,
+> duty cycle set per device category, 865–868 MHz): independently re-verified against the Gazette
+> PDF and **CONFIRMED**. The supercap recharge *principle* also survives, though a part number in it
+> was wrong.
+>
+> **What does not survive:** the 24 B batched-summary proposal — a tap/voice packet needs **82–156 B**,
+> and the STM32WLE5JC has **64 kB** SRAM, not 100 kB, so the planned input buffer alone is 70.3 kB
+> (110 % of the part). See `docs/critique/06-prior-research-audit.md`.
+
 **Status: nothing in this folder has been applied.** No existing doc was edited, no decision
 recorded, no ADR written. This folder proposes; `MASTER.md` and `docs/decisions/` still say what
 they said. Research date **2026-10-06**.

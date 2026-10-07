@@ -1,3 +1,16 @@
+> ## ⛔ HISTORICAL DOCUMENT — do not use for design
+>
+> This is the **original hackathon-era concept doc**, kept only as a record of where the project
+> started. **Its framing, its premise and most of its numbers are stale.**
+>
+> The central idea — detecting a buried survivor's **heartbeat** with a MEMS accelerometer — is
+> **disproven by 38–60 dB**, with the source force now *measured* rather than assumed. The sensor
+> table below is also inverted: the ADXL355 it favours cannot detect a tap, and the SM-24 geophone it
+> lists as a budget afterthought is the correct choice once the signal band is right.
+>
+> **Nothing here should be cited, costed or built from.** Current position:
+> `docs/critique/07-verdict.md`, then `docs/critique/prior-art/`, then `docs/proposal/INPUT.md`.
+
 **HEARTBEAT IN THE RUBBLE**
 
 *Seismic Mesh Networks for Survivor Detection*

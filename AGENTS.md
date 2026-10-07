@@ -15,7 +15,12 @@ not say so.**
 MASTER describes detecting a buried survivor's **heartbeat** with a MEMS accelerometer. A six-agent
 adversarial review on 2026-10-07 established that this **cannot work**:
 
-- The cardiac seismic signal is **47–69 dB below the chosen sensor's own noise floor** at 3 m.
+- The cardiac seismic signal is **38–60 dB below the chosen sensor's own noise floor** at 3 m.
+  (Was 47–69 dB. **Revised 2026-10-08** because the cardiac source force is now *measured*, not
+  assumed: 3.7 N (Starr 1939, n=7), 4.06 N (Inan 2009, n=26+), 2 N_pp (Ashouri 2016). The worst
+  single healthy subject in the literature, 10.95 N, costs **+8.75 dB**. Nothing recovers 38 dB, and
+  the “what if the force is really 20–40 N” escape is now **closed by measurement**. A crush-injured
+  survivor measures **weaker** — 0.94–1.05 N, ~12 dB below the healthy mean.)
 - MASTER §3.3's central unmeasured assumption (0.1–1 mg at 2–3 m) is **wrong by 479–19,167×**.
 - No filter, averaging scheme or ML model recovers this. Closing the gap would need 2.8 h–3.2 yr of
   phase-coherent integration, and the HRV feature needed to prove a signal is human **destroys the
@@ -44,14 +49,19 @@ Read in this order:
 
 Highest first:
 
-1. **`docs/critique/07-verdict.md` + `08-amendment.md`** — current engineering position.
-2. **`docs/decisions/`** — ADRs, binding where they exist. **Not in this repo** (kept local by the
+1. **`docs/critique/07-verdict.md` + `08-amendment.md`** — current engineering position. **Read
+   §9 of `07`**, the prior-art amendment.
+2. **`docs/critique/prior-art/`** — literature sweep, 2026-10-08. **Amends everything above it**
+   where they differ; start at its `README.md`. `docs/proposal/INPUT.md` is the proposal input pack
+   built from all of it.
+3. **`docs/decisions/`** — ADRs, binding where they exist. **Not in this repo** (kept local by the
    maintainer). If a decision seems to be missing, ask rather than assuming none exists.
-3. **`docs/MASTER.md`** — consolidated numbers. Loses to the above; wins on raw figures.
-4. `docs/research/` — working papers behind the numbers: `MEMS/` sensor selection, `BUDGET/` costing,
+4. **`docs/MASTER.md`** — consolidated numbers. Loses to the above; wins on raw figures. **It now
+   carries a SUPERSEDED PREMISE banner at the top — read that before any section.**
+5. `docs/research/` — working papers behind the numbers: `MEMS/` sensor selection, `BUDGET/` costing,
    `REDESIGN/` an earlier pass. `MEMS/extracts/` and `BUDGET/extracts/` hold the cited figures pulled
    out of source PDFs, since the PDFs themselves are not in the repo (see Conventions).
-5. `docs/reference/` — the original hackathon-era doc. **Stale framing, kept for history only.**
+6. `docs/reference/` — the original hackathon-era doc. **Stale framing, kept for history only.**
 
 Two things are gitignored and absent from your clone: **`docs/memory/`** (maintainer's project
 memory) and **`docs/decisions/`**. The maintainer also has a local `CLAUDE.md` with
@@ -87,7 +97,7 @@ Locked (supersedes MASTER where they conflict):
 
 | Parameter | Value |
 |---|---|
-| Sensor | **SM-24 geophone** (vendor-verify its 0.1 µg/√Hz before committing) |
+| Sensor | **SM-24 geophone.** ~~vendor-verify its 0.1 µg/√Hz~~ **No vendor noise figure exists — the datasheet has none (verified by full re-extraction; regex `nois` = 0 matches). 0.1 µg/√Hz was never a vendor spec. Computed element thermal floor is 0.003–0.005 µg/√Hz, so the assumption is conservative by 23–30×. Specify the *preamplifier* instead — it sets the system floor (12–16× margin at 4 nV/√Hz; vanishes only near 50 nV/√Hz).** |
 | Band | **5–40 Hz** tap; 200 Hz–3 kHz voice |
 | Target | Tap / movement / voice. **Cardiac is a stretch goal only** |
 | Operating mode | **Command-triggered during "All Quiet"**, not autonomous continuous |
@@ -129,6 +139,11 @@ packet size (needs 82–156 B, not 24 B), power (receive current budgeted at zer
 - **Don't commit PDFs.** `*.pdf` is gitignored globally — third-party datasheets and papers are not
   ours to redistribute. Add an `.md` extract with the source URL instead.
 - Never commit secrets, env files, or build output.
+- **Extracts exist because the PDFs are gitignored.** Before deleting one, check whether a figure
+  cited elsewhere survives only there. Two orphaned extracts (`mpu6050`, `sensys`) were removed
+  2026-10-08 after confirming their figures are preserved in `research/MEMS/`; `USGS_SIR2023-5061`
+  was **kept** despite looking unreferenced, because it holds the 200–1000 m/s velocity bracket that
+  every position-error conversion in `02` depends on.
 
 ---
 
@@ -162,3 +177,88 @@ your PR.
 - **The cheapest open experiment is in `08-amendment.md` §6.** Measure the ambient in-band floor
   first: if it exceeds ~1 mg, the premise fails at any sensor price, because no filter removes
   in-band noise.
+
+---
+
+## 7. Prior-art amendment, 2026-10-08 — read before claiming novelty
+
+A three-agent literature sweep (`docs/critique/prior-art/`) ran after the critique. **The kill stands
+and is better evidenced** (see §1). What changed is **what counts as novel**.
+
+**Already published. Do not claim any of these as a contribution:**
+
+- **The tapping/voice retarget is existing doctrine.** FEMA US&R lists as a *disadvantage* of
+  listening devices that the “**victim must create a recognizable sound pattern**,” and names the
+  “audible call out/knocking method.” Delsar LD3, Leader SEARCH and the NDRF Type-I spec are all
+  6–8-sensor, operator-interpreted systems. None claims heartbeat; none does automated localization.
+- **Automated knock localization** was the stated goal of **INACHUS** (EU FP7 607522, 20 partners,
+  2015–2018). No peer-reviewed accuracy result was located — so do **not** claim it as novel, and do
+  **not** assert INACHUS achieved validated metre accuracy either. Both overstatements are wrong.
+- **Drone deployment of seismic sensors.** Stewart et al., SEG 2016 (drone-*landed* geophones) and
+  **SeismicDart** (air-*dropped* darts, ρ = 0.81–0.98 against planted geophones, all drops ≥20 m met
+  the professional planting standard). Both characterise **soil**, not rubble.
+- **A seismic array on rubble.** Arosio et al. 2010, *Near Surface Geophysics* 8(6):623–633,
+  DOI 10.3997/1873-0604.2010051 — accuracy “within the limit of the seismic resolution,” 3× faster
+  than incumbent systems.
+- **“Node position dominates TDoA, not clock error.”** This is **textbook GDOP**. Written as an
+  error-budget conclusion citing GDOP it adds rigour; written as a discovery, a reviewer marks it a
+  basic-literature gap.
+
+**What is defensibly novel, strongest first:**
+
+1. **Array extent.** Arosio et al. name their own three limitations as debris inhomogeneity, the need
+   for real-time response, and **“the limited spatial extension of the sensor array”** — confirmed in
+   two independent sources. Hand placement is what causes that limit; air deployment lifts it. Prior
+   art states the constraint; this project's mechanism removes it. A *capability* argument, which
+   outranks the cost argument (whose prices are poorly verified).
+2. **Coupling onto rubble rather than soil.** Unmeasured by anyone, and the same gap as the
+   reinstated coupling risk below — so it is doubly worth measuring.
+3. **The cardiac bound itself**, as a published negative result.
+4. **Node count at mesh scale**, and the **NDRF Type-I** spec's complete absence of an
+   automated-localization requirement — a capability gap in the procuring agency's own words.
+
+**Three numbers in the critique were wrong:**
+
+| Was | Is | Source |
+|---|---|---|
+| Coupling resonance 500 Hz – 67 kHz | **100–500 Hz** | Krohn 1984, DOI 10.1190/1.1441700 |
+| Footstep anchor 19 Hz → 36.5 µg | **17 Hz → 32.7 µg** | Ekimov & Sabatier, *JASA* 120(2):762 |
+| SM-24 “0.1 µg/√Hz, vendor-verify it” | **No vendor noise spec exists**; computed floor 0.003–0.005 µg/√Hz | SM-24 brochure, re-extracted |
+
+The coupling correction **partially reinstates `01`'s struck condition C4**: our claimed *floor* was
+the literature's *ceiling*, so a 100 Hz contact resonance sits only 1.25× above an 80 Hz tap — in
+band, distorting amplitude **and phase**, so it degrades TDoA as well as detection. Margin is
+**1.3–6×, not 6–800×**, worst for free-laid nodes on fractured debris — exactly what drone deployment
+produces. **If you touch coupling, treat it as open, not settled.** §4's “lighter couples better” is
+**Krohn's result, not this project's finding** — don't present it as ours.
+
+**Terminology:** “force-ratio scaling” is not a standard term. It is **linear transfer-mobility
+scaling** (FTA ground-borne vibration method; ASTM/FHWA impulse-response mobility spectrum).
+Elastodynamics is LTI, so response amplitude is linear in source force — which is *why* it works.
+Never scale by **energy** (a factor-2 dB error) and never invoke **seismic moment** (defined for
+internal sources, not a body pressing on a surface).
+
+**Citations that must appear in any write-up:** Arosio et al. 2010 (above); **Sabatier & Ekimov
+2008**, Proc. SPIE 6963, 69630V, DOI 10.1117/12.785235, which is already a signal-equals-noise range
+bound for footsteps — this project's method has a direct published ancestor; and **HeartQuake** (Park
+et al. 2020, DOI 10.1145/3411843), which recovers full ECG morphology through a mattress **from an
+SM-24 geophone element**, the same part §4 selects. HeartQuake must be cited *and distinguished*
+(contact-coupled through bedding, not metres of rubble), because a reviewer who finds it unaided will
+read it as contradicting the kill.
+
+**Still unmeasured, now the highest-value bench work:** **tap force and tap spectrum.** The
+50–300 N / 60–80 Hz figures every margin in `07` scales off have **no source** — the nearest
+literature anchors are destructive (karate chop ~2,800 N) and were explicitly declined rather than
+laundered as measured.
+
+**Do not quote “~USD 15,000” for the incumbent Delsar.** Unconfirmed; observed reseller and auction
+figures span USD 2,000–28,500, far too wide to support any cost-ratio claim.
+
+**Do not state the 5–8 % duty cycle as doctrine.** Doctrine says “around once per hour for a few
+minutes” with **no stated duration** — literally 5–13 %. At 10 min/hour it is ~17 %, a 2–3× power-budget
+error. Mark it [ASSERTED].
+
+**Four load-bearing citations are READ-ABSTRACT only** — Arosio's rubble velocity, the 3 µm/s anchor,
+Krohn's 100–500 Hz window, and the 17 Hz peak. Enough to correct a number internally; **not** enough
+to defend one in a funded proposal. The priority-ordered hand-retrieval list with verified block
+states is at the end of `prior-art/C-propagation-modeling.md`.

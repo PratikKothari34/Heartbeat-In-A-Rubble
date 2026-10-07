@@ -1,5 +1,26 @@
 # MEMS Sensor Research — Heartbeat In The Rubble
 
+
+> ## ⛔ SUPERSEDED PREMISE — 2026-10-08
+>
+> **This pass selected a sensor for detecting a buried survivor's heartbeat. That target is
+> disproven.** The cardiac signal sits **38–60 dB below** the selected sensor's own noise floor at
+> 3 m, and the source force is now *measured* (3.7 N Starr 1939; 4.06 N Inan 2009; 2 N_pp Ashouri
+> 2016), so no filter, averaging scheme or model recovers it.
+>
+> **The sensor conclusion is also reversed.** This pass marked the **ADXL355** FIXED and rejected the
+> **SM-24 geophone** because its 10 Hz corner sits above the target band — true only of the *wrong*
+> band. The band error (0.5–4 Hz, a *repetition rate*, not a *signal bandwidth*) caused the sensor
+> error. At the correct **5–40 Hz**, the SM-24 is the selected sensor and the ADXL355 cannot do the
+> job: every tap case is buried on the ADXL355 (−7 to −25 dB) and detected on the SM-24 (+23 to
+> +41 dB).
+>
+> **What is still good here:** the noise-density survey, the vendor register, the requirements
+> arithmetic, and the extracts — which are the only in-repo record of figures whose PDFs are
+> gitignored. Read the numbers; ignore the conclusion.
+>
+> Authority: `docs/critique/07-verdict.md` → `08-amendment.md` → `docs/critique/prior-art/`.
+
 Research pass completed **2026-09-17**. Scope: what sensor this project actually needs, what exists
 that meets it, what it costs and where to buy it, and what the literature says about detecting a
 heartbeat through a structure.

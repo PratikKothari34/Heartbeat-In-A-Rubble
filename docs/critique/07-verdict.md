@@ -113,7 +113,7 @@ anything operationally meaningful. **Item 5-6 is the binding risk on the rebuilt
 | F450 airframe **25 min with 9 nodes** | **CONFIRMED** - `03` attacked it and withdrew |
 | **LongShoT <2 us** sync | **CONFIRMED** - and now over-engineered by ~10^4 (section 3) |
 | E17 link-checker bug | **CONFIRMED** - a real, honestly self-reported catch |
-| **Coupling is fine in-band** | **CONFIRMED** - resonance 500 Hz-67 kHz, transmissibility -> 1 |
+| **Coupling is fine in-band** | **AMENDED 2026-10-08 - PARTLY OVERTURNED.** Krohn (1984) *measures* coupling resonances at **100-500 Hz** (DOI 10.1190/1.1441700); our claimed floor was the literature's ceiling and 67 kHz has no support. At a 100 Hz resonance an 80 Hz tap sits only 1.25x below it: in-band, distorting amplitude **and phase**, so it hits TDoA too. Margin 1.3-6x, not 6-800x. `01`'s C4 deserves **partial reinstatement for free-laid nodes on fractured debris** - the regime drone deployment actually produces. Direction (lighter couples better) is right, and is Krohn's result, not ours. |
 
 ---
 
@@ -212,9 +212,15 @@ anything.**
 
 1. **Delete the 0.5-4 Hz filter.** Wrong regardless of path. Free.
 2. **Re-run the 3.2 sensor trade against 5-40 Hz.** The geophone rejection is wrong and the
-   correction is free. **Vendor-verify the SM-24's 0.1 ug/rtHz** - if optimistic by 10x, a knuckle
-   tap goes marginal (+3 dB) while a rock strike stays fine (+21 dB). **This is the single number
-   the architecture rests on.**
+   correction is free. ~~**Vendor-verify the SM-24's 0.1 ug/rtHz**~~ **AMENDED 2026-10-08: there is
+   nothing to vendor-verify.** The SM-24 brochure was re-extracted and contains **no noise
+   specification at all** (regex `nois` over the full text: zero matches). 0.1 ug/rtHz was never a
+   vendor figure. Computing the element's thermal floor from the brochure's own 375 ohm / 28.8 V/m/s
+   gives **0.003-0.005 ug/rtHz across 60-80 Hz**, i.e. the assumed figure is **conservative by
+   23-30x, not optimistic**. The +23/+41 dB tap margin therefore holds, and the knuckle-tap risk
+   above is withdrawn. **The real number the architecture rests on is now the preamplifier**, since
+   it, not the element, sets the system floor: at 4 nV/rtHz input noise the margin is still 12-16x;
+   only at ~50 nV/rtHz does it vanish. Specify the preamp, don't re-chase the element.**
 3. **Do NOT run MASTER 12 step 1 as written.** Its outcome is already determined; it would cost weeks
    to confirm what arithmetic gives today.
 4. **Bench-test a TAPPING source at 1 / 3 / 10 m** on specified hardware. Measures real detection
@@ -285,3 +291,77 @@ determine** - they can refine section 4's numbers (BOM under the geophone swap, 
 INSARAG fit, operator workflow) but cannot reverse section 1, which rests on sensor noise floors,
 source amplitudes and the CRLB. **If either contradicts a locked decision in 4.2, this document gets
 amended rather than defended** - the same standard applied to `01`'s C4 in section 3.
+
+---
+
+## 9. Prior-art amendment, 2026-10-08
+
+Three agents swept the literature after this verdict was written (`prior-art/A`, `B`, `C`).
+What changes:
+
+**The kill stands and gets stronger evidence.** The 1-4 N cardiac source force is no longer an
+assumption - it is **measured** three times over 70 years with three instruments: 3.7 N (Starr
+1939, n=7), 4.06 N +-1.53 (Inan 2009, Stanford, n=26+), 2 N_pp (Ashouri 2016, Kistler force
+plate). Worst single healthy subject 10.95 N = **+8.75 dB**, so the deficit becomes **38-60 dB**
+instead of 47-69. Unchanged in kind: nothing recovers 38 dB. And the feared "what if it's
+20-40 N" escape is now **closed by measurement**, not argument. Pathological hearts measure
+**0.94-1.05 N**, ~12 dB *below* the healthy mean - a crush-injured hypothermic survivor is
+plausibly weaker than this verdict assumed, not stronger.
+
+**Two numbers in this document are wrong** - see the amended register row above (coupling
+100-500 Hz) and `00b`'s amendment header (anchor 17 Hz -> 32.7 ug, not 19 Hz -> 36.5 ug;
+Ekimov & Sabatier, *JASA* 120(2):762).
+
+**"Force-ratio scaling" must be renamed.** The method is sound but the name is not standard.
+It is **linear transfer-mobility scaling** (FTA ground-borne vibration method; ASTM/FHWA
+impulse-response mobility spectrum). Elastodynamics is LTI, so amplitude is linear in source
+force - this is why the method works. Two errors to keep avoiding: scaling by *energy* instead
+of force (a factor-2 dB error) and invoking *seismic moment* (defined for internal sources, not
+a body pressing on a surface).
+
+**The novelty claim has moved, and this is the biggest change for the proposal.** The
+tapping retarget is **not novel** - it is FEMA doctrine, verbatim: listening devices require
+that the "victim must create a recognizable sound pattern," and the "audible call out/knocking
+method" is named doctrine. Delsar LD3, Leader SEARCH and the NDRF Type-I spec are all
+6-8-sensor operator-interpreted systems. Nor is drone deployment of seismic sensors novel
+(Stewart et al., SEG 2016, drone-landed geophones; SeismicDart, air-dropped darts, rho =
+0.81-0.98 against planted geophones). Nor is a seismic array on rubble (Arosio et al. 2010).
+Nor is "node position dominates TDoA" - that is **textbook GDOP** and must be written as an
+error-budget conclusion, never as a finding.
+
+**What survives as defensible, strongest first:**
+
+1. **Array extent.** Arosio et al. 2010 names its own three limitations as debris
+   inhomogeneity, real-time response, and **"the limited spatial extension of the sensor
+   array"** - verified in two independent sources. Hand placement is what bounds array extent;
+   air deployment lifts it. Prior art states the constraint, the proposal's mechanism removes
+   it. A capability argument, which outranks the cost argument.
+2. **Rubble, not soil.** Every air-deployment result is parameterised by *soil* compression
+   strength. **No characterisation of air-dropped node coupling onto collapsed debris was
+   located.** Genuine measurement gap, natural deliverable - and it is the same gap as the
+   reinstated C4 coupling worry above, which makes it doubly worth measuring.
+3. **The cardiac bound itself.** Nobody has published the negative result this critique
+   derived. It is publishable as a bound.
+4. **Node count / cost at mesh scale**, and **NDRF context** - the Type-I spec contains no
+   automated-localization requirement, a documented capability gap in the procuring agency's
+   own words.
+
+**Must be conceded in writing, or a reviewer will catch it:** tapping is doctrine's existing
+target; INACHUS (FP7 607522) stated the automated-knock-localization goal; air-dropped
+geophones exist. Equally, do **not** assert INACHUS *achieved* validated metre accuracy - no
+peer-reviewed result was located either way.
+
+**Two citations that must appear and currently do not:** Arosio et al. 2010, *Near Surface
+Geophysics* 8(6):623-633, DOI 10.3997/1873-0604.2010051 (the closest prior art; accuracy
+"within the limit of the seismic resolution", 3x faster than incumbent systems); and Sabatier &
+Ekimov 2008, Proc. SPIE 6963, 69630V, DOI 10.1117/12.785235, which is **already a
+signal-equals-noise range bound for footsteps** - this document's method has a direct published
+ancestor. Also HeartQuake (Park et al. 2020, DOI 10.1145/3411843), which recovers full ECG
+morphology through a mattress **from an SM-24 geophone element** - the same part this verdict
+selects. It must be cited and distinguished (contact-coupled through bedding, not metres of
+rubble), because a reviewer who finds it unaided will read it as contradicting the kill.
+
+**Still unmeasured, and now the highest-value bench work:** tap force and tap spectrum. The
+50-300 N / 60-80 Hz figures this verdict uses have **no source** - the nearest literature
+anchors are destructive (karate-chop, ~1,900-2,800 N) and were explicitly declined rather than
+laundered as measured. Everything in section 2's margin table scales off them.

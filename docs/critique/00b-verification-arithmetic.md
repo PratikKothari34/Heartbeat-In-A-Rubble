@@ -9,6 +9,41 @@ All figures from `scratchpad/verify.py` and `scratchpad/salvage.py` under `py -3
 
 ---
 
+> ## AMENDED 2026-10-08 by the prior-art sweep (`prior-art/`)
+>
+> Three numbers below are superseded by measured literature. **The original figures are left in
+> place** because this document's value is that it was computed before the critics reported; the
+> corrections are stated here rather than silently patched in.
+>
+> | Below | Corrected | Source | Effect |
+> |---|---|---|---|
+> | anchor **19 Hz** -> 36.5 ug | **17 Hz** -> **32.7 ug** | Ekimov & Sabatier, *JASA* 120(2):762 (2006), measured peak "near 17 Hz" | -0.97 dB. Conservative direction. |
+> | coupling resonance **500 Hz - 67 kHz** | **100-500 Hz** | Krohn (1984), *Geophysics* 49(6):722, DOI 10.1190/1.1441700 | **Our floor was the literature's ceiling.** See below. |
+> | SM-24 **0.1 ug/rtHz** "MASTER's own figure" | not a vendor figure at all - **the datasheet has no noise spec** | SM-24 brochure re-extracted, regex `nois` = 0 matches | Element thermal floor computed at **0.003-0.005 ug/rtHz** - our figure is **conservative by 23-30x, not optimistic**. |
+>
+> **Section G's load-bearing worry is resolved in the project's favour.** The 1-4 N cardiac force is
+> **measured**: 3.7 N (Starr 1939), 4.06 N (Inan 2009, n=26+), 2 N_pp (Ashouri 2016). Worst single
+> healthy subject 10.95 N = **+8.75 dB**, moving the deficit from 47-69 dB to **38-60 dB**. Unchanged
+> in kind. Pathological hearts measure **0.94-1.05 N**, ~12 dB *below* healthy mean - a crush-injured
+> hypothermic survivor is plausibly *weaker* than assumed.
+>
+> **Section E needs partial walk-back.** C4 was struck on the strength of the 500 Hz-67 kHz window.
+> With measured resonances at 100-500 Hz, a 100 Hz coupling resonance is only **1.25x** above an
+> 80 Hz tap - in-band, distorting amplitude *and phase*, which hits TDoA as well as detection. The
+> direction of E's argument (lighter couples better, f0 proportional to 1/sqrt(m)) is **established**
+> - Krohn (1984) - but it is not a project finding and the margin is 1.3-6x, not 6-800x. **C4
+> deserves partial reinstatement for free-laid nodes on fractured debris**, which is the worst-coupling
+> regime and the one drone deployment actually produces.
+>
+> Also: the anchor **3 um/s at 3 m is now citable** - Sabatier & Ekimov, Proc. SPIE 6963, 69630V
+> (2008), DOI 10.1117/12.785235, verbatim "did not exceed 3 x 10^-6 m/s, even very close (3 metres)".
+> That paper is also a **signal-equals-noise range bound for footsteps**, i.e. this document's method
+> has a direct published ancestor that must be cited.
+
+---
+
+---
+
 ## A. The signal-level deficit is 48-69 dB, not ~20 dB
 
 The only defensible anchor in the literature chain is a **measured footstep**: ~3 um/s particle
@@ -16,16 +51,25 @@ velocity at 19 Hz, 3 m range. Converting to acceleration (a = 2*pi*f*v):
 
 ```
 a = 2*pi * 19 * 3e-6 = 3.581e-4 m/s2 = 0.0365 mg = 36.5 ug
+   [AMENDED: measured peak is 17 Hz -> 2*pi*17*3e-6 = 3.204e-4 = 32.7 ug]
 ```
 
 Scaling to cardiac by force ratio - ground-reaction force ~700 N for a footstep, **1-4 N** for the
 ballistocardiographic impulse transmitted into a substrate:
 
-| Source | Force | Scaled amplitude @ 3 m |
-|---|---|---|
-| Footstep (anchor) | 700 N | 36.5 ug |
-| Cardiac, optimistic | 4 N | **0.209 ug** |
-| Cardiac, realistic | 1 N | **0.052 ug** |
+| Source | Force | Scaled amplitude @ 3 m | **AMENDED (17 Hz anchor)** |
+|---|---|---|---|
+| Footstep (anchor) | 700 N | 36.5 ug | **32.7 ug** |
+| Cardiac, optimistic | 4 N | **0.209 ug** | **0.187 ug** |
+| Cardiac, realistic | 1 N | **0.052 ug** | **0.047 ug** |
+| Cardiac, worst healthy subject (measured) | **10.95 N** | - | **0.511 ug** |
+
+*The whole column scales linearly off the anchor, so the 17 Hz correction moves every row by the
+same -0.97 dB. The added row is Inan (2009)'s maximum single healthy subject - the most
+favourable case the measured literature permits, included so the bound cannot be accused of
+using a convenient average. Method: linear transfer-mobility scaling (see `07` section 9 on the
+naming). Against the ADXL355 at B = 35 Hz the cardiac SNR is **-70.0 / -58.0 / -49.2 dB** at
+1 / 4 / 10.95 N respectively.*
 
 Against the ADXL355's own noise floor (25 ug/rtHz):
 
@@ -147,7 +191,8 @@ This supersedes MASTER 8.5's +/-0.05-0.1 m claim by ~30-70x.
 ## E. Resolving the 01-vs-03 coupling conflict
 
 01's condition C4 calls favourable coupling "luck, not design." 03 computes k = 4Ga/(1-nu) and
-f0 = (1/2pi)*sqrt(k/m), putting coupling resonance at **500 Hz - 67 kHz**, two to four orders above
+f0 = (1/2pi)*sqrt(k/m), putting coupling resonance at **500 Hz - 67 kHz** [**AMENDED: CONTRADICTED. Krohn (1984) measures
+100-500 Hz; 67 kHz has no support and must not be quoted**], two to four orders above
 the band, so transmissibility -> 1.
 
 **03 is right and 01's C4 should be struck.** The resonance calculation is explicit, uses standard
@@ -191,7 +236,10 @@ dB, and which error term actually dominates localization.
 - **Linear force scaling of a near-field seismic source is approximate.** Source-coupling efficiency
   depends on contact area and substrate impedance, which differ between a shoe and a torso. The
   direction of that error is unknown; the magnitude is plausibly a few dB, not tens.
-- **The SM-24's 0.1 ug/rtHz is MASTER's own figure, not vendor-verified this session.** If it is
+- **The SM-24's 0.1 ug/rtHz is MASTER's own figure, not vendor-verified this session.**
+  [**AMENDED: the datasheet carries NO noise spec at all. Computed element floor is
+  0.003-0.005 ug/rtHz, so 0.1 is conservative by 23-30x. Relabel as a system-level
+  (element+preamp) assumption, never as a vendor figure.**] If it is
   optimistic by 10x, the tap cases drop to +3 to +21 dB - marginal for a knuckle, still fine for a
   rock strike. **This single number should be vendor-verified before committing to S1.**
 - **Tap frequency content (60-80 Hz) is estimated, not measured.** It sets both the f-weighting gain

@@ -1,5 +1,36 @@
 # MASTER — Heartbeat In The Rubble
 
+
+> # ⛔ SUPERSEDED PREMISE — read this before anything below
+>
+> **This document's core premise is dead. The document has not been rewritten around that fact,
+> so every section below must be read against the critique.**
+>
+> Detecting a buried survivor's **heartbeat** with the sensor specified here **cannot work**. The
+> cardiac seismic signal sits **38–60 dB below the sensor's own noise floor** at 3 m. The source
+> force is now *measured* (3.7 N Starr 1939; 4.06 N Inan 2009; 2 N_pp Ashouri 2016), so this is
+> not an assumption that better instrumentation or a better filter can rescue — and a
+> crush-injured survivor measures **weaker** (0.94–1.05 N), not stronger.
+>
+> **Root cause, which explains most other errors here:** §6 bandpasses **0.5–4 Hz**. That is the
+> heartbeat's *repetition rate*, not its *signal bandwidth* — the beat is a broadband impulse
+> (~50–150 ms rise). The filter keeps the rate and **discards the signal**.
+>
+> **What replaced it:** same drone, mesh, TDoA solver and time sync, retargeted to **tapping /
+> voice from a responsive survivor** at **5–40 Hz** on an **SM-24 geophone**, which clears the
+> floor by **+23 to +41 dB**.
+>
+> **Known-wrong numbers below** (corrected in the critique, left in place here): §3.3's 0.1–1 mg
+> cardiac amplitude (wrong by 479–19,167×) · §6's 0.5–4 Hz band · §3.2's **FIXED** marker on the
+> ADXL355 and its rejection of the SM-24 · §8.5's ±0.05 m localization (really ±3.5–5 m, bounded
+> by node position, not clock) · node mass ~8 g (really 15.5 g) · "foam shell absorbs 15–20 G"
+> (15 mm crush gives ~200 G) · §9's cost conclusion (see below).
+>
+> **Authority order:** `docs/critique/07-verdict.md` → `08-amendment.md` → `docs/critique/prior-art/`
+> → this file. **Numbers here still win on raw figures; the premise and the signal chain do not.**
+>
+> *Banner added 2026-10-08 after the adversarial review (2026-10-07) and prior-art sweep (2026-10-08).*
+
 Detailed spec of the current project. Consolidated read, **not an authority**: loses to
 `docs/decisions/`, wins on numbers. Every number in the project lives here.
 
@@ -7,6 +38,7 @@ Status markers — **FIXED** settled · **PENDING** needs a measurement or a dec
 anything downstream is trustworthy · **TARGET** design goal, not yet met.
 
 Last revised: **2026-10-06** · Stage: pre-code, no hardware acquired.
+
 
 > **Budget rehauled 2026-10-06** — §9 replaced, §2/§8 contradiction found, §4.1 and §10.4
 > challenged. Full working: **`docs/research/BUDGET/`**. Sensor selection: **`docs/research/MEMS/`**.
@@ -60,7 +92,7 @@ Raw rubble seismic data is ~95% noise. Everything downstream exists to pull out 
 
 **ADXL355**, 3-axis, 25 µg/√Hz noise floor, ±2 g, ~$15.
 
-Rejected: MPU-6050 (400 µg/√Hz — 16× noisier, $3); SM-24 geophone (0.1 µg/√Hz but a 10 Hz
+Rejected: MPU-6050 (400 µg/√Hz — 16× noisier, $3); SM-24 geophone (0.1 µg/√Hz **[SUPERSEDED 2026-10-08: this rejection is wrong — it assumed the 0.5–4 Hz band, itself an error. At the correct 5–40 Hz band the SM-24 is the selected sensor. Also, 0.1 µg/√Hz is not a vendor figure; the datasheet has no noise spec, and the computed element floor is 0.003–0.005 µg/√Hz. See `docs/critique/07-verdict.md`.]** but a 10 Hz
 corner frequency, which sits above the entire target band — unusable here regardless of
 its noise spec).
 
@@ -298,7 +330,7 @@ requires; **(3)** a **PCB** to mount the parts on; **(4)** an airframe that can 
 §8.2.
 
 **The Delsar argument survives intact.** Incumbent ~$15,000, hand-placed one point at a time, blind
-to unconscious victims. **At $1,845 the order-of-magnitude advantage holds with 10× margin** — the
+to unconscious victims. **At $1,845 the order-of-magnitude advantage holds with 10× margin **[SUPERSEDED: all-in capital is $9,746 once compliance, spares and labour are counted; the advantage compresses to ~1.0–1.5×. The ~$15,000 incumbent price is itself unconfirmed — do not quote it. See `docs/critique/04` and `08`.]**** — the
 old conclusion was right even though its arithmetic was not.
 
 **Cheapest real saving:** switch the sensor to **Murata SCA3300-D01** (−$145.61 across 9 nodes),

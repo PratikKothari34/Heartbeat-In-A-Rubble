@@ -1,5 +1,26 @@
 # Budget Rehaul — Heartbeat In The Rubble
 
+
+> ## ⚠ PARTLY SUPERSEDED — 2026-10-08
+>
+> **The premise this pass costed is dead** (heartbeat detection; see
+> `docs/critique/07-verdict.md`), and **the headline cost conclusion does not survive.** All-in
+> capital is **~$9,746, not $1,845**, once compliance, spares and labour are counted — so the claimed
+> order-of-magnitude advantage compresses to **~1.0–1.5×**.
+>
+> Two further corrections: the **“~USD 15,000 incumbent” figure is unconfirmed** (observed reseller
+> and auction prices span USD 2,000–28,500 — too wide to support any cost ratio), and the build as
+> specified is **not legal in India** — DGFT prohibits importing a drone kit, and the radio needs WPC
+> type approval, which was budgeted at zero.
+>
+> **Also, the bill of materials changed** with the sensor: the SM-24 is *analog* (needs its own ADC
+> and instrumentation amplifier) and *74 g* (cannot run from a coin cell), making a node **+41 %**
+> dearer than the MEMS design costed here. Current budget: `docs/proposal/INPUT.md`.
+>
+> **What is still good here:** the vendor register, the verification log, the literature table, and
+> the method. Prices were captured 2026-10-06 and this project's own prices **drifted 8–16 % in 19
+> days** — re-verify before quoting any of them.
+
 Full rebuild of the project budget covering **sensor, node, radio, drone and ground station**.
 Prices pulled **2026-10-06** from vendor payloads; literature verified the same day.
 

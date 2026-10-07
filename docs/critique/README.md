@@ -9,6 +9,11 @@ assigned area, then adjudicated into a single verdict.
 **Nothing outside this folder was created or modified.** `MASTER.md`, `docs/research/` and
 `docs/reference/` are untouched by design.
 
+> **UPDATE 2026-10-08.** A three-agent prior-art sweep now sits in **`prior-art/`** and amends this
+> folder. The kill is **confirmed and better evidenced** (the cardiac force is now *measured*), but
+> **the novelty claim has moved** and three numbers here were wrong. Read **`prior-art/README.md`**
+> after `08`. `MASTER.md` has since been given a superseded banner; it is no longer untouched.
+
 ## The bottom line
 
 The **heartbeat premise is dead** - the cardiac signal sits **47-69 dB below the chosen sensor's own
@@ -37,6 +42,7 @@ vote that assumes independence real rubble does not provide).
 | `04-cost-kill-attempt.md` | Procurement audit. **$9,746 capital (5.3x), and the build is illegal as specified** - DGFT prohibits drone kit import |
 | `05-operational-kill-attempt.md` | CONOPS audit. **Sensitive listening happens inside a commanded hourly "All Quiet" (~5-8%% duty)** |
 | **`08-amendment.md`** | **Amends 07 for 04 and 05. Read after 07.** Persistence fixes the PPV problem; compliance breaks the cost claim |
+| **`prior-art/`** | **Literature sweep, 2026-10-08. Amends everything above.** `A` cardiac force (now measured), `B` USAR systems + drone prior art + doctrine, `C` propagation parameters validated row by row |
 
 ## Why this is trustworthy
 
@@ -59,9 +65,13 @@ vote that assumes independence real rubble does not provide).
 Nothing here requires buying anything:
 
 1. **Delete the 0.5-4 Hz filter.** Wrong on every path. Free.
-2. **Re-run the 3.2 sensor trade against 5-40 Hz**, and **vendor-verify the SM-24 noise density** -
-   the one number the architecture rests on.
+2. **Re-run the 3.2 sensor trade against 5-40 Hz.** ~~Vendor-verify the SM-24 noise density~~ -
+   **there is no vendor noise figure; the datasheet has none.** The computed element floor is
+   23-30x *better* than assumed, so the margin holds and this is no longer the critical number.
+   **Specify the preamplifier instead** - it sets the system floor (12-16x margin at 4 nV/rtHz).
 3. **Do NOT run MASTER 12 step 1 as written** - arithmetic already determines its outcome.
 4. **Bench-test a tapping source at 1/3/10 m**, then **repeat it with an excavator running** - the
-   false-alarm test, which attacks the only unsolved problem.
+   false-alarm test, which attacks the only unsolved problem. **Measure tap force and tap spectrum
+   while you are there**: the 50-300 N / 60-80 Hz figures have no source, and every margin in `07`
+   scales off them. This is now the highest-value measurement in the project.
 5. **Decide S1 vs S4 before the deferrable $739 airframe.**
