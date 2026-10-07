@@ -1,0 +1,67 @@
+# docs/critique/ - adversarial review, 2026-10-07
+
+Ruthless critique of the pipeline, components and costing as specified in `docs/MASTER.md`, plus an
+audit of the prior research passes. Six parallel kill attempts, each briefed to **destroy** its
+assigned area, then adjudicated into a single verdict.
+
+**Read `07-verdict.md` first.** It supersedes the individual critiques where they conflict.
+
+**Nothing outside this folder was created or modified.** `MASTER.md`, `docs/research/` and
+`docs/reference/` are untouched by design.
+
+## The bottom line
+
+The **heartbeat premise is dead** - the cardiac signal sits **47-69 dB below the chosen sensor's own
+noise floor**, and MASTER 3.3's unmeasured 0.1-1 mg assumption is **wrong by 479-19167x**.
+
+The **system survives**, because the error that killed the premise was one conceptual slip: MASTER 6
+filters 0.5-4 Hz, which is the heartbeat's **repetition rate**, not its **signal bandwidth**.
+Correcting it reverses 3.2's rejection of the SM-24 geophone - and with that one swap, the same
+drone, mesh, TDoA solver and time sync detect **taps and voice at +23 to +41 dB** instead of failing
+at -47.
+
+**One problem remains unsolved, and it is not physics:** false alarms (~16% PPV, and a concurrence
+vote that assumes independence real rubble does not provide).
+
+## Files
+
+| File | What it is |
+|---|---|
+| **`07-verdict.md`** | **The synthesis: verdict, deduplicated findings register, conflicts adjudicated, rebuilt design, residual risk** |
+| `00-my-own-arithmetic.md` | My 7 findings on MASTER's *stated* numbers, derived **before** any critic reported |
+| `00b-verification-arithmetic.md` | My independent check of the critics' *kill claims* - the 47-69 dB deficit, the tapping salvage, the geophone reversal |
+| `01-physics-kill-attempt.md` | Propagation, source amplitude, coupling. **Verdict: PREMISE DEAD.** Salvage paths S1-S4 |
+| `02-dsp-ml-kill-attempt.md` | 11 findings, 3 FATAL: the band error, the CRLB, and the base-rate/PPV collapse |
+| `03-hardware-kill-attempt.md` | Node, impact, mass, power. Self-corrected twice - see below |
+| `06-prior-research-audit.md` | Prior claims re-verified: CONFIRMED / WEAKENED / OVERTURNED |
+| `04-cost-kill-attempt.md` | Procurement audit. **$9,746 capital (5.3x), and the build is illegal as specified** - DGFT prohibits drone kit import |
+| `05-operational-kill-attempt.md` | CONOPS audit. **Sensitive listening happens inside a commanded hourly "All Quiet" (~5-8%% duty)** |
+| **`08-amendment.md`** | **Amends 07 for 04 and 05. Read after 07.** Persistence fixes the PPV problem; compliance breaks the cost claim |
+
+## Why this is trustworthy
+
+- **`00` and `00b` were written before reading the critics' outputs**, so agreement is corroboration,
+  not an echo chamber. It held: `03` independently reproduced 200 G, 15.5 g and ~4 m node position;
+  `06` independently reproduced the packet failure under a *stricter* assumption than mine.
+- **The critics corrected themselves against their own briefs**, which is recorded because it cuts
+  against the critique: `03` found the F450 flight-time claim **survives** and that its brief's
+  coupling premise was **inverted** (a light sensor couples *better*); `01` found its own premise #5
+  wrong in acceleration.
+- **Conflicts were adjudicated, not averaged.** `01`'s coupling condition C4 is **struck** in favour
+  of `03`'s explicit calculation - see `07` section 3.
+- **Each document states what it could be wrong about.** `00b` section G names the SM-24 noise figure
+  and tap spectrum as the two assumptions the rebuilt architecture actually rests on.
+- **What survives is recorded too:** the Table-II regulatory finding, the supercap recharge
+  principle, the F450 endurance claim, LongShoT's <2 us sync, and the in-band coupling result.
+
+## Cheapest next steps
+
+Nothing here requires buying anything:
+
+1. **Delete the 0.5-4 Hz filter.** Wrong on every path. Free.
+2. **Re-run the 3.2 sensor trade against 5-40 Hz**, and **vendor-verify the SM-24 noise density** -
+   the one number the architecture rests on.
+3. **Do NOT run MASTER 12 step 1 as written** - arithmetic already determines its outcome.
+4. **Bench-test a tapping source at 1/3/10 m**, then **repeat it with an excavator running** - the
+   false-alarm test, which attacks the only unsolved problem.
+5. **Decide S1 vs S4 before the deferrable $739 airframe.**

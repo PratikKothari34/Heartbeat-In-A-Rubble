@@ -9,7 +9,14 @@ data/raw/
 .DS_Store
 Thumbs.db
 
-# local-only: instructions, tooling, docs
+# local-only: instructions and tooling
 .claude/
 CLAUDE.md
-docs/
+
+# docs/ is published, except the three below.
+# Original memory is path-keyed under ~/.claude; docs/memory is the local recovery copy.
+docs/memory/
+# ADRs, kept local.
+docs/decisions/
+# Third-party datasheets and papers: not ours to redistribute.
+*.pdf
