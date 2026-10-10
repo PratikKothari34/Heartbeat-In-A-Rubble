@@ -86,7 +86,7 @@ There is no SenSys'17 row. HeartQuake **is** cited and distinguished (line 75) �
 obligations was discharged and the other missed.
 
 **New, and worse — PigV2.** `docs/research/MEMS/extracts/pigv2.md` (41 KB, confirmed on disk): Dong et al.,
-SenSys '22 — *"Monitoring Pig Vital Signs through Ground **Vibrations** Induced by **Heartbeat** and
+2022, **arXiv 2212.03378** — *"Monitoring Pig Vital Signs through Ground **Vibrations** Induced by **Heartbeat** and
 Respiration."* Geophone cardiac detection **through the ground**, not through bedding. **That is closer to
 this project's geometry than HeartQuake or SenSys'17**, and it is the strongest-looking apparent
 counterexample in the entire repo. `MEMS/05-verification-log.md:62` confirms the project read it.
@@ -95,9 +95,16 @@ counterexample in the entire repo. `MEMS/05-verification-log.md:62` confirms the
 papers, and **`INPUT.md` at HEAD still does.** The obligation lives only in the extract headers. An author
 working from the input pack — which is what it is for — **could not have derived either.**
 
-**Fix (one row):** *"Jia et al. 2017 (SenSys); Dong et al. 2022 (PigV2) — cardiac/respiratory rate recovered
-with geophones, through a mattress and through barn flooring. Contact-coupled at centimetres, not metres of
-rubble; the deficit is path loss, not sensor capability."*
+**Fix (one row):** *"Jia et al. 2017 (SenSys '17, DOI 10.1145/3131672.3131679); Dong et al. 2022 (PigV2,
+arXiv 2212.03378) — cardiac/respiratory rate recovered with geophones, through a mattress and through barn
+flooring. Centimetres of bedding or slab, not metres of fractured debris; the deficit is path loss, not
+sensor capability."*
+
+> ⚠ **Corrected 2026-10-11 (C6).** This row originally read *"Contact-coupled at centimetres"* for both
+> papers and cited PigV2 as *"SenSys '22"*. Both were wrong. **PigV2 propagates through the ground**, so
+> "contact-coupled" is the one ground that does *not* distinguish it — the distinction is **distance and
+> medium**. And the repo cites it as **arXiv 2212.03378** (`MEMS/03-literature.md:38`); no conference venue
+> was ever established. Issue #4 item 8 carries the original wording and has been corrected in a comment.
 
 ---
 
@@ -714,9 +721,35 @@ wrong.** The sentence asserts two facts — the hourly cadence (NFCC, `B-usar-sy
 the commanded signal (FEMA, `B:145`) — so the joint cite is legitimate. It is **not** the same defect
 as the ρ conflation at §18. Withdrawn, not logged. The citation agent caught this.
 
+## C6. PigV2 cited to the wrong venue, and distinguished on the wrong ground — 2026-10-11
+
+Found while reflecting this audit's obligations into `docs/research/`. Two errors in §2's suggested
+prior-art row, both mine, both already published in issue #4 item 8:
+
+| | Audit said | Verified |
+|---|---|---|
+| Venue | SenSys '22 | **arXiv 2212.03378** (`MEMS/03-literature.md:38`) |
+| Distinguishing ground | "contact-coupled at centimetres" | **distance and medium** — PigV2 is *through the ground* |
+
+The second is the substantive one. Lumping PigV2 with HeartQuake and Jia under "contact-coupled"
+**concedes the distinction**: PigV2's whole contribution is that the path is structural, through a pen
+floor. A referee who reads the row as written sees the one paper whose geometry matches ours waved off
+on a ground that does not apply to it. The surviving grounds are centimetres-of-slab versus
+metres-of-debris, and the 100–200 m/s velocity bracket this project already borrows from PigV2.
+
+Recorded in `docs/critique/prior-art/README.md` alongside HeartQuake, where obligations belong — it
+had been sitting only in an extract.
+
+---
+
 **Net:** of four agent findings re-derived, three moved (two down, one up); of my own, one was
-re-graded up and one withdrawn entirely.
+re-graded up, one withdrawn entirely, and one (C6) corrected on both venue and reasoning after
+publication.
 
 ---
 
 *This audit modified no file it audits. The proposal, `INPUT.md` and `07-verdict.md` are untouched.*
+
+*Exception, 2026-10-11: C6 corrected this file itself, and the obligations in §2 were reflected into
+`docs/critique/prior-art/README.md` and `docs/research/MEMS/README.md`. Neither is a file this audit
+reviews — the PR and the proposal remain untouched.*

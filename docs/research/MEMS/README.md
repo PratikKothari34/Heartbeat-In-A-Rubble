@@ -4,7 +4,8 @@
 > ## ⛔ SUPERSEDED PREMISE — 2026-10-08
 >
 > **This pass selected a sensor for detecting a buried survivor's heartbeat. That target is
-> disproven.** The cardiac signal sits **38–60 dB below** the selected sensor's own noise floor at
+> disproven.** The cardiac signal sits **38–60 dB below the ADXL355 floor** (25 µg/√Hz) this pass
+> selected — **not** below the SM-24 floor the next paragraph reverses to; see the note below — at
 > 3 m, and the source force is now *measured* (3.7 N Starr 1939; 4.06 N Inan 2009; 2 N_pp Ashouri
 > 2016), so no filter, averaging scheme or model recovers it.
 >
@@ -18,6 +19,15 @@
 > **What is still good here:** the noise-density survey, the vendor register, the requirements
 > arithmetic, and the extracts — which are the only in-repo record of figures whose PDFs are
 > gitignored. Read the numbers; ignore the conclusion.
+>
+> **Which floor the 38–60 dB is measured against — added 2026-10-11.** That figure is an
+> **ADXL355** number: `00b-verification-arithmetic.md:26` derives it from the 47–69 dB ADXL355
+> deficit plus the 8.75 dB worst-healthy-subject force correction, and `07-verdict.md:69` states
+> the parent figure as *"47-69 dB below the ADXL355 floor."* **It is not a geophone figure.**
+> Against the SM-24 selected below, the deficit is far smaller, and against the SM-24's *element*
+> floor the cardiac signal is **positive**. The heartbeat premise still dies — by ~31–53 dB after
+> propagation (`00b:73`) — but it dies on the propagation path, **not** on geophone self-noise.
+> Do not quote 38–60 dB against any sensor but the ADXL355.
 >
 > Authority: `docs/critique/07-verdict.md` → `08-amendment.md` → `docs/critique/prior-art/`.
 

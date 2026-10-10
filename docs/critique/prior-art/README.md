@@ -81,6 +81,25 @@ explicitly declined rather than laundered as measured. Measure these before trus
   mattress **from an SM-24 geophone element**, the same part this project selects. Must be cited and
   distinguished (contact-coupled through bedding, not metres of rubble), because a reviewer who finds
   it unaided will read it as contradicting the kill.
+- **Jia et al. 2017**, *"Monitoring a Person's Heart Rate and Respiratory Rate on a Shared Bed
+  Using Geophones"*, ACM SenSys '17, DOI 10.1145/3131672.3131679 - recovers heart and respiratory
+  rate with **geophones under a mattress**, handling two people on one bed. **Must be cited and
+  distinguished, for the same reason as HeartQuake:** same *class* of sensor this project selects.
+  The difference is the coupling path, not the sensor - contact-coupled through bedding,
+  centimetres from the torso, versus metres of rubble. **READ-FULL** in-repo:
+  `docs/research/MEMS/extracts/SenSys2017_geophone_heartrate_shared_bed.md:14-19`, which is where
+  this obligation was recorded and where it sat unreflected until 2026-10-11.
+- **PigV2** (Dong et al. 2022, arXiv 2212.03378) - pig vital signs from **heartbeat-induced ground
+  vibrations**, detected 10-100 Hz. **Must be cited and distinguished, and it is the closest of the
+  three to our geometry:** unlike HeartQuake and Jia, the path is *through the ground*, not through
+  bedding - so "contact-coupled, not through a medium" does **not** distinguish it. The available
+  grounds are **distance and medium**: barn flooring at centimetres versus metres of fractured
+  debris, and a 100-200 m/s velocity bracket this project already cites from it
+  (`02-dsp-ml-kill-attempt.md:919`). **READ-FULL** in-repo:
+  `docs/research/MEMS/extracts/pigv2.md` - full text through CONCLUSIONS, ACKNOWLEDGMENTS and
+  REFERENCES, tagged **[PAPER]** in `MEMS/01-requirements.md:16`; the extract itself carries no
+  provenance header. **Cite as arXiv 2212.03378, not "SenSys '22"** - the repo has never
+  established a conference venue for it.
 - **Krohn 1984**, DOI 10.1190/1.1441700 - coupling. Also the real source of "lighter couples
   better," which is **not** a project finding.
 
