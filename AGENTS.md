@@ -237,16 +237,15 @@ packet size (needs 82–156 B, not 24 B), power (receive current budgeted at zer
 
 So: branch, open a PR, get a review. Don't expect to push to `main`.
 
-**The issue tracker is intentionally empty (2026-10-11).** Issues were used to delegate work, but
-every open item ended up blocked on one of two bench measurements — **M1** (ambient in-band floor)
-and **M2** (tap force and spectrum) — that only the maintainer can run, and a tracker of items
-waiting on an unmade measurement tracks nothing. **An empty tracker here means "not yet scheduled,"
-not "nothing to do."**
+**Issues are used to delegate work — check open issues before starting, and reference the issue in
+your PR.** The tracker is kept short on purpose: it holds only live work, and finished or superseded
+items are **deleted**, not closed, with anything worth keeping written into `docs/` first.
 
-The work itself is in **`docs/critique/12-closed-work-archive.md`**: fourteen specific fixes (eight
-to the proposal, six to `main`), each with its arithmetic in `docs/critique/09-pr3-citation-audit.md`.
-**Read that archive before starting anything** — and if an issue is open, it is live and takes
-precedence.
+**Current work is #7:** revise the research proposal `.docx` to merge-ready, verified in a PR. It
+starts from tadiPro250's existing draft (already on `main`) and applies the fourteen fixes in
+**`docs/critique/12-closed-work-archive.md`** — eight to the proposal, six to `main` — each with its
+arithmetic in `docs/critique/09-pr3-citation-audit.md`. **Read that archive before touching the
+proposal.**
 
 ### If you are an agent
 
