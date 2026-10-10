@@ -88,7 +88,7 @@ the figure without its referent reads as "the sensor we chose cannot hear it," w
 |---|---|---|---|
 | 1 | Radio band **865–867 MHz** — the superseded 2005 RFID allocation | `MASTER.md:124`/`:159`, `04-cost:68`/`:691` | → **865–868 MHz** per G.S.R. 853(E) rule 1, primary-source verified (`06:171`). Also added: Table-II is **500 mW e.r.p.** (not EIRP), occupied bandwidth **≤200 kHz** — LoRa BW125 complies, **BW250/BW500 do not**, closing the "go wider to cut airtime" escape. "Licence-free" corrected: ETA is a per-model approval, ~$1,786. |
 | 2 | **Node-hour category error** — ≤1 false pin/node-hour | `07-verdict.md:200` | The target was set for *continuous* operation; `08-amendment.md:20` moved to command-triggered (~1 All Quiet window/hour), so a node-hour holds **~1 look**. The target is met **14× over** at the design's own 7% per-look FPR. Restated **per look**. |
-| 3 | **PigV² cited as "SenSys '22"** and distinguished as "contact-coupled" | `MEMS/03`, `BUDGET/01`, `REDESIGN/01`, `A-cardiac` | → **arXiv 2212.03378**. It propagates **through the ground** (pig-pen floor), so the coupling argument fails: the grounds are **distance and medium**. Obligation had been recorded only at `prior-art/README:92-102`. |
+| 3 | **PigV² cited as "SenSys '22"** and distinguished as "contact-coupled" | `MEMS/03`, `BUDGET/01`, `REDESIGN` (now `README`), `A-cardiac` | → **arXiv 2212.03378**. It propagates **through the ground** (pig-pen floor), so the coupling argument fails: the grounds are **distance and medium**. Obligation had been recorded only at `prior-art/README:92-102`. |
 | 4 | **Jia et al. 2017** recorded as a bare "SenSys'17" row | `BUDGET/01`, `A-cardiac` | → full citation, **DOI 10.1145/3131672.3131679**. Same obligation as HeartQuake: cite and distinguish. |
 | 5 | **"LCSC stock is 3 pieces"** supply argument | `02-sensor-survey.md:216` | Dead since **2026-10-06** — stock is **486 + 1192**. The 3-piece figure was captured 2026-09-17. Marked superseded, capture dates stated. |
 | 6 | Verification logs pointed at **`papers/`** and **`datasheets/`** and called `extracts/` *"working files, not sources"* | `MEMS/05:101`/`:121`/`:138-139`, `BUDGET/04:76` | `f73b73d` deleted **every PDF** (`*.pdf` is a gitignore carve-out — third-party datasheets and papers are not ours to redistribute). The relationship is **inverted**: the extracts are the sources of record. The provenance trail stands as the reason they are trustworthy. |
@@ -113,8 +113,9 @@ Stale-looking is not stale. The following are **historical record** and were not
 - **`09:516`** — records what the `.docx` says, not what is true.
 - **`BUDGET/04:66`, `MEMS/05:89`** — narrate PDF stubs that were deleted at the time. Past tense,
   correct as written.
-- **`REDESIGN/01:36-37`** — identify the superseded 2005/2007 instruments *as* superseded. That is
-  the point of the rows.
+- **The superseded-instrument rows in `REDESIGN/`** — they identify the 2005/2007 instruments *as*
+  superseded. That is the point of the rows. (Carried into
+  `research/REDESIGN/README.md` by the 2026-10-11 consolidation — see §below.)
 - **`INPUT.md:80`/`:108`/`:134`** — issue #5's assigned scope. Not edited; filed as **#6** instead.
 
 ---
@@ -148,3 +149,45 @@ Not defects in the docs; **measurements the docs correctly say are missing.**
 4. **Krohn 1984** — the one prior-art paper still needing hand-retrieval before a faculty signature.
 5. **ADR 0001 does not survive a clone.** `docs/decisions/` is gitignored. `AGENTS.md:91` is the
    only copy that travels. **Any future band decision must be reflected there too.**
+
+---
+
+## 8. Consolidation — `docs/research/REDESIGN/`, 2026-10-11
+
+Five files → one. `01-literature.md`, `02-vendor-register.md`, `03-proposals.md`,
+`04-verification-log.md` and the old README are now a single `docs/research/REDESIGN/README.md`
+(1,015 lines → 141).
+
+**Why this folder and no other.** It is the only part of the tree where the documents outlived
+their content. Its own header said *"nothing in this folder was ever applied"*, and all three of
+its premises are now dead: the heartbeat target, the 10–100 Hz band (which was **PigV²'s heartbeat
+band**, not a tap band — ADR 0001) and the MEMS-over-geophone conclusion (**reversed**; the SM-24
+is selected). Five files implied five live work-streams. There was one finding.
+
+**Preserved in full, because none of it depends on the dead premise:**
+
+- **R1** — the Table-II regulatory finding. **500 mW e.r.p. / ≤2.5% / APC / ≤200 kHz**, and the
+  Gazette's own note naming *"Emergency detection of buried victims"*. **+13 dB** = 4.47× range
+  (n=2), 2.35× (n=3.5), 2.5× airtime. A matter of law, so nothing in the retarget touches it.
+- **R3** — the CR2032 **pulse-current** diagnosis (aged 30 Ω → 1.20 V droop → 1.80 V brownout at
+  40 mA) and both fixes: supercap ≈ 10:1, or LiMnO₂. Neither abandons the coin cell.
+- **R2, R4, R5** — recorded with their dispositions (absorbed / superseded / live FTO warning),
+  since `06-prior-research-audit.md` cites them by designator.
+- The **38-URL audit record** (30 LIVE / 4 BOTWALL / 3 DEAD / 1 UNREACHABLE), the **E17** lesson
+  that the link classifier was itself wrong first, and the one citation unique to the pass
+  (`10.3929/ETHZ-B-000281405`).
+
+**Dangling references patched, same discipline as the deleted issues:**
+`06-prior-research-audit.md` rows 16–19 name the four deleted files. They are **left as written** —
+they record what was read at audit time, which is provenance, not a live path — with a `†` footnote
+stating where the content went. Every designator those rows cite still resolves.
+
+**Considered and rejected:**
+
+| Candidate | Why it stays |
+|---|---|
+| `extracts/` — 33 files, **42,324 lines, 76% of the tree** | The PDFs were deleted (`f73b73d`). These **are** the sources of record, and every one is DOI-cited from `BUDGET/01` or `REDESIGN`. The bloat is load-bearing. |
+| `00-my-own-arithmetic.md` + `00b-verification-arithmetic.md` | `00` checks the project's **stated** numbers before any critic reported; `00b` checks the **critics' kill claims**. Merging destroys an independent cross-check. |
+| `07-verdict.md` + `08-amendment.md` | `08` is cited **by line number** from four files, and `07`§4.2 is explicitly superseded by `08`§5. **The two-document structure is the supersession record.** |
+| `docs/reference/` (474 lines, ⛔ stale) | It is the **primary source the critique critiques** — cited as such by `01`, `02`, `05`, `07`. Deleting it orphans four kill-attempt documents. |
+| `docs/decisions/0001` + `docs/memory/ADR-0001` (identical) | The mirror is mandated: `docs/decisions/` is gitignored, so the duplicate is the recovery copy. |

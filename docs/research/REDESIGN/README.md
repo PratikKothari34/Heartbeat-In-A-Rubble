@@ -1,142 +1,141 @@
-# Redesign Proposals — SUGGESTIONS ONLY
+# Redesign Pass — consolidated
 
+**Consolidated 2026-10-11** from five files (`01-literature.md`, `02-vendor-register.md`,
+`03-proposals.md`, `04-verification-log.md` and the previous README) into this one. The originals
+were never applied, and the premise they proposed redesigns *for* is disproven — so the pass is
+preserved as **one finding that matters, two that partly survive, and a methodological record**,
+rather than five documents implying live work.
 
-> ## ⚠ PARTLY SUPERSEDED — 2026-10-08
+> ### ⛔ Status: SUGGESTIONS ONLY — nothing in this pass was ever applied
 >
-> **Nothing in this folder was ever applied** (as its own heading says), and the premise it proposed
-> redesigns for — heartbeat detection — is **disproven**: see `docs/critique/07-verdict.md`.
+> **The premise is dead.** This pass proposed redesigns for **heartbeat detection**, disproven by
+> 38–60 dB (`../../critique/07-verdict.md`). The retarget is **tap/voice**.
 >
-> **The one finding below that survives and matters is the regulatory one** (G.S.R. 853(E) Table-II,
-> duty cycle set per device category, 865–868 MHz): independently re-verified against the Gazette
-> PDF and **CONFIRMED**. The supercap recharge *principle* also survives, though a part number in it
-> was wrong.
+> **The band is superseded too — ADR 0001, 2026-10-11.** **None of 0.5–4 Hz, 10–100 Hz, 5–40 Hz or
+> 60–80 Hz is the project's position.** 5–40 Hz came from **seismocardiography**; 10–100 Hz (which
+> this pass used) is **PigV²'s heartbeat band**; 60–80 Hz is *"NO DATA FOUND."* **Acquire 5–200 Hz;
+> the detection band is an output of the M1/M2 bench measurement.** See
+> `../../critique/10-doc-sweep-action-report.md` §2.
 >
- ⚠ **The band is superseded too — ADR 0001, 2026-10-11.** This marker was written 2026-10-08, three
-> days before the band was settled, so it reverses the premise and the sensor but **not the band**.
-> **None of 0.5–4 Hz, 10–100 Hz, 5–40 Hz or 60–80 Hz is the project's position:** 5–40 Hz came from
-> **seismocardiography** literature (a cardiac band, for the dead premise) and 60–80 Hz is *"NO DATA
-> FOUND"*. **Acquire 5–200 Hz; the detection band is an output of the M1/M2 bench measurement.**
-> Where one figure is unavoidable: `20–80 Hz [ASSERTED — pending M2]`. The margin figures do not move
-> on any band (`00b-verification-arithmetic.md:85-95`).
->
-> **What does not survive:** the 24 B batched-summary proposal — a tap/voice packet needs **82–156 B**,
-> and the STM32WLE5JC has **64 kB** SRAM, not 100 kB, so the planned input buffer alone is 70.3 kB
-> (110 % of the part). See `docs/critique/06-prior-research-audit.md`.
+> **The sensor is superseded.** This pass argued MEMS-vs-geophone from Sercel vendor material; the
+> project **reversed** that conclusion. **The SM-24 is the selected sensor.**
 
-**Status: nothing in this folder has been applied.** No existing doc was edited, no decision
-recorded, no ADR written. This folder proposes; `MASTER.md` and `docs/decisions/` still say what
-they said. Research date **2026-10-06**.
-
-**Scope.** The prior pass (`../BUDGET/`) answered *what it costs* and found three MASTER section
-pairs that cannot both be true. This pass answers the next question — **which of those need a
-redesign, and what should the redesign be** — at the same evidence bar: ≥20 referred sources per
-concept, ≥15 vendors, every link three-state verified, every number recomputed from raw inputs.
+**Audited by** `../../critique/06-prior-research-audit.md` (rows 16–19), whose verdict was that
+*"the REDESIGN pass — the one asked to propose fixes — found almost nothing wrong with its own
+tooling."* That audit cites this pass's findings by designator (**R1–R5**, **A34–A51**, **D19–D24**,
+**E17–E19**), and every designator it names is preserved below.
 
 ---
 
-## The one finding that changes the project
+## ⭐ R1 — The one finding that fully survives, and it is a large one
 
-> ### MASTER §5's "~1% duty cycle" is the wrong regulatory limit for this device.
->
-> India's **G.S.R. 853(E)** (10 Dec 2021) sets duty cycle **per device category**, not per band.
-> MASTER applies the **Table-I** figure (Non-Specific SRD: 25 mW e.r.p., 1%).
-> This project belongs in **Table-II**, whose note names the application outright:
->
-> > *"Tracking, Tracing and Data Acquisition Devices **also include devices for Emergency
-> > detection of buried victims** and valuable items such as detecting avalanche victims…"*
->
-> **Table-II allows 500 mW e.r.p. at ≤2.5% duty cycle** (≤10% for network access points),
-> subject to Adaptive Power Control and ≤200 kHz bandwidth.
+**MASTER §5 cites the wrong Gazette table.** This is the decisive result of the pass and it is
+**unaffected** by the dead premise, the band or the sensor, because it is a matter of law.
 
-**What that is worth:** **20× the radiated power (+13 dB)** and **2.5× the airtime.** Read from
-the Gazette PDF itself, and independently confirmed against ERC Rec 70-03 / ETSI EN 300 220, which
-carry the identical category and the same avalanche-victim wording — India mirrors the European
-allocation. → `01-literature.md` **R1**, `04-verification-log.md` **A34**
+**Primary source:** **G.S.R. 853(E)**, *Gazette of India* Extraordinary Pt II §3(i), **10 Dec 2021**
+— *Use of Low Power Equipment in the Frequency Band 865–868 MHz for Short Range Devices (Exemption
+from Licence) Rules, 2021.* 📄 **HELD, quoted from the PDF.**
+<https://thc.nic.in/Central%20Governmental%20Rules/use%20of%20low%20power%20Equipment%20in%20the%20frequency%20band%20865%20to%20868%20MHz%20for%20Short%20Range%20Devices%20Exemption%20from%20Licence%20Rules,2021.pdf>
 
-**This does not rescue §4.1.** MASTER's own architecture is still illegal by a wide margin
-(§5.1 at SF12 = **179% duty cycle**). It changes *how far the redesign has to go*, and it makes the
-link budget far easier than §5 assumes.
+The device is **not** a Non-Specific SRD. **The Gazette's own note places "Emergency detection of
+buried victims" in Table-II.**
 
----
-
-## Verdict: 2 redesigns, 2 re-derivations, 1 correction
-
-| # | Item | Verdict | Why |
-|---|---|---|---|
-| **1** | **Node data architecture** (§4.1+§5+§5.1+§10.2+§10.3) | **REDESIGN** | Five sections mutually contradictory; blocks the MCU choice. **A concrete scheme that fits is proposed** |
-| **2** | **Drone + flight plan** (§2+§8.2) | **REDESIGN** | Two sections cannot both be true. Already costed (Path B); the *decision* is still unmade |
-| 3 | Velocity → spacing (§7.1→§8.2) | re-derive | Method sound, input wrong. **One hammer test** |
-| 4 | Sensor choice (§3.2/§9) | re-derive | Gated on the ambient measurement. 41% of node cost |
-| 5 | DSP band (§6) | **superseded** | Neither 0.5–4 Hz nor 10–100 Hz. ADR 0001: acquire 5–200 Hz, detection band is an **M1/M2 output** — so this is *not* a parameter edit |
-
-**Not a redesign: §10.4 time sync.** Solved in the literature at <2 µs. But see the caveat in
-`03-proposals.md` §5 — *de-risked is not integrated*, and the prior pass slightly overstated this.
-
----
-
-## The proposed node architecture, in one table
-
-The question §10.2 asks is *what gets transmitted*. The answer that fits the law, the link and the
-battery:
-
-| Scheme | Payload | Interval | Duty @SF10 | Legal (2.5%)? |
-|---|---|---|---|---|
-| **A** — MASTER §5.1 as written, raw stream | 15 B | 2/s | **179%** (SF12) / 7.6% (SF7) | ❌ **No** |
-| **B** — event-driven, per-beat packet | 21 B | 1/s | 30.5% | ❌ No |
-| **C** — **batched detection summary** | **24 B** | **1/60 s** | **0.509%** | ✅ **Yes, 5× under** |
-
-**Scheme C, 11 nodes, occupies 5.59% of one channel.** Headroom for the whole array.
-
-**Why batching is not a compromise:** TDoA needs the **beat arrival time** at each node, not a
-waveform. LongShoT's 2 µs sync already gives 0.3–6 mm of position error. A 60 s window carries
-~60 beats as delta-encoded timestamps. **Raw waveform streaming was never required for
-localisation** — that is the assumption §5.1 should drop.
-
-**And the power problem dissolves with it:**
-
-| | Current | CR2032 (225 mAh) |
+| | Table-I (what MASTER assumed) | **Table-II (what applies)** |
 |---|---|---|
-| MASTER §4.1 | 9 mA | 25 h |
-| **Scheme C** | **1.07 mA** | **211 h = 8.8 days** |
+| Role | Non-Specific SRD | **Tracking / Tracing / Data Acquisition** |
+| Power | 25 mW e.r.p. | **500 mW e.r.p.** |
+| Duty cycle | 1% | **≤2.5%** (≤10% for network access points) |
+| Occupied BW | — | **≤200 kHz** |
+| Other | — | **Adaptive Power Control required** |
 
-**8.4× better**, and it clears the 72 h survival window on the cell §4.1 already specifies —
-**72 h needs only 77 mAh.** The CR2032 objection was about *pulse current*, not capacity, and it
-is real: at 40 mA an aged cell (30 Ω) droops to **1.8 V and browns out**. Fix is a supercapacitor
-across the cell, or LiMnO₂ over Li-SOCl₂. → `03-proposals.md` §2
+**Worth +13 dB of e.r.p.** = a **4.47× range multiplier** in free space (n=2), **2.35×** in clutter
+(n=3.5), and **2.5× the airtime**. Verified against two independent regulatory sources.
 
----
+**Caveats, stated once.** APC must be *implemented*, not assumed. LoRa at **BW125 complies** on
+bandwidth — **BW250 and BW500 do not**, which closes the "go wider to cut airtime" escape. Licence
+exemption is **non-interference, non-protection, shared basis** (rule 3). A device sold in India
+needs **ETA/WPC** conformance regardless (~$1,786 per model, `../../critique/04-cost-kill-attempt.md`).
 
-## Index
+**Band:** **865–868 MHz**, per rule 1, which expressly supersedes the 2005 RFID instrument. The
+865–867 figure in older docs is that dead instrument — corrected across the tree 2026-10-11.
 
-| Doc | Contents |
-|---|---|
-| **[01 — Literature](01-literature.md)** | 5 concepts × ≥20 referred sources, access status per link |
-| **[02 — Vendor Register](02-vendor-register.md)** | 18 vendors, prices from payloads, India routes |
-| **[03 — Proposals](03-proposals.md)** | The five items, each with the suggested change and its cost |
-| **[04 — Verification Log](04-verification-log.md)** | A34–A48, D19–D24, E17–E19, and what I got wrong |
-
----
-
-## Verification
-
-| | |
-|---|---|
-| URLs three-state verified | **38** — 30 LIVE, 4 BOTWALL, **3 DEAD**, 1 unreachable |
-| Arithmetic claims recomputed from raw inputs | **16 of 16 reproduce** |
-| Audit passes per finding | **2** |
-| **Errors this pass caught in my own work** | **3** → `04` E17, D19, D20 |
-
-**Three caught errors, stated up front:**
-
-- **E17** — my own link checker tagged a **404 as LIVE**. It special-cased 401/403/429 but not 404
-  when the body was not HTML. Patched, then **re-ran**: two cap-xx PDFs are genuinely **DEAD** and
-  are *not* cited. The supercapacitor claim rests on TI SLVAES7 and Avnet instead.
-- **D19** — I nearly quoted **RAK3172 at $0.8906** from LCSC. That is the **1000+ tier**; qty-1 is
-  **$2.3492** and **stock is 0**. Would have understated by 2.6×.
-- **D20** — ADXL355 moved **$55.1592 → $53.3316** *within the same day's* ladder read. The 19-day
-  drift finding understates how perishable these are.
+Supporting: **ETSI EN 300 220-2 V3.2.1 (2018-06)**, the harmonised standard G.S.R. 853(E) cites in
+its own column 6 · **LoRa Alliance RP002** (IN865 duty cycle/dwell, LBT, max EIRP) · TTN duty-cycle
+docs (**1% = 864 s airtime/day**, applied per device/channel/sub-band).
 
 ---
 
-*Related: [../BUDGET/](../BUDGET/) · [../MEMS/](../MEMS/) · nothing here is applied to
-[../../MASTER.md](../../MASTER.md).*
+## R3 — The CR2032 finding: partly survives, and the diagnosis is right
+
+**The coin-cell problem is pulse current, not capacity.** 72 h needs 77 mAh, which the cell has.
+What it does not have is pulse capability:
+
+| Cell state | ESR | Droop @40 mA | Rail | |
+|---|---|---|---|---|
+| Fresh | 10 Ω | 0.40 V | 2.60 V | marginal |
+| Aged | 30 Ω | **1.20 V** | **1.80 V** | **brownout** |
+
+**The principle survives.** Two independent cheap fixes, neither requiring abandonment of the coin
+cell: a **supercapacitor across the cell** (~10:1 pulse reduction — Avnet Abacus: a 1 F supercap at
+860 mΩ ESR cuts pulse draw to ~3 mA), or **LiMnO₂ instead of Li-SOCl₂** where pulse capability is
+the selection criterion.
+
+**A part number in it was wrong** (the reason this finding is "partly"). Vendor register, prices
+pulled from vendor page payloads **2026-10-06** and **perishable** — two had already moved again
+within the pass:
+
+| Vendor | Part | Price | Access |
+|---|---|---|---|
+| KEMET (Mouser IN) | FS0H224ZF — 0.22 F 5.5 V, **25 Ω** ESR | ₹424.90 @1 `[SEARCH]` | 🔒 403-to-script |
+| KEMET (Mouser IN) | FYD0H223ZF — 0.022 F 5.5 V, **220 Ω** ESR | ₹285.13 @1 `[SEARCH]` | 🔒 |
+| KEMET (DigiKey) | FYL0H223ZF — 22 mF 5.5 V, 200 Ω @1 kHz | ~$4.00 `[SEARCH]` | 🔒 403 |
+| **CAP-XX** | Prismatic — **ESR 50–100 mΩ**, 100–800 mF, <1 µA leakage | quote-only | ✅ |
+
+**CAP-XX is the right part class** (50–100 mΩ vs KEMET's 25–220 Ω) but is quote-only. Supercap
+figures come from **TI SLVAES7** and **Avnet**, not from the cap-xx PDFs — see the dead-link note
+below.
+
+---
+
+## R2, R4, R5 — superseded or absorbed
+
+| # | Finding | Disposition |
+|---|---|---|
+| **R2** | **Every working system in the literature transmits inferences, not waveforms.** LightEQ: 100 kB RAM, F1 0.99. Volcano WSN: 16% of data | **Still true and still the right architecture**, but it was never this pass's to own — it is the MEMS pass's position, re-sourced. The 24 B batched summary once per 60 s is critiqued at `../../critique/00-my-own-arithmetic.md:145` |
+| **R4** | **Coupling vs self-righting is solved prior art** — gimballed inner housing, or rotationally-invariant calibration in software. **The enclosure must out-perform the MEMS in frequency response** and should impedance-match the ground | **Absorbed and now load-bearing elsewhere.** `06:638-640` found this restated the MEMS pass's own existing position (*attitude is free in software; the spike/anchor is the hard part*). The live version is in `../MEMS/06-build-vs-buy.md` as an open problem — ±10° tilt vs ±30° landing, coupling vs self-righting |
+| **R5** | **UAV sensor-dart deployment is prior art with a stated aerodynamic spec, and patents cover it. Check FTO before designing** | **Survives as a live warning.** Prior art is Stewart et al. SEG 2016 and SeismicDart. Note `arXiv 2302.09533` restores *communications* coverage, **not sensor coverage** — it is not precedent for sensor deployment |
+
+---
+
+## Verification record (A34–A51, D19–D24, E17–E19)
+
+Numbering continues from `../BUDGET/` (A33, D18, E16). **Audit passes per finding: 2.**
+
+**38 URLs machine-verified, three-state, title-scoped:** ✅ 30 LIVE · 🔒 4 BOTWALL · ❌ **3 DEAD** ·
+⚠️ 1 UNREACHABLE.
+
+**The three DEAD links are cap-xx PDFs** (`AB1004`, `AB1025`, `CAP-XX-Product-Guide`) — that whole
+`/datasheets/` path is gone. **They are cited for no claim**; the supercapacitor numbers come from
+TI SLVAES7 and Avnet instead.
+
+**E17 — the lesson worth keeping: the link classifier was itself wrong first.** It tagged a 404 as
+LIVE until patched. **HTTP 200 does not mean a page exists** — vendor sites serve soft 404s, 200
+with a "Page Not Found" body. Always inspect the response body, and `GET` not `HEAD`. If one tag is
+wrong, re-check everything verified the same way.
+
+**Superseded instruments correctly identified as superseded** (do not "fix" these rows): G.S.R.
+37(E) — 865–867 MHz amendment rules 2007; *Use of low power equipment 865–867 MHz for RFID
+(Exemption) Rules,* **2005**. Both are the dead instruments G.S.R. 853(E) replaced.
+
+---
+
+## Citations unique to this pass
+
+All but one of this pass's sources also appear in `../BUDGET/01-literature.md`. The exception,
+preserved here so it is not orphaned:
+
+- **ETH Zürich, DOI `10.3929/ETHZ-B-000281405`**
+
+Everything else — USGS SIR 2023-5061, DSME-LoRa (`arXiv 2206.14077`), `arXiv 2302.09533`,
+`arXiv 2006.12570`, `arXiv 2312.08387`, `arXiv 2111.05457` — is cited from `../BUDGET/01` with
+extracts in `../BUDGET/extracts/`.

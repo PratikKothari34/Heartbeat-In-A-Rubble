@@ -827,10 +827,15 @@ findings.
 | 13 | **TTN — LoRaWAN duty cycle documentation** | Duty cycle applies per channel/sub-band and to **both nodes and gateways**; 1% context | ✅ **LIVE**, body read |
 | 14 | `docs/research/MEMS/06-build-vs-buy.md` §6.1 | *"coupling interface… unsolved… the dominant term… this project's actual contribution"* — the §6 overturn | 📄 local, read |
 | 15 | `docs/research/MEMS/04-action-report.md` A8 + open item 10 | Tilt table (±15/30/45°), and the spike/anchor item left open | 📄 local, read |
-| 16 | `docs/research/REDESIGN/01-literature.md` | Source-count audit; R3/R5 range-rows; patent share of R4 | 📄 local, counted programmatically |
-| 17 | `docs/research/REDESIGN/02-vendor-register.md` §1 | KEMET 25 Ω / 220 Ω ESR figures, "adequate" recommendation, CAP-XX 50–100 mΩ | 📄 local, read |
-| 18 | `docs/research/REDESIGN/03-proposals.md` | Scheme C tables, power budget, Pixhawk Mini, §6b | 📄 local, read |
-| 19 | `docs/research/REDESIGN/04-verification-log.md` A34–A51, D19–D24, E17–E19 | Methodology audit target | 📄 local, read |
+| 16 | `docs/research/REDESIGN/01-literature.md` † | Source-count audit; R3/R5 range-rows; patent share of R4 | 📄 local, counted programmatically |
+| 17 | `docs/research/REDESIGN/02-vendor-register.md` §1 † | KEMET 25 Ω / 220 Ω ESR figures, "adequate" recommendation, CAP-XX 50–100 mΩ | 📄 local, read |
+| 18 | `docs/research/REDESIGN/03-proposals.md` † | Scheme C tables, power budget, Pixhawk Mini, §6b | 📄 local, read |
+| 19 | `docs/research/REDESIGN/04-verification-log.md` A34–A51, D19–D24, E17–E19 † | Methodology audit target | 📄 local, read |
+
+† **Rows 16–19 name files that no longer exist.** The five REDESIGN documents were consolidated
+into the single `docs/research/REDESIGN/README.md` on 2026-10-11, which carries every designator
+this audit cites (R1–R5, A34–A51, D19–D24, E17–E19). The rows are left as written because they
+record **what was read at audit time** — provenance, not a live path.
 | 20 | `docs/research/BUDGET/README.md` + `03-budget.md` | Path B costing, four omissions, LongShoT downgrade | 📄 local, read |
 | 21 | `docs/MASTER.md` §3.1, §4, §5, §6, §7 | Target band 0.1–1 mg; 4 cm × 1.5 cm envelope; RX 1–2 mA; 100 Hz/60 s window; packet structure | 📄 local, read |
 | 22 | **Pure (unslotted) ALOHA throughput model**, S = G·e^(−2G) | Collision analysis — standard result, implemented and run | ✅ computed |

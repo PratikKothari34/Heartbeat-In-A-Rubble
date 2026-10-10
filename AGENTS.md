@@ -76,7 +76,9 @@ Highest first:
 4. **`docs/MASTER.md`** — consolidated numbers. Loses to the above; wins on raw figures. **It now
    carries a SUPERSEDED PREMISE banner at the top — read that before any section.**
 5. `docs/research/` — working papers behind the numbers: `MEMS/` sensor selection, `BUDGET/` costing,
-   `REDESIGN/` an earlier pass. `MEMS/extracts/` and `BUDGET/extracts/` hold the cited figures pulled
+   `REDESIGN/` an earlier pass, consolidated to a single `README.md` on 2026-10-11 (it was never
+   applied, and its premise, band and sensor are all superseded — one regulatory finding survives
+   intact: the 500 mW Table-II envelope). `MEMS/extracts/` and `BUDGET/extracts/` hold the cited figures pulled
    out of source PDFs, since the PDFs themselves are not in the repo (see Conventions).
 6. `docs/reference/` — the original hackathon-era doc. **Stale framing, kept for history only.**
 
