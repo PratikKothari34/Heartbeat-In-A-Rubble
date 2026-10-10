@@ -64,9 +64,16 @@ underneath them**, and four of the ten blocking defects are in `main` today.
    I grepped the ref-[12] extract for every form of the figure — **zero matches.** The joint cite claims
    support that does not exist.
 
-**Recomputed:** 17 Hz → 32.68 µg; 19 Hz → 36.52 µg; **40 Hz → 76.88 µg**. The correction is worth
-**+6.47 dB on every amplitude** (linear chain). **The error runs *against* the proposal** — it is quoting a
-figure that makes its own case 6.5 dB weaker.
+**Recomputed:** 17 Hz → 32.68 µg; 19 Hz → 36.52 µg; **40 Hz → 76.88 µg** (`a = 2πf·3 µm/s`, linear chain).
+**The error runs *against* the proposal** — it quotes a figure that makes its own case weaker.
+
+> ⚠ **Which dB applies — corrected 2026-10-11 (C7).** The repo's **+6.47 dB** is the **19 → 40 Hz** step
+> (`00b:20`, `07-verdict:313`), because 19 Hz was the figure the repo itself carried. **The proposal says
+> 17 Hz**, and **17 → 40 Hz is +7.43 dB.** Both are right about different baselines; pairing "32.7 µg" with
+> "+6.47 dB", as this section first did, mixes the two. The repo is internally consistent and records
+> 17 Hz → 32.7 µg as a **superseded interim mis-citation** (`00b:65` strikes it; `07-verdict:313` names it
+> *"the interim 17 Hz"*). **For the proposal's own correction, the figure is +7.43 dB.** Do not restate the
+> frozen margins with either value — see §A1.
 
 **Fix:** `"no more than 3 µm/s at 3 m [11], with the low-frequency vibration maximum near 40 Hz [12]."`
 Change **only the anchor** — the derived margins are deliberately frozen (§A1).
@@ -606,8 +613,10 @@ Post-correction values are ~31–53 dB and ~+29/+47 dB. **`00b:85-95` forbids su
 
 **Correct by policy.** This is the *stale-but-deliberate* distinction — and the author **independently
 reproduced the policy without having been told**, because `INPUT.md`'s instruction block landed 18 minutes
-after their document was created. Only residual exposure: a one-clause footnote (*"conservative by ~6.5 dB
-after a 2026-10-08 anchor correction"*) would immunise it without restating anything.
+after their document was created. Only residual exposure: a one-clause footnote (*"conservative by ~7.4 dB
+after a 2026-10-08 anchor correction"*) would immunise it without restating anything. **~7.4 dB, not ~6.5:**
+the proposal's baseline is 17 Hz, so its own correction is 17 → 40 Hz (+7.43 dB). The repo's +6.47 dB is the
+19 → 40 Hz step from a baseline the proposal never used — see C7.
 
 ## A2. The blast radius of the stale base is bounded, and smaller than feared
 
@@ -742,9 +751,31 @@ had been sitting only in an extract.
 
 ---
 
+## C7. §1 paired the proposal's 17 Hz baseline with the repo's 19 Hz dB figure — 2026-10-11
+
+Found while scoping the `main` fixes for handoff. `INPUT.md:76` says the anchor correction was
+**"19 Hz → 40 Hz"**; this audit's §1 says **17 Hz**. Both are faithful to their sources — the proposal
+says 17 Hz, the repo's withdrawal record (`C-propagation-modeling.md:227`) says 19 Hz — and the repo
+is internally consistent: `00b:65` strikes 32.7 µg as superseded and `07-verdict:313` calls it
+*"the interim 17 Hz"*.
+
+**The defect was mine, and it was the dB figure, not the frequency.** §1 presented a 32.7 µg → 76.9 µg
+step — a 17 Hz baseline — as worth **+6.47 dB**, which is the **19 → 40 Hz** step:
+
+| Baseline | Amplitude @ 3 m | → 40 Hz |
+|---|---|---|
+| 17 Hz (the proposal's) | 32.68 µg | **+7.43 dB** |
+| 19 Hz (the repo's) | 36.52 µg | **+6.47 dB** |
+| 40 Hz (correct) | 76.88 µg | — |
+
+Off by 0.97 dB for the document being reviewed. Corrected in §1 and in §A1's suggested footnote, which
+had carried ~6.5 dB into advice aimed at the proposal. **No margin was restated on either value** — the
+§A1 freeze holds, so nothing downstream moves.
+
+---
+
 **Net:** of four agent findings re-derived, three moved (two down, one up); of my own, one was
-re-graded up, one withdrawn entirely, and one (C6) corrected on both venue and reasoning after
-publication.
+re-graded up, one withdrawn entirely, and two (C6, C7) corrected after publication.
 
 ---
 
