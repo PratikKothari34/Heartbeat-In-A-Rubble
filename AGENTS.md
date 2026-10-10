@@ -241,11 +241,13 @@ So: branch, open a PR, get a review. Don't expect to push to `main`.
 your PR.** The tracker is kept short on purpose: it holds only live work, and finished or superseded
 items are **deleted**, not closed, with anything worth keeping written into `docs/` first.
 
-**Current work is #7:** revise the research proposal `.docx` to merge-ready, verified in a PR. It
-starts from tadiPro250's existing draft (already on `main`) and applies the fourteen fixes in
-**`docs/critique/12-closed-work-archive.md`** — eight to the proposal, six to `main` — each with its
-arithmetic in `docs/critique/09-pr3-citation-audit.md`. **Read that archive before touching the
-proposal.**
+**Current work is #8:** revise the research proposal `.docx` to merge-ready, verified in a PR. It
+starts from tadiPro250's existing draft (already on `main`) rather than a rewrite, and the issue
+states all fourteen fixes inline with their line numbers — **work from the issue, not from the
+docs.** Background and arithmetic, if you want it: `docs/critique/12-closed-work-archive.md` §§3-4 and
+`docs/critique/09-pr3-citation-audit.md`.
+
+It is assigned to **both** collaborators: whoever is free takes it, claiming it in a comment first.
 
 ### If you are an agent
 
