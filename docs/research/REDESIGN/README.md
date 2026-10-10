@@ -11,6 +11,14 @@
 > PDF and **CONFIRMED**. The supercap recharge *principle* also survives, though a part number in it
 > was wrong.
 >
+ ⚠ **The band is superseded too — ADR 0001, 2026-10-11.** This marker was written 2026-10-08, three
+> days before the band was settled, so it reverses the premise and the sensor but **not the band**.
+> **None of 0.5–4 Hz, 10–100 Hz, 5–40 Hz or 60–80 Hz is the project's position:** 5–40 Hz came from
+> **seismocardiography** literature (a cardiac band, for the dead premise) and 60–80 Hz is *"NO DATA
+> FOUND"*. **Acquire 5–200 Hz; the detection band is an output of the M1/M2 bench measurement.**
+> Where one figure is unavoidable: `20–80 Hz [ASSERTED — pending M2]`. The margin figures do not move
+> on any band (`00b-verification-arithmetic.md:85-95`).
+>
 > **What does not survive:** the 24 B batched-summary proposal — a tap/voice packet needs **82–156 B**,
 > and the STM32WLE5JC has **64 kB** SRAM, not 100 kB, so the planned input buffer alone is 70.3 kB
 > (110 % of the part). See `docs/critique/06-prior-research-audit.md`.
@@ -59,7 +67,7 @@ link budget far easier than §5 assumes.
 | **2** | **Drone + flight plan** (§2+§8.2) | **REDESIGN** | Two sections cannot both be true. Already costed (Path B); the *decision* is still unmade |
 | 3 | Velocity → spacing (§7.1→§8.2) | re-derive | Method sound, input wrong. **One hammer test** |
 | 4 | Sensor choice (§3.2/§9) | re-derive | Gated on the ambient measurement. 41% of node cost |
-| 5 | DSP band (§6) | **correction** | 0.5–4 Hz → 10–100 Hz is a parameter edit, not a redesign |
+| 5 | DSP band (§6) | **superseded** | Neither 0.5–4 Hz nor 10–100 Hz. ADR 0001: acquire 5–200 Hz, detection band is an **M1/M2 output** — so this is *not* a parameter edit |
 
 **Not a redesign: §10.4 time sync.** Solved in the literature at <2 µs. But see the caveat in
 `03-proposals.md` §5 — *de-risked is not integrated*, and the prior pass slightly overstated this.

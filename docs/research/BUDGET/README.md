@@ -13,6 +13,14 @@
 > specified is **not legal in India** — DGFT prohibits importing a drone kit, and the radio needs WPC
 > type approval, which was budgeted at zero.
 >
+ ⚠ **The band is superseded too — ADR 0001, 2026-10-11.** This marker was written 2026-10-08, three
+> days before the band was settled, so it reverses the premise and the sensor but **not the band**.
+> **None of 0.5–4 Hz, 10–100 Hz, 5–40 Hz or 60–80 Hz is the project's position:** 5–40 Hz came from
+> **seismocardiography** literature (a cardiac band, for the dead premise) and 60–80 Hz is *"NO DATA
+> FOUND"*. **Acquire 5–200 Hz; the detection band is an output of the M1/M2 bench measurement.**
+> Where one figure is unavoidable: `20–80 Hz [ASSERTED — pending M2]`. The margin figures do not move
+> on any band (`00b-verification-arithmetic.md:85-95`).
+>
 > **Also, the bill of materials changed** with the sensor: the SM-24 is *analog* (needs its own ADC
 > and instrumentation amplifier) and *74 g* (cannot run from a coin cell), making a node **+41 %**
 > dearer than the MEMS design costed here. Current budget: `docs/proposal/INPUT.md`.

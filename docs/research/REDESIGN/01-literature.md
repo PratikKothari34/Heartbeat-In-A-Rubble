@@ -206,14 +206,16 @@ conclusion; it is listed here only because the redesign verdict depends on it.
 | # | Source | Status |
 |---|---|---|
 | 1 | **USGS SIR 2023-5061** — unconsolidated **200–1000 m/s** dry, 1500–2300 saturated | 📄 HELD |
-| 2 | **PigV²** — **100–200 m/s measured** through a floor; heartbeat in a **10–100 Hz** band | 📄 HELD |
+| 2 | **PigV²** (Dong et al. 2022), **arXiv 2212.03378** — **100–200 m/s measured** through a floor; heartbeat in a **10–100 Hz** band | 📄 HELD — 📝 obligation below |
 | 3 | **arXiv 2309.11577** — porous granular media have low effective elastic modulus → low P-wave speed | 📄 HELD |
 | 4 | OSTI — lab velocity/attenuation in sediments | 📄 HELD |
 | 5 | Wiley DOI 10.1155/2016/1548215 — concrete ~3600 m/s | 🔒 |
 | 6–21 | *(C5 sources 5–21: edge inference, Raspberry Shake specs, Nof 2019 back-azimuth, PSD-PDF, SM-24 fn=10 Hz, Sercel ambient-limited >2 Hz, multi-modal fusion)* | 📄/✅/🔒 |
 
 **Unchanged conclusion:** §7.1's 3000 m/s is **3–20× too high**; defensible bracket **150–1000 m/s**.
-**§6's 0.5–4 Hz band discards the signal** — PigV² and the SM-24 both put the energy at **10–100 Hz**.
+**§6's 0.5–4 Hz band discards the signal** — but the replacement is **not** 10–100 Hz either. That figure comes from **heartbeat** work (PigV²), i.e. it is a cardiac band for a target that is now tap/voice. Per **ADR 0001 (2026-10-11)**: acquire **5–200 Hz** and let M1/M2 output the detection band.
+
+> 📝 **Citation obligation on row 2 — recorded 2026-10-11** (`../../critique/prior-art/README.md:92-102`). PigV² must be cited and distinguished, as **arXiv 2212.03378, never "SenSys '22"**. It is the **closest published work to our geometry** — the path is through the ground, not through bedding — so **"contact-coupled, not through a medium" does not distinguish it.** The grounds are **distance and medium**: centimetres of barn flooring versus metres of fractured debris.
 
 ---
 

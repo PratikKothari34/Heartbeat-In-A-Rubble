@@ -25,7 +25,7 @@ acceleration at useful amplitude.
 
 | | From | To |
 |---|---|---|
-| Detection band | 0.5–4 Hz | **10–100 Hz** |
+| Acquisition band | 0.5–4 Hz | **5–200 Hz** — ~~10–100 Hz~~; the **detection** band is an **output of M1/M2**, not proposed here (ADR 0001) |
 | Method | bandpass → FFT → LSTM | **bandpass → wavelet/envelope → peak-pick rate → LSTM** |
 | Rate band | (the signal band) | **envelope periodicity, 0.8–3 Hz** |
 
@@ -256,6 +256,12 @@ saving in A2 was buying a constraint that fights coupling.
 measurement.** No ADR: this eliminates a candidate, it does not fix the sensor. The ADR remains the
 post-ambient sensor decision, with this as an input to it.
 
+> ⚠ **SUPERSEDED 2026-10-11 — the sensor is no longer gated on an ambient measurement.** The **SM-24
+> geophone is selected** and the **ADXL355 is rejected** (`docs/critique/07-verdict.md` §4.2; ADR 0001).
+> The SCA3300/ADXL355 shortlist above, and the three-way table in A4, are closed — neither names the
+> part that won. **The 3-axis geometry argument still stands on its own terms** and was one of the
+> reasons; so does the point that a 2-axis part buys a constraint that fights coupling.
+
 ---
 
 ## Recommended sequence
@@ -273,10 +279,21 @@ post-ambient sensor decision, with this as an input to it.
 | 10 | **Design the coupling interface** — spike/anchor that mates a dropped node to fractured debris, *without* a self-righting round base | — | **the dominant term in the link budget** (`06` §6.1) |
 | 9 | Re-check the SCA3300 price on a live page, and get an India distributor quote via Murata's `en-in` stock-check path | $0 | the only verified India supply route in the survey |
 
-**No ADR is proposed.** Per `CLAUDE.md`, ADRs are for irreversible, cross-cutting or contested
-decisions. A1–A3 are corrections to numbers and a band — MASTER is live and takes them directly.
-If the sensor is re-fixed *after* the ambient measurement, **that** is an ADR: it is cross-cutting
-(cost, power, DSP, node count) and it is contested by this document.
+~~**No ADR is proposed.**~~ **[SUPERSEDED 2026-10-11: two ADR-worthy decisions have since been taken.]**
+Per `CLAUDE.md`, ADRs are for irreversible, cross-cutting or contested decisions. A1–A3 are corrections
+to numbers and a band — MASTER is live and takes them directly. If the sensor is re-fixed *after* the
+ambient measurement, **that** is an ADR: it is cross-cutting (cost, power, DSP, node count) and it is
+contested by this document.
+
+> **What actually happened.** The sensor *was* re-fixed — to the **SM-24**, not to either part this
+> document shortlists, and without waiting on the ambient measurement (`07-verdict.md` §4.2). And the
+> band became **ADR 0001** (`docs/decisions/0001-tap-acquisition-band.md`, 2026-10-11), because it was
+> contested exactly as this paragraph predicts. **A1's band row is superseded by that ADR** and is no
+> longer "a plain doc edit": the detection band is now an output of measurement, which is the one
+> thing a live doc edit cannot express. A2/A3 remain plain numeric corrections.
+>
+> Note `docs/decisions/` is **gitignored** — the ADR does not survive a clone. `AGENTS.md` carries its
+> full substance for collaborators.
 
 ---
 

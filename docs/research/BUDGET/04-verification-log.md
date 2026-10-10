@@ -72,8 +72,8 @@ Numbering continues from `../MEMS/05-verification-log.md` (which ends at A20 / D
 
 ## E. Honest limits
 
-- **"≥20 papers per concept" is met by citation count, not by depth.** **12 PDFs are HELD and read**
-  in `papers/` (18 including `../MEMS/papers/`). The rest are verified-to-exist and read at
+- **"≥20 papers per concept" is met by citation count, not by depth.** **12 PDFs were HELD and read**
+  in `papers/` (18 including `../MEMS/papers/`) — ⚠ **both directories were removed by `f73b73d` (2026-10-07); the `extracts/*.md` conversions are now the record.** The rest are verified-to-exist and read at
   abstract level. **Every number that drives a budget decision comes from a HELD source and is
   quoted.** This is stated at the top of `01-literature.md` rather than buried here.
 - **15 of 56 links are BOTWALL.** Those papers are real and open in a human browser, but I did not

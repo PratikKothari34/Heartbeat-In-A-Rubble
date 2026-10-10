@@ -111,6 +111,17 @@ Anything claiming seismic heartbeat detection works.
 
 **How to handle it.** This paper does not contradict the bound; it *calibrates* it. HeartQuake proves the cardiac source is detectable when the coupling loss and the ambient noise are both near zero, which is precisely the regime the bound says is required. Its own authors report accuracy degrading from *household* vibration. Citing HeartQuake in the proposal is strongly advisable: it demonstrates the team knows the closest prior work, establishes that the 1–4 N source is real and recoverable in principle, and makes the 47–69 dB deficit a statement about *path and noise*, not about the sensor or the source. A reviewer who finds HeartQuake independently and sees it unaddressed will read the proposal as naive.
 
+### Two further contact-coupled cardiac results — same obligation, recorded 2026-10-11
+
+HeartQuake is **not** the only one. Two more must be cited and distinguished, and the grounds differ:
+
+| Paper | Path | How to distinguish |
+|---|---|---|
+| **Jia, Z., Alaziz, M., Chi, X., Howard, R. E., Zhang, Y., Zhang, P., Trappe, W., Sivasubramaniam, A., & An, N. (2017).** *Monitoring a Person's Heart Rate and Respiratory Rate on a Shared Bed Using Geophones.* ACM SenSys '17, DOI **10.1145/3131672.3131679** | Geophones under a mattress; two people on one bed | **Same as HeartQuake — coupling path, not sensor.** Contact-coupled through bedding, centimetres from the torso. |
+| **PigV² (Dong et al. 2022), arXiv 2212.03378** | Geophone array under a pig-pen floor — heartbeat-induced **ground** vibrations, 10–100 Hz | **The coupling argument does NOT work here.** The path *is* through the ground. The only available grounds are **distance and medium**: centimetres of barn flooring versus metres of fractured debris, at the 100–200 m/s velocity bracket this project already cites from it (`../02-dsp-ml-kill-attempt.md:919`). Cite as **arXiv 2212.03378, never "SenSys '22"** — no conference venue has ever been established for it. |
+
+Both are **READ-FULL** in-repo (`../../research/MEMS/extracts/`). The obligation was recorded in `README.md:84-102` and sat unreflected in this file until 2026-10-11.
+
 ### Lower-grade claims seen but not substantiated
 
 - An unattributed secondary claim surfaced in search that "the level of vibration produced by a beating heart is detectable by a geophone" at **< 30 cm from a person**, with "high auto-correlation levels." The ~30 cm standoff figure, if correct, is *itself a bound* and is consistent with ours — it implies a near-contact requirement. **Provenance is a US patent-family text, not a peer-reviewed measurement.** Do not cite without locating the primary source; see "Could not access."

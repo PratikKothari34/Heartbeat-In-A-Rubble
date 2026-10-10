@@ -1,5 +1,20 @@
 # 06 — Build vs Buy: should we develop our own sensor?
 
+> ⛔ **SUPERSEDED 2026-10-11 — the sensor decision went the other way.** The **SM-24 geophone is
+> selected**; the ADXL355 is rejected (`docs/critique/07-verdict.md` §4.2; ADR 0001). **§7's
+> "Develop a geophone node? No" verdict is reversed**, and "Buy the node sensor — gated on the
+> ambient measurement" is closed: it was not gated in the end.
+>
+> **What survives here is now load-bearing, not academic** — these are open problems *against the
+> chosen part*, not arguments against choosing it:
+>
+> - §4's **±10° tilt spec vs the ±30° landing range** — the geophone is a 1-axis part with an
+>   attitude requirement a dropped node cannot guarantee. Unresolved.
+> - §6.1's **coupling-vs-self-righting conflict** — still the highest-value mechanical problem.
+> - The **mass / power / cost arithmetic** (32×, 2–3.4×, 4.9×). All real, all now costs the project
+>   has accepted rather than avoided.
+
+
 Written 2026-09-17, in answer to a direct question. Short version: **no — and the reason is not
 that it's hard, it's that it optimises the wrong variable.** The thing worth building is the
 **coupling interface**, not the transducer.

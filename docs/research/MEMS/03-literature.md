@@ -38,6 +38,8 @@ Signs through Ground Vibrations Induced by Heartbeat and Respiration." 2022.
 arXiv [2212.03378](https://arxiv.org/abs/2212.03378)
 `docs/research/MEMS/extracts/pigv2.md`
 
+> 📝 **Citation obligation — recorded 2026-10-11** (`../../critique/prior-art/README.md:92-102`). Cite as **arXiv 2212.03378, never "SenSys '22"**: the repo has never established a conference venue for it. And when distinguishing it in the proposal, **do not call it "contact-coupled"** — the path *is* through the ground, so the only available grounds are **distance and medium**. The sibling obligation, same section: **Jia et al. 2017**, SenSys '17, DOI 10.1145/3131672.3131679.
+
 Stanford / Michigan / USDA-ARS / Nebraska. Geophone array under a pig pen floor, estimating heart
 and respiratory rate of a live animal through the structure. **The closest published analogue to
 this project**: a living body, an uncontrolled medium, a distributed sensor array, no contact with

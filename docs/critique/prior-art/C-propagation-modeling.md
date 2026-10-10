@@ -225,7 +225,7 @@ both the legacy and current host). Listed under hand-retrieval.
 |---|---|---|---|---|---|
 | 1 | Footstep anchor: **3 µm/s at 3 m** | *"did not exceed 3 × 10⁻⁶ m/s, even very close (3 metres) to the walker"* | Sabatier & Ekimov, Proc. SPIE 6963, 69630V (2008), DOI 10.1117/12.785235 | READ-ABSTRACT | **SUPPORTED** — exact match. Note it is an *upper bound* ("did not exceed"), used correctly as such. |
 | 2 | Anchor frequency **19 Hz** | **WITHDRAWN 2026-10-08.** The full text of *JASA* 120(2):762 was retrieved and **contains no "17 Hz" figure and no "Z component" sentence.** What it states is: *"The maximum vibration response for the footstep in the low-frequency range (below 500 Hz) was **near 40 Hz** for the regular walking style"*, and that the site transfer function is band-pass *"with the maximum within the frequency band **20-90 Hz**."* The *"1-4 Hz"* figure in that paper is the **force of multiple footsteps** (Galbraith & Barton 1970), **not** the per-footstep vibration response - conflating the two is the original rate-vs-bandwidth error in a new place. | Ekimov & Sabatier, *JASA* 120(2):762 (2006) | **FULL TEXT 2026-10-08** | **OVERTURNED.** Correct anchor is **40 Hz -> 76.9 ug**, i.e. **+6.47 dB** on 19 Hz. This moves *against* the kill and is the first correction to do so; the cardiac deficit still stands at ~31-53 dB. The 17 Hz figure was a mis-citation produced while reading abstracts and must not be reused. |
-| 3 | **a = 2pi*f*v** (36.5 ug) | Standard harmonic relation. **The cross-check that was cited here ("-85.7 dB re 1 g @ 17 Hz at 1 m") is NOT in *JASA* 120(2):762** - full text checked, zero matches for `85.7`, `re 1 g` and `17 Hz`. It may belong to the Proc. SPIE 6241 (2006) companion paper, which has not been retrieved. | - | **WITHDRAWN** | **The relation itself is unaffected** (it is textbook). Only the independent cross-check is withdrawn. Do not cite the -85.7 dB figure to this DOI. |
+| 3 | **a = 2pi*f*v** (~~36.5 ug~~ → **76.9 ug** at the corrected 40 Hz anchor; see row 2) | Standard harmonic relation. **The cross-check that was cited here ("-85.7 dB re 1 g @ 17 Hz at 1 m") is NOT in *JASA* 120(2):762** - full text checked, zero matches for `85.7`, `re 1 g` and `17 Hz`. It may belong to the Proc. SPIE 6241 (2006) companion paper, which has not been retrieved. | - | **WITHDRAWN** | **The relation itself is unaffected** (it is textbook). Only the independent cross-check is withdrawn. Do not cite the -85.7 dB figure to this DOI. |
 | 4 | Cardiac impulse **1–4 N** | BCG is measured in newtons on force plates with *"a precision of 0.1 N"*; J-peak amplitude reported in N | Inan et al., "Ballistocardiography and Seismocardiography: A Review of Recent Advances," *IEEE JBHI* 19(4):1414 (2015); Wiard et al., "Force plate monitoring of human hemodynamics," *Nonlinear Biomed. Phys.* 2:1 (2008), DOI 10.1186/1753-4631-2-1 | READ-ABSTRACT | **NO SPECIFIC VALUE CONFIRMED.** The N-unit framing and force-plate method are confirmed; I did **not** retrieve a numeric peak-force figure to validate 1–4 N. Flag as the weakest-sourced input in the chain. The project's own independent momentum-conservation route (1 mm/s body recoil) is the better support and does not depend on a literature N value. |
 | 5 | Footstep GRF **~700 N** | Not separately verified here; whole-body-weight normal impulse is uncontroversial (70 kg × 9.81 = 687 N static) | — | CITED-ONLY | **SUPPORTED by inspection** (bodyweight), though peak GRF in walking is typically 1.0–1.2× bodyweight, i.e. **690–840 N**. Using 700 N is central and fine. |
 | 6 | ADXL355 **25 µg/√Hz** | 25 µg/√Hz stated in the ADI datasheet, held in-project and independently cited in `03-hardware-kill-attempt.md` as PDF-fetched and text-extracted | Analog Devices, ADXL354/ADXL355 datasheet Rev. A, Table 5 | CITED-ONLY (this pass) / READ-FULL in prior project pass | **SUPPORTED.** Caveat already in-project: it is a white-noise-region figure, not valid at 1 Hz. |
@@ -333,8 +333,15 @@ explicitly **geophone + digitiser**, never the geophone alone.
 **Recommended proposal wording:** *"We adopt 0.1 µg/√Hz as a conservative system noise-density
 figure for an SM-24-class geophone with its preamplifier. The SM-24 datasheet specifies no noise
 figure; the element's own thermal floor, computed from its specified 375 Ω coil resistance and
-28.8 V/m/s sensitivity, is 0.003–0.005 µg/√Hz across 60–80 Hz, so our figure carries 20–30 dB of
-margin for front-end electronics."* That is both honest and stronger than the current text.
+28.8 V/m/s sensitivity, is 0.003–0.005 µg/√Hz across **20–80 Hz [ASSERTED — pending M2]**, so our figure carries 20–30 dB of
+margin for front-end electronics."*
+
+> ⚠ **Band pending — ADR 0001, 2026-10-11.** This is ready-to-paste proposal text, so the band in it
+> matters: **do not restate this margin on a chosen detection band** until M1/M2 exists. The element
+> floor is frequency-dependent (`aₙ = 2πf·eₙ/S`, **linear in f**), so the figure is only meaningful
+> with its band named inline — 1.1 ng/√Hz at 20 Hz, 3.3 at 60, 4.4 at 80. Against the 0.1 µg/√Hz
+> working spec that is 23–365× of margin anywhere in 5–200 Hz, so **the conclusion is band-independent
+> even though the number is not.** That is both honest and stronger than the current text.
 
 **Also note for the BOM**: the datasheet's 74 g total weight and 11 g moving mass are the real
 numbers; a 4.5 Hz variant at the same 375 Ω / 28.8 V/m/s exists from third-party suppliers
@@ -446,6 +453,12 @@ boot and rock taps on a concrete slab, reported as a mobility spectrum. This is 
 equipment, and **it is the measurement that determines whether the surviving architecture closes.**
 A proposal that identifies its own weakest parameter and budgets to measure it reads as competent;
 one that asserts 60–80 Hz does not.
+
+> **[STRENGTHENED 2026-10-11 — ADR 0001 went further than this recommendation.]** The band is not carried
+> into the proposal as a *flagged estimate* at all: **it is acquired wide (5–200 Hz) and the detection
+> band is an output of the measurement this section proposes.** Row 16 above is the reason — and the
+> 5–40 Hz alternative is no better, being a **seismocardiography** band. The work package described
+> here is unchanged and is now **M2**, the gate the band waits on.
 
 ---
 
@@ -631,7 +644,7 @@ Worst first.
 4. **My SM-24 noise computation is an element-only thermal floor and is not a system figure.** I
    computed Johnson noise of the coil and suspension thermal noise from verified datasheet specs.
    I did **not** model preamp voltage/current noise, ADC quantisation, or the geophone's response
-   roll-off below 10 Hz (which, for the 60–80 Hz tap band, is irrelevant — but would matter a great
+   roll-off below 10 Hz (which, for a 60–80 Hz tap band, would be irrelevant — **but ADR 0001 acquires 5–200 Hz, so this is now live and unresolved** — and would matter a great
    deal for any lower band). **The claim "0.1 µg/√Hz is conservative" is therefore a claim about the
    sensor element, not about a built system.** The Dean et al. figure (hand-retrieval item 8) is the
    thing that would settle it, and I could not read it.

@@ -98,7 +98,7 @@ re-read of the primary with a different extraction. Anything that survives only 
 
 ## F. Source provenance
 
-**Datasheets** — `datasheets/`
+**Datasheets** — ~~`datasheets/`~~ ⚠ **the directory no longer exists.** Every PDF was removed from the tree by `f73b73d` (2026-10-07; `*.pdf` is a gitignore carve-out — third-party datasheets and papers are not ours to redistribute). The **`extracts/*.md` conversions are now the only in-repo record**; the Origin column below is the retrieval path if a figure must be re-verified.
 
 | File | Origin | Verified |
 |---|---|---|
@@ -118,7 +118,7 @@ re-read of the primary with a different extraction. Anything that survives only 
 | `RaspberryShake_technical_specifications.pdf` | raspberryshake.org | 1.73 MB |
 | `TDK_MPU-6050_datasheet.pdf` | cdiweb.com mirror, V3.4 (second attempt — see E1) | 1.49 MB |
 
-**Papers** — `papers/`
+**Papers** — ~~`papers/`~~ ⚠ **also removed by `f73b73d`** — see the note above.
 
 | File | Origin |
 |---|---|
@@ -135,8 +135,9 @@ page source. **Both hand-offs also exposed errors in my own records** — A15/A1
 IIS2ICLX row, E9 corrected a link I had wrongly marked verified, and D10 caught an overstatement I
 was about to write into the literature file.
 
-All 21 files confirmed as real PDFs by size and by successful text extraction. `extracts/` holds the
-markitdown conversions used for reading — working files, not sources.
+All 21 files **were** confirmed as real PDFs by size and by successful text extraction, at the time this log was written.
+
+⚠ **That relationship is now inverted (`f73b73d`, 2026-10-07).** The PDFs are gone from the tree; `extracts/` holds the markitdown conversions and they are **the sources of record**, not working files. The verification above stands as the provenance trail for each figure — it is why the extracts are trustworthy — but the PDFs are no longer here to re-check against. Re-retrieve from the Origin column if a figure is ever contested.
 
 ---
 

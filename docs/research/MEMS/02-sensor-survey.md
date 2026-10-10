@@ -213,7 +213,7 @@ laying out a board.
 - ✔ Power (200 µA), size (6 mm), 3-axis, digital, temp range — all excellent.
 - ✘ **MASTER §9 prices this at ~$15. It is $63.26.** That is **+$48/node**; the $29 node BOM and
   the $641–1141 system figure are both invalid. See `04-action-report.md`.
-- ✘ **LCSC stock is 3 pieces.** Not a supply base for a multi-node array.
+- ✘ ~~**LCSC stock is 3 pieces.** Not a supply base for a multi-node array.~~ ⚠ **SUPERSEDED 2026-10-06 — this supply argument is dead.** Stock is **486 + 1192 units** (`../BUDGET/04` A22/D11, `../BUDGET/02` §6). The 3-piece figure was captured **2026-09-17**.
 - ⚠ 25 µg/√Hz is a **white-region** number. Per `01-requirements.md` §2 it does **not** hold at
   1–2 Hz, which is exactly where MASTER §6 operates.
 

@@ -29,6 +29,14 @@
 > propagation (`00b:73`) — but it dies on the propagation path, **not** on geophone self-noise.
 > Do not quote 38–60 dB against any sensor but the ADXL355.
 >
+ ⚠ **The band is superseded too — ADR 0001, 2026-10-11.** This marker was written 2026-10-08, three
+> days before the band was settled, so it reverses the premise and the sensor but **not the band**.
+> **None of 0.5–4 Hz, 10–100 Hz, 5–40 Hz or 60–80 Hz is the project's position:** 5–40 Hz came from
+> **seismocardiography** literature (a cardiac band, for the dead premise) and 60–80 Hz is *"NO DATA
+> FOUND"*. **Acquire 5–200 Hz; the detection band is an output of the M1/M2 bench measurement.**
+> Where one figure is unavoidable: `20–80 Hz [ASSERTED — pending M2]`. The margin figures do not move
+> on any band (`00b-verification-arithmetic.md:85-95`).
+>
 > Authority: `docs/critique/07-verdict.md` → `08-amendment.md` → `docs/critique/prior-art/`.
 
 Research pass completed **2026-09-17**. Scope: what sensor this project actually needs, what exists
@@ -113,7 +121,7 @@ ambient on a demolition site.** It either justifies the $63 part or eliminates i
 
 | Path | Contents |
 |---|---|
-| `extracts/` | **18 full-text Markdown extracts** — 15 manufacturer datasheets (Epson ×5, ADI ×2, Colibrys, Sercel ×2, Geospace, Raspberry Shake, TDK, **ST**, **Murata** |
+| `extracts/` | **18 full-text Markdown extracts** — **12** manufacturer datasheets (Epson ×3, ADI, Colibrys, Sercel ×2, Geospace, Raspberry Shake, TDK, **ST**, **Murata**) plus **6 research papers**. **The source PDFs were converted and deleted 2026-10-08** (`*.pdf` is gitignored project-wide), so these extracts are the **only in-repo record** of their figures |
 | | plus 6 research papers — SenSys'17, PigV², EGU2018, Evans 2014 SRL, Nof 2019, USGS OFR 2005-1438. **The source PDFs were converted and deleted 2026-10-08** (`*.pdf` is gitignored project-wide; third-party material is not ours to redistribute). The extracts are the only in-repo record. |
 
 ---
@@ -122,7 +130,7 @@ ambient on a demolition site.** It either justifies the $63 part or eliminates i
 
 | Part | Noise (10–100 Hz) | Price @1 | Verdict |
 |---|---|---|---|
-| **ADI ADXL355** | 237 µg rms | **$63.26** ✅ live | MASTER's pick. Power/size excellent, price 4× assumed, stock 3 |
+| ~~**ADI ADXL355**~~ | 237 µg rms | $63.26 *(captured 2026-09-17; **$55.1592 on 2026-10-06**, −12.8 %)* | ⛔ **REJECTED** — MASTER's *former* pick. Power/size excellent, but 38–60 dB short on the cardiac premise. ~~stock 3~~ **stock resolved to 486 + 1192 on 2026-10-06** (`../BUDGET/04` A22) |
 | ~~**ST IIS2ICLX**~~ | 142 µg rms typ / 285 max | $26.51 ✅ live | ⛔ **ELIMINATED — 2-axis.** Specs verified and excellent; the slant-ray geometry costs it −7 to −10 dB at the far nodes. `04` A8 |
 | **Murata SCA3300-D01** | 332 µg rms (Mode 3) | $38.98 ⚠️ | ✅ **Noise density finally published: 35 µg/√Hz.** Noisiest buyable part — but 3-axis, mechanically over-damped, and **the only candidate with an India supply path** |
 | **TDK MPU-6050** | 3795 µg rms | ~$2 module | 16× too noisy on paper — **and the right instrument for the ambient test** (vendor link dead, specs unaffected) |

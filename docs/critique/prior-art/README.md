@@ -18,7 +18,7 @@ the evidence behind it.
 **1. The kill is confirmed and better evidenced.** The cardiac source force is no longer assumed:
 3.7 N +-0.53 (Starr et al. 1939, n=7), 4.06 N +-1.53 (Inan 2009, Stanford, n=26+, range
 0.63-10.95 N), 2 N_pp (Ashouri et al. 2016, Kistler force plate). The worst single healthy subject
-costs **+8.75 dB**, moving the deficit to **38-60 dB**. Nothing recovers 38 dB. The "what if the
+costs **+8.75 dB**, moving the deficit to **38-60 dB** — measured against the **ADXL355**'s 25 µg/√Hz floor, *not* the selected SM-24's. Nothing recovers 38 dB. The "what if the
 force is really 20-40 N" escape hatch is now **closed by measurement**. Pathological hearts measure
 **0.94-1.05 N** - ~12 dB *below* the healthy mean, so a crush-injured hypothermic survivor is
 plausibly weaker than the critique assumed.
@@ -64,7 +64,7 @@ the element, is now the number to specify** (12-16x margin at 4 nV/rtHz; margin 
 
 ## Still unmeasured - the highest-value bench work
 
-**Tap force and tap spectrum.** The 50-300 N / 60-80 Hz figures underpinning every margin in `07`
+**Tap force and tap spectrum.** The 50-300 N figure, and the 60-80 Hz band that **ADR 0001 (2026-10-11) superseded** after `C-propagation-modeling.md:241` found no source for it — both underpinning every margin in `07`
 have **no source**. The nearest literature anchors are destructive (karate chop ~2,800 N) and were
 explicitly declined rather than laundered as measured. Measure these before trusting any margin.
 
@@ -112,7 +112,7 @@ citations are READ-ABSTRACT** - Arosio's 200-600 m/s rubble velocity, the 3 um/s
 text; the 17 Hz peak was overturned (real value 40 Hz) and Krohn alone remains unverified.** The hand-retrieval list with exact URLs and verified
 block states is at the end of `C-propagation-modeling.md`, priority-ordered.
 
-**Hand-retrieve those four before a faculty signature.** An abstract is enough to correct a number
+**Hand-retrieve the one remaining paper (Krohn 1984) before a faculty signature.** An abstract is enough to correct a number
 internally; it is not enough to defend one in a funded proposal.
 
 ## Terminology fix

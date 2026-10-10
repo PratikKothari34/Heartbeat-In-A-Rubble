@@ -30,7 +30,10 @@ Carried from `../MEMS/03-literature.md` (6 HELD papers) and extended.
 | # | Source | What it establishes | Status |
 |---|---|---|---|
 | 1 | **PigV²** — pig vital signs via ground vibration | Heartbeat via **10–100 Hz wavelet**; attenuation `S=S₀e^(−αfd)`; **100–200 m/s** measured through a pen floor | 📄 HELD |
-| 2 | **SenSys'17** — geophone heart rate, shared bed | **1.90 BPM mean error** with an SM-24 (fn = 10 Hz) | 📄 HELD |
+| 2 | **Jia et al. 2017**, SenSys '17, DOI 10.1145/3131672.3131679 — geophone heart rate, shared bed | **1.90 BPM mean error** with an SM-24 (fn = 10 Hz) | 📄 HELD |
+
+> 📝 **Citation obligations on rows 1 and 2 — recorded 2026-10-11** (`../../critique/prior-art/README.md:84-102`). Both are contact-coupled **cardiac** results and both must be cited and distinguished in the proposal. Row 1 is **arXiv 2212.03378, never "SenSys '22"**, and must **not** be distinguished as "contact-coupled" — its path is through the ground, so the grounds are **distance and medium**. Row 2's full author list: Jia, Alaziz, Chi, Howard, Zhang, Zhang, Trappe, Sivasubramaniam & An.
+
 | 3 | **Sercel/EGU 2018** — QuietSeis MEMS | **<15 ng/√Hz above 10 Hz**; *"1/f noise at low frequency not characterized"*; **ambient-limited above ~2 Hz** in a soundproof chamber | 📄 HELD |
 | 4 | **Evans et al. 2014**, *SRL* | Class A/B/C tiering of low-cost accelerometers | 📄 HELD |
 | 5 | **Nof et al. 2019**, *Earthquake Spectra* 35(1):21–38, DOI [10.1193/021218EQS036M](https://doi.org/10.1193/021218EQS036M) | MEMS **mini-arrays** with a **<US$150 DAQ** solving back-azimuth from particle motion | 📄 HELD |
