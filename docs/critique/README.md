@@ -54,6 +54,7 @@ vote that assumes independence real rubble does not provide).
 | **`08-amendment.md`** | **Amends 07 for 04 and 05. Read after 07.** Persistence fixes the PPV problem; compliance breaks the cost claim |
 | **`09-pr3-citation-audit.md`** | **OPEN REVIEW of unmerged PR #3, 2026-10-09.** Audits the proposal .docx against `f73b73d`: 10 blocking, 12 should-fix. Four of the blocking defects are in `main`, not the PR |
 | **`10-doc-sweep-action-report.md`** | **Action report, 2026-10-11.** Full `docs/` sweep: what was stale, what was corrected, what was deliberately left as historical record, and what is still open. Start here for the state of the band decision and the floor referent |
+| **`11-closed-issue-archive.md`** | **Archive of issues #1 and #2, 2026-10-11**, written immediately before they were deleted from GitHub. Holds the anchor correction, three methodological lessons that each caught a real error, and the record of Krohn 1984 as the last unheld citation. `#4`/`#5` still say "do not work from #1's figures" — this is where #1 went |
 | **`prior-art/`** | **Literature sweep, 2026-10-08. Amends everything above.** `A` cardiac force (now measured), `B` USAR systems + drone prior art + doctrine, `C` propagation parameters validated row by row |
 
 ## Why this is trustworthy
