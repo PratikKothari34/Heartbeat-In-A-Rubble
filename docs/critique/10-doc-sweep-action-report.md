@@ -3,7 +3,8 @@
 **Date:** 2026-10-11
 **Scope:** every `.md` under `docs/`, plus `AGENTS.md`
 **Commits:** `4b4ba27` (critique + `AGENTS.md`), `9dd4faa` (research + prior-art) — both pushed
-**End state:** stale info gone; issues reduced to the live set; one unowned defect filed as #6
+**End state:** stale info gone; issues reduced to the live set; one unowned defect filed as #6.
+**(The live set was itself purged later the same day — see the note in §6.)**
 
 ---
 
@@ -128,12 +129,19 @@ Stale-looking is not stale. The following are **historical record** and were not
 |---|---|---|
 | #1 | **CLOSED** | Proposal-drafting instruction, discharged by PR #3. Its footstep anchor was withdrawn — do not work from its figures. |
 | #2 | **CLOSED** | Same: superseded by PR #3. |
-| #4 | **OPEN** → tadiPro250 | Live. PR #3 review, 8 items. Band question unblocked; item 4 reshaped from "pick one and recompute" to "name the band inline." |
-| #5 | **OPEN** → Maverick01-code | Live. Six `main` fixes. Band question unblocked; item 2's gate is to be written **band-parametric**. |
-| **#6** | **OPEN, new** | **`INPUT.md:107` asserts 5–40 Hz as settled while `:134` admits the tap spectrum is unsourced.** Both #4 and #5 correctly deferred it, and between them nobody held it. Now owned. |
+| #4 | ~~OPEN → tadiPro250~~ **DELETED 2026-10-11** | PR #3 review, 8 items. Band question unblocked; item 4 reshaped from "pick one and recompute" to "name the band inline." |
+| #5 | ~~OPEN → Maverick01-code~~ **DELETED 2026-10-11** | Six `main` fixes. Band question unblocked; item 2's gate is to be written **band-parametric**. |
+| **#6** | ~~OPEN, new~~ **DELETED 2026-10-11** | **`INPUT.md:107` asserts 5–40 Hz as settled while `:134` admits the tap spectrum is unsourced.** Both #4 and #5 correctly deferred it, and between them nobody held it. |
 
 #4 and #5 each received a comment cross-referencing #6 and listing the three sweep results that
-bear on their items.
+bore on their items.
+
+> **⚠ Superseded the same day.** The section above records the state at the end of this sweep. Later
+> on 2026-10-11 the **tracker was emptied by decision**: PR #3 was closed and #4/#5/#6 deleted,
+> because every open item was blocked on **M1** or **M2** — measurements neither scheduled nor
+> runnable by collaborators who work only on assigned items. **The work is not cancelled.** The 8 + 6
+> fixes, the recovered proposal `.docx` and the budget rebuild are in
+> **`12-closed-work-archive.md`**. Nothing in §7 below changed.
 
 ---
 

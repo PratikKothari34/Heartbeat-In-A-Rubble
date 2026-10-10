@@ -1,8 +1,11 @@
 # 09 - PR #3 audit: every inconsistency found
 
-**Date:** 2026-10-09. **Status: OPEN REVIEW.** This audits an **unmerged** pull request against
-`main` @ `f73b73d`. It is a review artifact, not a decision: nothing here binds until the PR is
-resolved, and `docs/decisions/` outranks it. It changes nothing outside this file.
+**Date:** 2026-10-09. **Status: CLOSED REVIEW — and now the surviving record.** This audited an
+unmerged pull request against `main` @ `f73b73d`. **PR #3 was closed and issues #4/#5/#6 deleted on
+2026-10-11** (`12-closed-work-archive.md`), so the GitHub threads this file refers to no longer
+resolve — **this document and that archive are where the findings live.** The audited `.docx` was
+rescued onto `main` at `docs/proposal/Research_Proposal_Air_Deployed_Seismic_Mesh.docx` before the
+purge; it had existed only on the PR branch. `docs/decisions/` still outranks everything here.
 **Inputs:** four parallel subagents (physics/numbers, citations/prior-art, budget/regulatory,
 logic/structure), plus base-provenance forensics on the `.docx` and the Gantt reconstructed from
 `word/document.xml`.
@@ -111,7 +114,8 @@ sensor capability."*
 > papers and cited PigV2 as *"SenSys '22"*. Both were wrong. **PigV2 propagates through the ground**, so
 > "contact-coupled" is the one ground that does *not* distinguish it — the distinction is **distance and
 > medium**. And the repo cites it as **arXiv 2212.03378** (`MEMS/03-literature.md:38`); no conference venue
-> was ever established. Issue #4 item 8 carries the original wording and has been corrected in a comment.
+> was ever established. The original wording was published in (now-deleted) issue #4 item 8 and corrected there; the
+> corrected row is §3 of `12-closed-work-archive.md`.
 
 ---
 
@@ -750,7 +754,8 @@ as the ρ conflation at §18. Withdrawn, not logged. The citation agent caught t
 ## C6. PigV2 cited to the wrong venue, and distinguished on the wrong ground — 2026-10-11
 
 Found while reflecting this audit's obligations into `docs/research/`. Two errors in §2's suggested
-prior-art row, both mine, both already published in issue #4 item 8:
+prior-art row, both mine, both published in (now-deleted) issue #4 item 8 — see
+`12-closed-work-archive.md` §3:
 
 | | Audit said | Verified |
 |---|---|---|

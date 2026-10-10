@@ -4,15 +4,18 @@
 
 Issues **#1** (*Frame the research proposal from the verified docs*, opened 2026-10-07) and **#2**
 (*Anchor correction + three citations verified*, opened 2026-10-07) were closed 2026-10-10 as
-superseded by PR #3 and then deleted, leaving `#4`/`#5`/`#6` as the live set.
+superseded by PR #3 and then deleted, leaving `#4`/`#5`/`#6` as the live set. **Those three were
+themselves deleted later the same day, and PR #3 closed** — the tracker is now empty by decision.
+See `12-closed-work-archive.md`.
 
 Every **figure** they carried already lives in the critique and research docs. What did **not** live
 anywhere else is recorded below: the three methodological lessons, and the record of which issue was
 right when a later audit was wrong. Both are still load-bearing.
 
-> Deleting the issues leaves dangling references. `#4` and `#5` each carry a comment saying *"do not
-> work from #1's figures — its footstep anchor was withdrawn."* **That instruction still holds**;
-> this file is where #1 went.
+> Deleting the issues leaves dangling references. `#4` and `#5` each carried a comment saying *"do
+> not work from #1's figures — its footstep anchor was withdrawn."* **That instruction still holds**
+> — the anchor is **40 Hz / 76.9 µg**, not 17 Hz / 32.7 µg — and this file is where #1 went. Those
+> two issues have since been deleted too, so the instruction now lives only here.
 
 ---
 
