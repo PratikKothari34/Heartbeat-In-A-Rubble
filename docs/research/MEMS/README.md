@@ -12,7 +12,7 @@
 > **The sensor conclusion is also reversed.** This pass marked the **ADXL355** FIXED and rejected the
 > **SM-24 geophone** because its 10 Hz corner sits above the target band — true only of the *wrong*
 > band. The band error (0.5–4 Hz, a *repetition rate*, not a *signal bandwidth*) caused the sensor
-> error. At the correct **5–40 Hz**, the SM-24 is the selected sensor and the ADXL355 cannot do the
+> error. The SM-24 is the selected sensor and the ADXL355 cannot do the
 > job: every tap case is buried on the ADXL355 (−7 to −25 dB) and detected on the SM-24 (+23 to
 > +41 dB).
 >

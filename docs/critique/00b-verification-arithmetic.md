@@ -44,7 +44,7 @@ All figures from `scratchpad/verify.py` and `scratchpad/salvage.py` under `py -3
 
 ---
 
-## A. The signal-level deficit is 48-69 dB, not ~20 dB
+## A. The signal-level deficit is 47-69 dB, not ~20 dB
 
 The only defensible anchor in the literature chain is a **measured footstep**: ~3 um/s particle
 velocity at 19 Hz, 3 m range. Converting to acceleration (a = 2*pi*f*v):
@@ -192,8 +192,16 @@ With sigma_t ~ 1/(B*sqrt(SNR)) and 300 m/s:
 | Band | SNR 10 dB | SNR 20 dB |
 |---|---|---|
 | 0.5-4 Hz (as written) | 27.11 m | 8.57 m |
-| **5-40 Hz (corrected)** | **2.71 m** | **0.86 m** |
+| **5-40 Hz** ~~(corrected)~~ **[WITHDRAWN - ADR 0001]** | **2.71 m** | **0.86 m** |
 | 5-95 Hz (wide) | 1.05 m | 0.33 m |
+
+> **[ADR 0001, 2026-10-11]** The 5-40 Hz row is retained for its arithmetic only. That band was
+> **seismocardiography**-derived (`01-physics-kill-attempt.md:290`) and was never derived from a tap;
+> it is withdrawn as the project's band. Acquisition is **5-200 Hz** and the detection band is an
+> **output of the M1/M2 bench measurement**. **The conclusion of this section is unaffected and in
+> fact strengthens:** at any band wider than ~25 Hz the pick error is sub-metre, so **node position
+> dominates the error budget** - which is the finding that sets the +/-3.5-5 m localization spec. The
+> `5-95 Hz (wide)` row is the closer analogue to the decided acquisition band.
 
 Combined in quadrature with honest node-position uncertainty (+/-3.5 m mid-range, from drone GPS CEP
 plus post-impact bounce - finding 3 of `00`):

@@ -14,8 +14,9 @@ outside `docs/critique/`. `MASTER.md`, `docs/research/` and `docs/reference/` ar
 Those are separable claims, and keeping them separate is the whole point of this document.
 
 **Dead:** detecting an unconscious victim's *heartbeat* through rubble with a MEMS accelerometer.
-Not "hard", not "needs better DSP" - **short by 47 to 69 dB** against the chosen sensor's own noise
-floor, confirmed by two independent routes (`01` via propagation, `00b` via footstep calibration).
+Not "hard", not "needs better DSP" - **short by 47 to 69 dB** against the **ADXL355's** noise
+floor (25 ug/rtHz - the MEMS part MASTER 3.2 specifies, **not** the SM-24 this verdict selects in
+4.2), confirmed by two independent routes (`01` via propagation, `00b` via footstep calibration). **[CORRECTED 2026-10-11: read "the chosen sensor's own noise floor" - which, after 4.2 reverses the sensor choice, points at the **wrong sensor**. Against the SM-24's *element* floor the cardiac signal is **positive**; the premise dies on the **propagation path**, not on sensor self-noise. `:69` below states the referent correctly. The figure is also pre-amendment: `00b:26` moves it to **38-60 dB** on measured cardiac force, and ~31-53 dB after the anchor correction (`00b:73`) - both frozen as-written under `00b:85-95`.]**
 Closing even the optimistic end needs 2.8 hours of phase-coherent integration; closing the
 realistic end needs 278 hours. HRV - the feature required to prove the signal is human - destroys
 the phase coherence that averaging requires. **There is no parameter choice that recovers this.**
@@ -175,7 +176,7 @@ pivot surrenders nothing that existed.**
 | Parameter | Value | Why |
 |---|---|---|
 | **Sensor** | **SM-24 geophone** (vendor-verify noise first) | 48 dB density advantage **is** the margin. Reverses 3.2 |
-| **Band** | **5-40 Hz** (tap), 200 Hz-3 kHz (voice, S4) | Matches the signal, not the rate |
+| **Band** | ~~**5-40 Hz** (tap)~~ **SUPERSEDED by ADR 0001 (2026-10-11): acquire 5-200 Hz; the tap detection band is an output of the M1/M2 bench measurement.** 200 Hz-3 kHz (voice, S4) stands | `(tap)` was appended to a band derived from **seismocardiography** literature (`01-physics-kill-attempt.md:290`). The repair of the rate-vs-bandwidth error was right; the number it kept was cardiac |
 | **Target** | Tap / movement / voice | +32 to +56 dB over cardiac |
 | **Cardiac** | **Stretch goal only**, contact-range confirmer (`01` S3) | Not load-bearing |
 | **Localization spec** | **+/-3.5-5 m**, node-position-bound | Honest; supersedes 8.5 by 30-70x |
@@ -197,7 +198,8 @@ admits matched filtering and pattern gating that raw energy detection cannot ach
 advantage of S1 over the original premise. But it must be **specified and measured**, not assumed:
 
 - **Replace "93% accuracy" with a false-alarm-rate requirement.** Accuracy is the wrong metric for a
-  rare-event detector. Target **<= 1 false pin per node-hour**, measured on **empty** rubble.
+  rare-event detector. ~~Target **<= 1 false pin per node-hour**, measured on **empty** rubble.~~
+  **[SUPERSEDED 2026-10-11: this threshold was set for *continuous* operation, where a node-hour holds thousands of looks. `08-amendment.md:20` moved the architecture to command-triggered (~5-13% duty, doctrine ~1 All Quiet window per hour), so a node-hour now holds **~1 look** - and the threshold was never rescaled. At the design's own 7% per-look FPR it is met **14x over before any persistence rule applies** (`09-pr3-citation-audit.md` section 7). A gate that cannot fail is not a gate. **State the target per look or per All Quiet window, not per node-hour.**]**
 - **Measure common-mode rejection explicitly** with an excavator or generator running. Do not credit
   the 3-of-N vote until independence is tested - `02` shows it is the single most load-bearing
   unexamined assumption in the chain, and it is nowhere in MASTER.
@@ -211,7 +213,7 @@ From `01`, with my arithmetic attached. Note what comes first: **nothing here re
 anything.**
 
 1. **Delete the 0.5-4 Hz filter.** Wrong regardless of path. Free.
-2. **Re-run the 3.2 sensor trade against 5-40 Hz.** The geophone rejection is wrong and the
+2. **Re-run the 3.2 sensor trade.** The geophone rejection is wrong and the
    correction is free. ~~**Vendor-verify the SM-24's 0.1 ug/rtHz**~~ **AMENDED 2026-10-08: there is
    nothing to vendor-verify.** The SM-24 brochure was re-extracted and contains **no noise
    specification at all** (regex `nois` over the full text: zero matches). 0.1 ug/rtHz was never a
@@ -224,8 +226,8 @@ anything.**
 3. **Do NOT run MASTER 12 step 1 as written.** Its outcome is already determined; it would cost weeks
    to confirm what arithmetic gives today.
 4. **Bench-test a TAPPING source at 1 / 3 / 10 m** on specified hardware. Measures real detection
-   range and **validates the 60-80 Hz tap-spectrum assumption** - the estimate most worth checking,
-   since it sets both the f-weighting gain and whether a 10 Hz-corner geophone is in-band.
+   range and **measures the tap spectrum** - the estimate most worth checking,
+   since it sets the f-weighting gain. **[AMENDED 2026-10-11, ADR 0001: this does not "validate 60-80 Hz" - that figure is *"NO DATA FOUND"* (`prior-art/C-propagation-modeling.md:241`), as is the 5-40 Hz alternative, which is a *cardiac* band. The measurement **sets** the detection band; it does not confirm a pre-chosen one. Acquire 5-200 Hz. The geophone-in-band question is settled separately: the SM-24 corner costs -0.72 dB by 15 Hz and ~0 dB above 30, so sensor selection does not turn on the band.]**
 5. **Run step 4 again with an excavator or generator active** - the false-alarm and common-mode test.
    Cheap, and it attacks the only unsolved problem.
 6. **Decide S1 vs S4 before spending the deferrable $739 airframe** (MASTER 9 already flags it).
@@ -238,16 +240,16 @@ What could still sink the rebuilt system, in order:
 
 1. **False alarms (4.3).** Unsolved. Mitigable via cooperative patterns, but unproven. **The one that
    should worry you.**
-2. **SM-24 noise figure.** MASTER's own number, not vendor-verified. 10x optimism makes knuckle taps
-   marginal.
-3. **Tap spectrum.** 60-80 Hz estimated, not measured. Both effects favour the tap, so error is
-   likely small - but it is an assumption.
+2. ~~**SM-24 noise figure.** MASTER's own number, not vendor-verified. 10x optimism makes knuckle taps marginal.~~ **[WITHDRAWN 2026-10-08 - see step 2 above: the brochure has no noise specification at all, and the element's computed thermal floor is 23-30x *better* than the assumed 0.1 ug/rtHz. The risk inverts. **The preamplifier**, not the element, is the residual risk here.]**
+3. **Tap spectrum - and the detection band itself.** 60-80 Hz is estimated, not measured. **[UPGRADED 2026-10-11, ADR 0001: this is worse than "an assumption." *Neither* candidate band was ever derived from a tap - 60-80 Hz is *"NO DATA FOUND"* (`prior-art/C-propagation-modeling.md:241`) and 5-40 Hz is a **seismocardiography** band (`01-physics-kill-attempt.md:290`), derived for the premise this verdict kills. The claim that "both effects favour the tap" rests on a band with no tap provenance. Resolution: acquire 5-200 Hz; the detection band is an **output** of the M1/M2 bench measurement.]**
 4. **Responsive-victim-only.** A genuine capability reduction. Honest, and it is what physics allows.
 5. **Node position** caps localization at +/-3.5-5 m. Adequate for directing a dig; not the
    centimetre claim.
 
-**What is NOT at risk:** the band correction, the coupling conclusion, the cardiac kill, the cost
+**What is NOT at risk:** the coupling conclusion, the cardiac kill, the cost
 scaling, and the regulatory finding. Those are arithmetic or verified documents.
+
+> **The band correction WAS listed here, and that was wrong - corrected 2026-10-11 (ADR 0001).** What is sound is the *negative* half: 0.5-4 Hz was a repetition **rate**, not a signal **bandwidth**, and deleting that filter is right on every path. The *positive* half - that the replacement is 5-40 Hz - is not sound: that figure came from cardiac literature and was never derived from a tap. A correction is only as settled as the number it installs. **The band is an open question, not a result.**
 
 ---
 

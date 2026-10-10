@@ -7,8 +7,8 @@
 > so every section below must be read against the critique.**
 >
 > Detecting a buried survivor's **heartbeat** with the sensor specified here **cannot work**. The
-> cardiac seismic signal sits **38–60 dB below the sensor's own noise floor** at 3 m. The source
-> force is now *measured* (3.7 N Starr 1939; 4.06 N Inan 2009; 2 N_pp Ashouri 2016), so this is
+> cardiac seismic signal sits **38–60 dB below the ADXL355 floor** (25 µg/√Hz — the MEMS part §3.2
+> specifies, *not* the SM-24 that replaced it) at 3 m. The source force is now *measured* (3.7 N Starr 1939; 4.06 N Inan 2009; 2 N_pp Ashouri 2016), so this is
 > not an assumption that better instrumentation or a better filter can rescue — and a
 > crush-injured survivor measures **weaker** (0.94–1.05 N), not stronger.
 >
@@ -17,8 +17,17 @@
 > (~50–150 ms rise). The filter keeps the rate and **discards the signal**.
 >
 > **What replaced it:** same drone, mesh, TDoA solver and time sync, retargeted to **tapping /
-> voice from a responsive survivor** at **5–40 Hz** on an **SM-24 geophone**, which clears the
-> floor by **+23 to +41 dB**.
+> voice from a responsive survivor** on an **SM-24 geophone**, which clears the floor by
+> **+23 to +41 dB**.
+>
+> ⚠ **The tap band is NOT 5–40 Hz — ADR 0001, 2026-10-11.** Earlier revisions of this marker said
+> 5–40 Hz. That figure was derived from **seismocardiography** literature
+> (`01-physics-kill-attempt.md:290`) — a *cardiac* band, for the premise above. It was never
+> derived from a tap, and neither was the 60–80 Hz alternative
+> (`prior-art/C-propagation-modeling.md:241`: *"NO DATA FOUND"*). **Decision: acquire 5–200 Hz;
+> the detection band is an output of the M1/M2 bench measurement.** Where one figure is
+> unavoidable, `20–80 Hz [ASSERTED — pending M2]`. The +23/+41 dB margin above is frozen under
+> `00b:85-95` and does not move on any band.
 >
 > **Known-wrong numbers below** (corrected in the critique, left in place here): §3.3's 0.1–1 mg
 > cardiac amplitude (wrong by 479–19,167×) · §6's 0.5–4 Hz band · §3.2's **FIXED** marker on the
@@ -26,8 +35,9 @@
 > by node position, not clock) · node mass ~8 g (really 15.5 g) · "foam shell absorbs 15–20 G"
 > (15 mm crush gives ~200 G) · §9's cost conclusion (see below).
 >
-> **Authority order:** `docs/critique/07-verdict.md` → `08-amendment.md` → `docs/critique/prior-art/`
-> → this file. **Numbers here still win on raw figures; the premise and the signal chain do not.**
+> **Authority order:** `docs/decisions/` (ADRs — binding, and **local-only**: gitignored, so not in
+> a clone) → `docs/critique/07-verdict.md` → `08-amendment.md` → `docs/critique/prior-art/` → this
+> file. **Numbers here still win on raw figures; the premise and the signal chain do not.**
 >
 > *Banner added 2026-10-08 after the adversarial review (2026-10-07) and prior-art sweep (2026-10-08).*
 
@@ -92,9 +102,9 @@ Raw rubble seismic data is ~95% noise. Everything downstream exists to pull out 
 
 **ADXL355**, 3-axis, 25 µg/√Hz noise floor, ±2 g, ~$15.
 
-Rejected: MPU-6050 (400 µg/√Hz — 16× noisier, $3); SM-24 geophone (0.1 µg/√Hz **[SUPERSEDED 2026-10-08: this rejection is wrong — it assumed the 0.5–4 Hz band, itself an error. At the correct 5–40 Hz band the SM-24 is the selected sensor. Also, 0.1 µg/√Hz is not a vendor figure; the datasheet has no noise spec, and the computed element floor is 0.003–0.005 µg/√Hz. See `docs/critique/07-verdict.md`.]** but a 10 Hz
+Rejected: MPU-6050 (400 µg/√Hz — 16× noisier, $3); SM-24 geophone (0.1 µg/√Hz **[SUPERSEDED 2026-10-08: this rejection is wrong — it assumed the 0.5–4 Hz band, itself an error. The SM-24 is the selected sensor. (The band this rejection turned on is itself unsettled — **not** 5–40 Hz; see ADR 0001 above. The selection does not depend on it: the SM-24 corner costs only −0.72 dB by 15 Hz and ~0 dB above 30.) Also, 0.1 µg/√Hz is not a vendor figure; the datasheet has no noise spec, and the computed element floor is 0.003–0.005 µg/√Hz. See `docs/critique/07-verdict.md`.]** but a 10 Hz
 corner frequency, which sits above the entire target band — unusable here regardless of
-its noise spec).
+its noise spec — **[SUPERSEDED 2026-10-08: "above the entire target band" was true only of the erroneous 0.5–4 Hz band. Computed 2nd-order response, f0 = 10 Hz, ζ = 0.7: −12.26 dB at 5 Hz, −2.92 dB at 10 Hz, −0.72 dB at 15 Hz, ~0 dB above 30 Hz — the penalty is confined below ~15 Hz.]**).
 
 ### 3.3 Detection range — PENDING
 
@@ -111,7 +121,7 @@ and has not been measured. See §10.1.
 | Form factor | ~4 cm dia × 1.5 cm, ~8 g assembled |
 | Sensor | ADXL355 |
 | MCU | ESP32 or STM32 — **PENDING**, see §10.3 |
-| Radio | SX1276, 865–867 MHz |
+| Radio | SX1276, **865–868 MHz** **[CORRECTED 2026-10-08: was 865–867 — see §5]** |
 | Power | CR2032, 225 mAh |
 | Orientation | 3 g tungsten base at sensor end + aerodynamic fin → lands sensor-down |
 | Impact tolerance | foam shell absorbs 15–20 G |
@@ -146,7 +156,7 @@ the radio budget in §10.2.
 
 | Parameter | Value |
 | --- | --- |
-| Band | 865–867 MHz (India, licence-free) |
+| Band | **865–868 MHz** (India, licence-exempt **only for an ETA-approved device model**) **[CORRECTED 2026-10-08: this table said 865–867 MHz, which is the *superseded* 2005 RFID allocation. The operative band is 865–868 MHz per G.S.R. 853(E), whose rule 1 expressly supersedes it — primary-source verified, `docs/critique/06-prior-research-audit.md:171`. Two further conditions this table omits: Table-II's limit is **500 mW e.r.p.** (not EIRP), and occupied bandwidth is capped at **≤200 kHz**, which **LoRa BW125 meets but BW250 and BW500 do not** — closing the "go wider to cut airtime" escape. "Licence-free" is also wrong as written: ETA is a per-model approval costing ~$1,786 (`04-cost-kill-attempt.md`), budgeted here at $0.]** |
 | Module | SX1276 |
 | Modulation | Chirp Spread Spectrum |
 | Range, line of sight | 2–15 km |

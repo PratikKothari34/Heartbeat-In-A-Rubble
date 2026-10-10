@@ -15,7 +15,8 @@ not say so.**
 MASTER describes detecting a buried survivor's **heartbeat** with a MEMS accelerometer. A six-agent
 adversarial review on 2026-10-07 established that this **cannot work**:
 
-- The cardiac seismic signal is **38–60 dB below the chosen sensor's own noise floor** at 3 m.
+- The cardiac seismic signal is **38–60 dB below the ADXL355 floor** (25 µg/√Hz — the MEMS part
+  MASTER §3.2 specifies, **not** the SM-24 that replaced it) at 3 m.
   (Was 47–69 dB. **Revised 2026-10-08** because the cardiac source force is now *measured*, not
   assumed: 3.7 N (Starr 1939, n=7), 4.06 N (Inan 2009, n=26+), 2 N_pp (Ashouri 2016). The worst
   single healthy subject in the literature, 10.95 N, costs **+8.75 dB**. Nothing recovers 38 dB, and
@@ -25,6 +26,20 @@ adversarial review on 2026-10-07 established that this **cannot work**:
 - No filter, averaging scheme or ML model recovers this. Closing the gap would need 2.8 h–3.2 yr of
   phase-coherent integration, and the HRV feature needed to prove a signal is human **destroys the
   phase coherence averaging requires**.
+
+> ⚠ **Which sensor the 38–60 dB is measured against — added 2026-10-11.** This file previously said
+> *"the chosen sensor's own noise floor."* That was wrong, and in the most misleading possible
+> direction: the **chosen** sensor is the **SM-24 geophone** (§4), and against the SM-24's *element*
+> floor the cardiac signal is **positive**. 38–60 dB is an **ADXL355** figure —
+> `docs/critique/00b-verification-arithmetic.md:26` derives it from the 47–69 dB ADXL355 deficit
+> plus the 8.75 dB worst-healthy-subject correction, and `docs/critique/07-verdict.md:69` states the
+> parent as *"47-69 dB below the ADXL355 floor."*
+>
+> **The premise still dies** — by ~31–53 dB after propagation
+> (`00b-verification-arithmetic.md:73`) — but it dies **on the propagation path, not on sensor
+> self-noise.** Getting this backwards is the single easiest way to publish a claim a reviewer can
+> overturn with the datasheet. **Do not quote 38–60 dB against any sensor but the ADXL355**, and do
+> not restate it as 31–53 dB either — that figure is frozen under `00b:85-95`.
 
 **Do not design, plan or write code toward heartbeat detection.** It is settled, not open.
 
@@ -88,8 +103,39 @@ Consequences, all downstream of that single slip:
   band. The geophone's 48 dB noise-density advantage **is** the detection margin: every tap case is
   buried on the ADXL355 (−7 to −25 dB) and detected on the SM-24 (+23 to +41 dB).
 
-**If you touch the signal chain: the band is 5–40 Hz, the sensor is the SM-24, and §3.2's "FIXED"
-marker is wrong.**
+**If you touch the signal chain: the sensor is the SM-24 and §3.2's "FIXED" marker is wrong.
+The band is an open question — see below.**
+
+> ⚠ **The tap band is NOT 5–40 Hz — decided 2026-10-11.** Earlier revisions of this file said it
+> was. **Neither** circulating figure was ever derived from a tap: **5–40 Hz** comes from
+> **seismocardiography** literature (`docs/critique/01-physics-kill-attempt.md:290`, *"centred near
+> 15–20 Hz"*) — a *cardiac* band, for the premise that is dead — and **60–80 Hz** is
+> *"NO DATA FOUND — and mildly suspect"* (`docs/critique/prior-art/C-propagation-modeling.md:241`).
+> Committing to either publishes a tap band with no tap provenance — the same rate-vs-bandwidth
+> category error one level up.
+>
+> **Decision: acquire 5–200 Hz; the detection band is an *output* of the M1/M2 bench measurement,
+> not an input.** Where one figure is unavoidable, write `20–80 Hz [ASSERTED — pending M2]`. Any dB
+> figure, margin or noise floor must **name the band it was computed in, inline**.
+>
+> Two things this does **not** change: **the SM-24 stays** (2nd-order high-pass, f0 = 10 Hz,
+> ζ = 0.7 → −12.26 dB at 5 Hz but **−0.72 dB by 15 Hz** and ~0 above 30, so the corner penalty is
+> confined below ~15 Hz and sensor selection does not re-open); and **the margin figures do not
+> move on any band** — 38–60 dB and +23/+41 dB stay as written, frozen under
+> `docs/critique/00b-verification-arithmetic.md:85-95`.
+>
+> What binds is **ambient, not self-noise**: Johnson noise is 0.00027–0.00439 µg/√Hz across
+> 5–80 Hz — 23–365× of margin against the 0.1 µg/√Hz spec in *any* candidate band. But machinery
+> (20–200 Hz) and aftershocks (5–50 Hz) sit inside the candidate bands
+> (`01-physics-kill-attempt.md:300`), and that is site-dependent and unmeasured.
+>
+> Wide acquisition is also the cheap option: the incumbent this project is benchmarked against —
+> the **Delsar LifeDetector LD3**, FEMA/UKSAR standard — runs **1 Hz–3 kHz**
+> (`docs/critique/prior-art/A-cardiac-seismic.md:134`), ~37× wider than either candidate. A fielded
+> tap/scratch/shout detector does not narrowband.
+>
+> Recorded as **ADR 0001**. That file (`docs/decisions/`) is kept local by the maintainer and is
+> **not in your clone** — this block is the authoritative copy for collaborators.
 
 ---
 
@@ -100,7 +146,7 @@ Locked (supersedes MASTER where they conflict):
 | Parameter | Value |
 |---|---|
 | Sensor | **SM-24 geophone.** ~~vendor-verify its 0.1 µg/√Hz~~ **No vendor noise figure exists — the datasheet has none (verified by full re-extraction; regex `nois` = 0 matches). 0.1 µg/√Hz was never a vendor spec. Computed element thermal floor is 0.003–0.005 µg/√Hz, so the assumption is conservative by 23–30×. Specify the *preamplifier* instead — it sets the system floor (12–16× margin at 4 nV/√Hz; vanishes only near 50 nV/√Hz).** |
-| Band | **5–40 Hz** tap; 200 Hz–3 kHz voice |
+| Band | **Acquire 5–200 Hz** — tap detection band is an **output of the M1/M2 bench measurement**, not chosen now (ADR 0001, 2026-10-11; see §3). One figure where unavoidable: `20–80 Hz [ASSERTED — pending M2]`. ~~5–40 Hz~~ was a *cardiac* band. Voice **200 Hz–3 kHz** stands |
 | Target | Tap / movement / voice. **Cardiac is a stretch goal only** |
 | Operating mode | **Command-triggered during "All Quiet"**, not autonomous continuous |
 | Duty cycle | **~5–8 %**, set by the incident commander, not by the design |
@@ -122,6 +168,7 @@ packet size (needs 82–156 B, not 24 B), power (receive current budgeted at zer
 1. **False alarms.** At a realistic prior, 93 % accuracy yields **~16 % positive predictive value** —
    five of six detections false; ~907 false pins/day on empty rubble. The persistence rule above is
    the proposed fix (→ 70–98 % PPV) but is **unmeasured**. Never present detection as confirmation.
+   **Specify the false-alarm target per look or per All Quiet window, never per node-hour**: the architecture is command-triggered at ~1 window/hour, so a node-hour holds **~1 look**, and the ≤1-false-pin-per-node-hour figure still written in `07-verdict.md:200` and `08-amendment.md:199` is met **14× over before any persistence rule applies** (`09-pr3-citation-audit.md` §7). A gate that cannot fail is not a gate.
 2. **Compliance and cost.** All-in capital is **$9,746, not $1,845**; the claimed 8× advantage over
    the $15,000 incumbent compresses to ~1.0–1.5×. As specified the build is **not legal in India**:
    DGFT prohibits importing a drone kit (buy components and assemble domestically) and the radio

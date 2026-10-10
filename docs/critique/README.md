@@ -16,8 +16,18 @@ assigned area, then adjudicated into a single verdict.
 
 ## The bottom line
 
-The **heartbeat premise is dead** - the cardiac signal sits **47-69 dB below the chosen sensor's own
-noise floor**, and MASTER 3.3's unmeasured 0.1-1 mg assumption is **wrong by 479-19167x**.
+The **heartbeat premise is dead** - the cardiac signal sits **38-60 dB below the ADXL355 floor**
+(25 ug/rtHz - the MEMS part MASTER 3.2 specifies, **not** the SM-24 that replaced it; derivation
+`00b-verification-arithmetic.md:26`), and MASTER 3.3's unmeasured 0.1-1 mg assumption is **wrong by
+479-19167x**.
+
+> **Corrected 2026-10-11.** This line previously read *"47-69 dB below the chosen sensor's own noise
+> floor."* Both halves were wrong. **47-69 dB** is the pre-amendment figure, superseded by **38-60 dB**
+> once the cardiac source force was measured (`00b:26`). And **"the chosen sensor"** now reads as the
+> **SM-24**, against whose *element* floor the cardiac signal is **positive** - the deficit is an
+> **ADXL355** number only. The premise still dies, by ~31-53 dB after propagation (`00b:73`), but it
+> dies **on the propagation path, not on sensor self-noise.** Do not quote 38-60 dB against any sensor
+> but the ADXL355, and do not restate it as 31-53 dB - that figure is frozen under `00b:85-95`.
 
 The **system survives**, because the error that killed the premise was one conceptual slip: MASTER 6
 filters 0.5-4 Hz, which is the heartbeat's **repetition rate**, not its **signal bandwidth**.
@@ -40,7 +50,7 @@ vote that assumes independence real rubble does not provide).
 | `03-hardware-kill-attempt.md` | Node, impact, mass, power. Self-corrected twice - see below |
 | `06-prior-research-audit.md` | Prior claims re-verified: CONFIRMED / WEAKENED / OVERTURNED |
 | `04-cost-kill-attempt.md` | Procurement audit. **$9,746 capital (5.3x), and the build is illegal as specified** - DGFT prohibits drone kit import |
-| `05-operational-kill-attempt.md` | CONOPS audit. **Sensitive listening happens inside a commanded hourly "All Quiet" (~5-8%% duty)** |
+| `05-operational-kill-attempt.md` | CONOPS audit. **Sensitive listening happens inside a commanded hourly "All Quiet" (~5-8% duty)** |
 | **`08-amendment.md`** | **Amends 07 for 04 and 05. Read after 07.** Persistence fixes the PPV problem; compliance breaks the cost claim |
 | **`09-pr3-citation-audit.md`** | **OPEN REVIEW of unmerged PR #3, 2026-10-09.** Audits the proposal .docx against `f73b73d`: 10 blocking, 12 should-fix. Four of the blocking defects are in `main`, not the PR |
 | **`prior-art/`** | **Literature sweep, 2026-10-08. Amends everything above.** `A` cardiac force (now measured), `B` USAR systems + drone prior art + doctrine, `C` propagation parameters validated row by row |
@@ -66,7 +76,7 @@ vote that assumes independence real rubble does not provide).
 Nothing here requires buying anything:
 
 1. **Delete the 0.5-4 Hz filter.** Wrong on every path. Free.
-2. **Re-run the 3.2 sensor trade against 5-40 Hz.** ~~Vendor-verify the SM-24 noise density~~ -
+2. **Re-run the 3.2 sensor trade.** ~~Vendor-verify the SM-24 noise density~~ -
    **there is no vendor noise figure; the datasheet has none.** The computed element floor is
    23-30x *better* than assumed, so the margin holds and this is no longer the critical number.
    **Specify the preamplifier instead** - it sets the system floor (12-16x margin at 4 nV/rtHz).
@@ -74,5 +84,5 @@ Nothing here requires buying anything:
 4. **Bench-test a tapping source at 1/3/10 m**, then **repeat it with an excavator running** - the
    false-alarm test, which attacks the only unsolved problem. **Measure tap force and tap spectrum
    while you are there**: the 50-300 N / 60-80 Hz figures have no source, and every margin in `07`
-   scales off them. This is now the highest-value measurement in the project.
+   scales off them. This is now the highest-value measurement in the project. **[ADR 0001, 2026-10-11: the spectrum measurement *sets* the tap detection band rather than checking one - neither 60-80 Hz nor 5-40 Hz was ever derived from a tap. Acquire 5-200 Hz; where one figure is unavoidable write `20-80 Hz [ASSERTED - pending M2]`.]**
 5. **Decide S1 vs S4 before the deferrable $739 airframe.**

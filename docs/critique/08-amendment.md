@@ -101,7 +101,7 @@ contribution identified anywhere in this critique set.**
   amplitude-ratio localization needs a known source amplitude and attenuation model - and `02` F7
   already killed depth-from-amplitude for *exactly* that reason (two unknowns, zero equations).
   **Amplitude-ratio area localization inherits the same weakness.** Verdict: keep TDoA for the
-  corrected 5-40 Hz band (where `00b` D shows pick error is sub-metre), **but output a cell, not a
+  corrected band (where `00b` D shows pick error is sub-metre; stated here as 5-40 Hz - **superseded by ADR 0001, 2026-10-11**: acquire 5-200 Hz, detection band pending M2), **but output a cell, not a
   pin** - which is `05`'s real point and is correct.
 
 ---
@@ -184,8 +184,10 @@ So `05`'s good news does not pay for `04`'s bad news. **The rebuilt system is mo
 
 ## 5. Amended locked decisions (supersedes `07` section 4.2)
 
-Unchanged: SM-24 geophone, 5-40 Hz band, tap/voice target, cardiac as stretch only, ~200 G impact
+Unchanged: SM-24 geophone, tap/voice target, cardiac as stretch only, ~200 G impact
 design, drop ICA / depth-from-amplitude / ECG-LSTM.
+
+> **The band is not unchanged - ADR 0001, 2026-10-11.** This section originally listed "5-40 Hz band" as carried over from `07` section 4.2. That figure was derived from **seismocardiography** literature (`01-physics-kill-attempt.md:290`) and was never derived from a tap; the 60-80 Hz alternative is *"NO DATA FOUND"* (`prior-art/C-propagation-modeling.md:241`). **Acquire 5-200 Hz; the detection band is an output of the M1/M2 bench measurement.** Where one figure is unavoidable: `20-80 Hz [ASSERTED - pending M2]`. The margin figures do not move on any band (`00b:85-95`).
 
 **Changed or added:**
 
@@ -196,8 +198,8 @@ design, drop ICA / depth-from-amplitude / ECG-LSTM.
 | **Runtime requirement** | **>=138-163 h presence** (not 72 h); met duty-limited | `05` + Macintyre |
 | **Primary discriminator** | **Persistence across silences, >=60% of available looks** - not the LSTM | `05`, quantified here |
 | **Output** | **DETECTED / NO DETECTION / BLIND per cell**, 2-5 m. **Never a pin. Never a clearance** | `05` |
-| **False-alarm spec** | Replace "93% accuracy" with **<=1 false pin per node-hour on empty rubble** | `02` F3 + `05` |
-| **TDoA** | **Keep** for 5-40 Hz (sub-metre picks), but **output a cell**; do not invest further in timing | `00b` D, adjudicated vs `05` |
+| **False-alarm spec** | Replace "93% accuracy" with a **per-look or per-All-Quiet-window** false-alarm rate. **[CORRECTED 2026-10-11: the <=1-per-node-hour figure written here is inconsistent with this same table's command-triggered duty cycle - a node-hour holds ~1 look, so the target is met 14x over before any persistence rule; `09-pr3-citation-audit.md` section 7.]** | `02` F3 + `05`, corrected |
+| **TDoA** | **Keep** (sub-metre picks), but **output a cell**; do not invest further in timing. Band per ADR 0001, not 5-40 Hz | `00b` D, adjudicated vs `05` |
 | **Airframe** | **Assemble domestically from components.** Do NOT buy an F450 kit - import prohibited | `04` |
 | **Compliance budget** | **$973-2,758**, non-optional, non-engineerable. ETA dominates and is [EST] | `04` |
 | **Landed cost** | Apply **+33%** to every US/Chinese vendor price | `04` |

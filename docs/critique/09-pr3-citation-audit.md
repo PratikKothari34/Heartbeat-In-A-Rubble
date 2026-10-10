@@ -359,6 +359,7 @@ operator; this project proposes **TDoA**, a different estimator) — but the pro
 instead of leaving the comparison implied. **See §10 for the recommended reframing.**
 
 ## 12. The 5–40 Hz branch puts a quarter of the band below the sensor's own corner
+*(Finding stands; its conclusion is narrower than written — see the ADR 0001 note at §12's end.)*
 **Line 82 vs line 86** · my own finding
 
 All four SM-24 specs verified **exact** against the brochure (10 Hz / 28.8 V·s/m / 375 Ω / 74 g). But a
@@ -371,6 +372,8 @@ velocity geophone is a **2nd-order high-pass below its corner**. Computed (f₀ 
 **If the band resolves to 5–40 Hz, the chosen sensor is 12.3 dB down at the bottom of its own design band**
 and loses most of its bottom octave. The proposal states "10 Hz natural frequency" as a bare spec and
 **never connects it to the 5–40 Hz band**. `07-verdict.md:228` already lists this as an open question.
+
+> **Narrowed 2026-10-11 (ADR 0001).** The −12.26 dB at 5 Hz is correct, but the penalty is **confined below ~15 Hz** — −2.92 dB at 10 Hz, −0.72 dB at 15, −0.22 at 20, ~0 above 30. So this does **not** re-open sensor selection, as the summary line originally implied: the SM-24 stays on any candidate band. It is an argument against *acquiring* below ~15 Hz, not against the sensor — and ADR 0001's 5–200 Hz acquisition band is chosen partly for that reason.
 
 **Band choice and sensor choice are coupled.** The 60–80 Hz branch is flat for the SM-24; the 5–40 Hz branch
 is not. Activity 2 should resolve **band and sensor-match together.**
@@ -681,8 +684,22 @@ exactly two things: the 17 Hz anchor (§1) and the Arosio framing (§11).**
 - **§18** `INPUT.md:99` conflates the SeismicDart fidelity figure across two sources.
 - **§19** add the markitdown Gantt-dropping gotcha to `CLAUDE.md`.
 
-**Two decisions only you can make:** the **tap band** (5–40 vs 60–80 Hz — it moves the floor 16×, the margin,
-the preamp spec, *and* re-opens sensor selection via §12), and the **tracked-`.docx` workflow**.
+**One decision only you can make:** the **tracked-`.docx` workflow**.
+
+> ~~**Two decisions:** the tap band (5–40 vs 60–80 Hz — it moves the floor 16×, the margin, the
+> preamp spec, *and* re-opens sensor selection via §12)~~ **— RESOLVED 2026-10-11, ADR 0001, and
+> the framing was wrong.** The answer is **neither**: both figures lack tap provenance (5–40 Hz is
+> a seismocardiography band, `01-physics-kill-attempt.md:290`; 60–80 Hz is *"NO DATA FOUND"*,
+> `prior-art/C-propagation-modeling.md:241`). **Acquire 5–200 Hz; the detection band is an output
+> of the M1/M2 bench measurement.**
+>
+> Two of this line's own premises were overstated and are withdrawn: the 16× floor swing is
+> immaterial in absolute terms (Johnson noise is 0.00027–0.00439 µg/√Hz across 5–80 Hz —
+> **23–365× of margin against the 0.1 µg/√Hz spec in either band**, so self-noise never binds),
+> and **sensor selection does not re-open**: §12's −12.3 dB is real but confined below ~15 Hz
+> (−0.72 dB by 15 Hz, ~0 above 30). What binds is **ambient**, which is unmeasured. §4/§5's fix
+> stands and gets easier: **name the band inline on every dB figure** and tag the tap band
+> `[ASSERTED — pending M2]`.
 
 ---
 

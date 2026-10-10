@@ -772,8 +772,11 @@ Concrete, and ordered so that each stage produces the measurement the next one n
 §10.1 as written measures *amplitude vs distance*. **That is insufficient and will produce a
 filter as wrong as the current one.** Measure instead:
 
-- **Power spectral density of the received signal, 0.1–50 Hz**, for a still human subject at
-  0.5/1/2/3 m through representative material.
+- **Power spectral density of the received signal, 5–200 Hz** (the ADR 0001 acquisition band), for a
+  **tapping source** at 0.5/1/2/3 m through representative material. **[AMENDED 2026-10-11: was
+  *"0.1–50 Hz … for a still human subject"* — a *cardiac* protocol over a band that would
+  **structurally exclude** the 60–80 Hz region this measurement now exists to test. That is exactly
+  the error this section warns about four paragraphs down, one octave up.]**
 - The **time-domain impulse shape** of a single beat at the node (this is the matched-filter
   template and it does not exist today).
 - The **ambient PSD of the same band** with no subject (this gives real SNR in dB, replacing the
@@ -788,8 +791,14 @@ on a bench rig, which is free.
 ### Stage 1 — Filter: wide, and set by Stage 0
 
 **Replace 4th-order Butterworth 0.5–4 Hz with a band set by the measured SNR curve**, with a
-defensible prior of **~1–25 Hz** (captures the measured SCG peak at 9.2 Hz and ≥85 % of a 100 ms
-impulse's energy; B ≈ 24 Hz buys the 18.5× timing improvement from F2).
+defensible prior of **20–80 Hz**, tagged `[ASSERTED — pending M2]` (ADR 0001, 2026-10-11), acquired
+over **5–200 Hz**.
+
+> **[AMENDED 2026-10-11.]** This originally read *"a defensible prior of **~1–25 Hz** (captures the
+> measured SCG peak at 9.2 Hz …)"*. **The "set by the measured SNR curve" half is right and is the
+> whole point; the numeric prior was cardiac** — justified by an **SCG** peak, i.e. derived for the
+> premise this review helped kill. The B ≈ 24 Hz timing argument from F2 survives intact: any band
+> wider than ~25 Hz delivers it, and 20–80 Hz (B = 60 Hz) delivers more.
 
 - **Use a linear-phase FIR**, not Butterworth. A 4th-order IIR has **non-linear phase**, which
   introduces frequency-dependent group delay — **a systematic, uncorrected bias directly on the
@@ -870,7 +879,7 @@ Replace with either:
 
 | quantity | spec | replacement |
 |---|---|---|
-| Band | 0.5–4 Hz Butterworth IIR | **~1–25 Hz linear-phase FIR**, set by measured SNR curve |
+| Band | 0.5–4 Hz Butterworth IIR | **Linear-phase FIR over a 5–200 Hz acquisition; detection band set by M2** — `20–80 Hz [ASSERTED]` where one figure is needed (ADR 0001). ~~~1–25 Hz~~ was an SCG prior |
 | Sample rate (bench) | 100 Hz | **≥500 Hz** until the spectrum is known |
 | Transform | 60 s FFT | **matched filter + envelope autocorrelation** (+ STFT for drift) |
 | Classifier | LSTM 64/32 (30,369 params, 177 MMAC) | **feature vector + logistic regression (~10 params, ~0.2 MMAC)** |

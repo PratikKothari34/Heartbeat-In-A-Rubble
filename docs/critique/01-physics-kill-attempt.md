@@ -585,8 +585,13 @@ risk**, and matches the real USAR workflow, which is multi-modal for exactly the
 will cost weeks to confirm what arithmetic gives today. Instead:
 
 1. **Delete the 0.5–4 Hz filter** (§6 stage 1). It is wrong regardless of which salvage path wins.
-2. **Re-run §3.2's sensor trade against the corrected 5–40 Hz band.** The geophone rejection is
-   probably wrong and the correction is free.
+2. ~~**Re-run §3.2's sensor trade against the corrected 5–40 Hz band.**~~ The geophone rejection is
+   wrong and the correction is free — **this was done; the SM-24 is the selected sensor**
+   (`07-verdict.md` §4.2). **[AMENDED 2026-10-11, ADR 0001: "the corrected 5–40 Hz band" is
+   withdrawn. The band derived in §3.3 above is a **seismocardiography** band — correct for the
+   *cardiac* question §3.3 was answering, and never derived from a tap. Acquire **5–200 Hz**; the tap
+   detection band is an **output of the M1/M2 bench measurement**. The sensor trade does not re-open
+   either way: the SM-24 corner costs −0.72 dB by 15 Hz and ~0 dB above 30.]**
 3. **Run the §12 step 1 bench test on a TAPPING source instead**, at 1, 3 and 10 m. That measures
    the S1 salvage path's real detection range and uses hardware already specified.
 4. **Decide S1 vs S4 before spending the $739 on the airframe** — MASTER §9 already correctly

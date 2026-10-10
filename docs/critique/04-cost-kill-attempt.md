@@ -65,7 +65,7 @@ approvals."** So the Pixhawk 6C is fine. The frame kit is not. The drone must be
 domestically from separately-sourced components**, at Indian retail, which is where the $1,035
 line below comes from instead of §8.6's $738.99.
 
-**Wall 2 — the radio needs WPC ETA.** §5 specifies **865–867 MHz**. That band is licence-exempt
+**Wall 2 — the radio needs WPC ETA.** §5 specifies **865–867 MHz** — **[CORRECTED: that figure is from the *superseded* 2005 RFID rules. The operative band is **865–868 MHz** per G.S.R. 853(E), whose rule 1 expressly supersedes the earlier instrument — primary-source verified in `06-prior-research-audit.md:171`. MASTER §4/§5 quote a dead instrument. **The ETA requirement and its cost below are unaffected**; only the band label was wrong.]** That band is licence-exempt
 **for equipment that holds Equipment Type Approval** under Gazette Notification G.S.R. 564(E) of
 30 July 2008 [SEARCH]. ETA is a *per-device-model* approval requiring a test report from an
 accredited lab. §9 budgets **$0** for it.
@@ -332,8 +332,13 @@ property, not a price tier. **The remaining action is a measurement, not a searc
 ADXL355 at rest for 1000 s, compute the PSD, read f_c. That is §12 step 1 and it costs $0 extra
 once the bench exists.
 
-**Note on the geophone rejection.** §3.2 rejects the SM-24 because its "10 Hz corner sits above
-the entire target band". That reasoning is **correct and well-made** — a geophone is a velocity
+**Note on the geophone rejection.** **[SUPERSEDED 2026-10-11: the rejection was *reversed* — the
+SM-24 is now the selected sensor (`07-verdict.md` §4.2; ADR 0001). Computed 2nd-order response,
+f0 = 10 Hz, ζ = 0.7: −12.26 dB at 5 Hz but **−0.72 dB by 15 Hz** and ~0 above 30 — so the corner
+penalty is confined below ~15 Hz, not across "the entire target band." **The asymmetry this note
+identifies still stands and is still worth reading.**]** §3.2 rejects the SM-24 because its
+"10 Hz corner sits above the entire target band". That reasoning **was accepted here as correct and
+well-made** — a geophone is a velocity
 transducer with a resonant high-pass response, and below corner its sensitivity falls at
 12 dB/octave. At 1 Hz an SM-24 is ~40 dB down. **But the same physics argument has never been
 applied to the ADXL355's own low-frequency behaviour**, which is the asymmetry this section
@@ -354,7 +359,7 @@ another without making it.
 | ST IIS2ICLX | ~15 µg/√Hz (inclinometer) | low-g, narrow BW | not retrieved | **GAP** |
 | TDK IIM-42652 / IIM-46234 | not retrieved | — | not retrieved | **GAP** |
 | Safran Colibrys / Silicon Designs | ~0.5–7 µg/√Hz | true seismic grade | **$500–3,000** | [UNVERIF] |
-| Geophone SM-24 | 0.1 µg/√Hz **but 10 Hz corner** | above target band | ~$75 | [UNVERIF] |
+| Geophone SM-24 | 0.1 µg/√Hz **[ASSUMED — not a vendor figure; the datasheet has no noise spec at all, `00b` §G]**, 10 Hz corner | ~~above target band~~ **corner penalty confined below ~15 Hz; SELECTED (`07-verdict.md` §4.2)** | ~$75 | **[A]** |
 
 **Two things this table says that §9 does not.**
 
@@ -636,7 +641,21 @@ nobody has verified is not a budget.**
 
 **Where the project genuinely wins, and it is worth saying plainly:** Delsar is **hand-placed,
 one point at a time, and requires a victim who moves or makes noise** to generate the seismic
-signature it listens for. The passive-heartbeat claim — detecting an *unconscious* victim — is a
+signature it listens for.
+
+> **[SUPERSEDED 2026-10-11 — `07-verdict.md`, `08-amendment.md`.]** The paragraph below names the
+> passive-heartbeat claim as *"the project's actual thesis."* **That thesis is dead.** The cardiac
+> signal is **38–60 dB below the ADXL355 floor** at 3 m (`00b:26`) and ~31–53 dB down even after the
+> favourable anchor correction (`00b:73`); the source force is now *measured*, closing the "what if
+> it is stronger" escape. The project is **retargeted to tap / movement / voice on an SM-24
+> geophone**, which means it now **requires a victim who can act** — the same precondition as Delsar.
+> **The capability gap this paragraph identifies is real; it is simply not reachable, by us or by
+> anyone, with a seismic sensor at rubble distances.** The text is retained as the cost argument's
+> original framing. The cost reasoning around it stands; only this framing of *what the project is
+> for* is withdrawn. Where the project actually wins is **coverage and simultaneity** — many cheap
+> nodes dropped at once versus one hand-placed probe — not sensing an unconscious victim.
+
+The passive-heartbeat claim — detecting an *unconscious* victim — is a
 real capability gap, and no amount of cost auditing touches it. **That is the project's actual
 thesis. It is not a cost thesis, and dressing it as one is what produced the $1,845 number.**
 
@@ -669,7 +688,7 @@ thesis. It is not a cost thesis, and dressing it as one is what produced the $1,
 | E | Ground station (Pi 5 8 GB + GPS FeatherWing + misc) | 119.95 | **High** — prior pass LIVE |
 | F | **Drone, domestic build** (DGFT ban) + 2 crashes + TX | 1,035.00 | Medium [EST] — BOTWALL on Indian retail |
 | G | **DGCA**: RPC + medical + UIN + insurance + Digital Sky | 936.00 | Medium-high [SEARCH] |
-| H | **WPC ETA, 865–867 MHz** (application + test lab) | 1,786.00 | **Low** [EST] — softest line; range $600–2,400 |
+| H | **WPC ETA, 865–868 MHz** (application + test lab) | 1,786.00 | **Low** [EST] — softest line; range $600–2,400 |
 | I | **Test equipment** (PPK2, ref geophone/seismometer, DAQ, slab, bench) | 1,800.95 | Medium [EST/SEARCH] |
 | J | Consumables, rework, misc attrition | 250.00 | Medium [EST] |
 | | **Subtotal, hardware + compliance** | **8,121.27** | |
