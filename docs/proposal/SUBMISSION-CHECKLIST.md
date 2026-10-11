@@ -1,6 +1,7 @@
 # Submission checklist — what the faculty member must fill in
 
-**For:** `Research_Proposal_Air_Deployed_Seismic_Mesh.docx` (on `main` as of `977f284`).
+**For:** `Research_Proposal_Air_Deployed_Seismic_Mesh.docx`.
+**All page limits are met** (see [Page limits](#page-limits-against-the-funder-template)).
 **Technical content is verified and merged.** Every item below is information only the applicant
 has: identity, employment history, teaching load and publication record. Nothing here is a
 technical gap, and nothing here can be filled from the repository.
@@ -32,13 +33,13 @@ fixed.
 
 | Line | Field | Notes |
 |---|---|---|
-| 24, 197 | **[lab / department]** lending the drone | Appears **twice** — both must name the same lab. The operator must be the drone's registered operator under the Drone Rules, 2021 |
-| 140 | **Teaching load, administrative duties, planned conferences** | Suggested venues are already drafted (Near Surface Geophysics / EAGE, IEEE Sensors) — keep or replace |
-| 142 | **[number] of students** | The budget funds no student stipend, so this is project work, not hired labour. Keep it consistent with that |
-| 146 | **"Adapt to the faculty member's background"** | The paragraph after it argues the gap from prior art and needs no change; only the opening clause is yours |
-| 169 | **Prior / current grants** | `[None / or list: title, source, period, amount, products, relation to this proposal]`. "None" is an acceptable answer — write it explicitly rather than leaving the bracket |
-| 173 | **Pending applications** + follow-on `[agency]`, `[period]`, `[amount]` | Three sub-fields. NDRF or a State Disaster Response Force is already suggested as the operational partner |
-| 177–181 | **Five publications** | The most-missed section. Five slots, all empty |
+| 24, 179 | **[lab / department]** lending the drone | Appears **twice** — both must name the same lab. The operator must be the drone's registered operator under the Drone Rules, 2021 |
+| 124 | **Teaching load, administrative duties, planned conferences** | Suggested venues are already drafted (Near Surface Geophysics / EAGE, IEEE Sensors) — keep or replace |
+| 124 | **[number] of students** | Same line as the teaching load now.  The budget funds no student stipend, so this is project work, not hired labour. Keep it consistent with that |
+| 128 | **"Adapt to the faculty member's background"** | The paragraph after it argues the gap from prior art and needs no change; only the opening clause is yours |
+| 151 | **Prior / current grants** | `[None / or list: title, source, period, amount, products, relation to this proposal]`. "None" is an acceptable answer — write it explicitly rather than leaving the bracket |
+| 155 | **Pending applications** + follow-on `[agency]`, `[period]`, `[amount]` | Three sub-fields. NDRF or a State Disaster Response Force is already suggested as the operational partner |
+| 159–163 | **Five publications** | The most-missed section. Five slots, all empty |
 
 ## Before submitting
 
@@ -52,47 +53,59 @@ fixed.
 - **The WPC ETA at `Rs. 1,50,000` is deliberately unfunded**, with a local-logging fallback if the
   institute has not committed the funding in writing by month 4. If the institute *will* commit,
   get it in writing and say so — that is the single biggest weakness a referee can press on.
-- **Check the PDF export**, not just the `.docx`: 6 tables, 2 page breaks and one footnote (the
+- **Check the PDF export**, not just the `.docx`: 5 tables, 5 page breaks and one footnote (the
   ~6.5 dB anchor-correction note) must survive. The footnote is wired to `footnotes.xml` and is the
-  only one in the document.
+  only one in the document. The Gantt is cell shading: 44 shaded cells across 13 rows.
 
 ## Page limits against the funder template
 
-Checked by rendering the `.docx` through Word (10 pages) and measuring where each section starts,
-to the nearest few percent of a page. The template states a limit for each numbered section;
-`Research proposal format.docx` in the repo root is the authority.
+**Every section is now within its limit.** Measured by rendering the `.docx` through Word (12
+pages) and taking each section from its heading to its last line of content.
+`Research proposal format.docx` in the repo root is the authority on the limits.
 
 | Section | Rendered | Template limit | |
 |---|---|---|---|
-| Abstract | 0.59 page | 1 page | OK |
-| **Q1 objectives / questions** | **1.77 pages** | **1 page** | **over by 77%** |
-| Q2 methods | 1.06 pages | 1 page | within noise |
-| Q3 activities + timeframe | 1.06 pages | 1 page | within noise |
-| Q4 new line of inquiry | 0.25 page | 1/2 page | OK |
-| Q5 anticipated products | 0.41 page | 1/2 page | OK |
-| PREV 1 grants received | 0.06 page | 1 page | OK (awaiting content) |
-| PREV 2 pending applications | 0.10 page | 1/2 page | OK (awaiting content) |
-| **PREV 3 five scholarly products** | **0.63 page** | **1/2 page** | **over, and will grow** |
+| Abstract | 0.53 page | 1 page | OK |
+| Q1 objectives / questions | 0.89 page | 1 page | OK |
+| Q2 methods | 0.99 page | 1 page | OK — least headroom of any section |
+| Q3 activities + timeframe | 0.94 page | 1 page | OK |
+| Q4 new line of inquiry | 0.39 page | 1/2 page | OK |
+| Q5 anticipated products | 0.29 page | 1/2 page | OK |
+| PREV 1 grants received | 0.05 page | 1 page | OK (awaiting content) |
+| PREV 2 pending applications | 0.06 page | 1/2 page | OK (awaiting content) |
+| PREV 3 five scholarly products | 0.16 page | 1/2 page | OK (awaiting content) |
 
-**Q1 is the one real overrun.** It holds the overall aim, the what-changed paragraph, the
-four-row research-question/hypothesis table, the unmeasured-input note and the five-row prior-art
-table. The prior-art table alone is 0.39 page. Options, cheapest first:
+### How Q1 was brought inside one page
 
-- Move the **prior-art table into Q1's prose** as two or three sentences, keeping the citations.
-  That recovers most of a page and the distinguishing argument survives.
-- Or move prior art to **Q4** (*new line of inquiry*), which is only 0.25 of its half-page and is
-  where the "this is new for this group" case already sits.
-- Do **not** cut the research-question table. It carries RQ1-RQ4 with their hypotheses and is the
-  spine of the proposal.
+Q1 was 1.77 pages. Four changes, in order of how much each recovered:
 
-**PREV 3 will get worse, not better.** It is 0.63 page while holding five *empty* `[Citation N]`
-slots. Five real citations at two to three lines each put it near 0.79 page against a half-page
-limit. Tighten the citation format when filling it, or ask whether the scheme accepts the
-"additional paper" the template's own note allows.
+- **Prior art moved to Q4.** The seven-row prior-art table left Q1 and its content was folded
+  into Q4's prose, which is where the "new line of inquiry for this group" case already sat. All
+  seven works, every citation and every distinguishing claim survive. Q4 went 0.25 -> 0.39 page.
+- **Each numbered section starts at a page top.** Page breaks were added before Q1, Q2 and Q3,
+  matching the two the document already used. Per-section limits are meant to be read this way,
+  and it is what made the remaining measurements trustworthy.
+- **Sentences stated twice were cut once.** Each was checked to be stated elsewhere before being
+  removed: RQ1's point-accuracy clause (Q2 section E), RQ4's cadence rationale (Q2 section D),
+  and the sensor-choice margin restated from RQ3.
+- **Three layout constraints were relieved**, which is what actually fixed the last 2%:
+  `<w:cantSplit/>` on the research-question rows, and widow/orphan control on the
+  unmeasured-input paragraph (Q1) and on section G (Q2). Each was relocating a whole block to
+  the next page, so trimming text near them changed nothing until they were lifted.
 
-**Not a defect:** the proposal's 10 pages include the template's verbatim question prompts, its
-budget sheet and its two-page reference list. The template allots roughly 7 pages of narrative and
-says nothing about references, so total length is not itself a problem.
+**If you add text, check Q2 first.** It has 0.01 page of headroom. Adding a sentence to any of
+sections A-G pushes section G onto the next page and takes Q2 over. Q1 has 0.11 page spare and
+Q3 has 0.06.
+
+**The research-question table was not cut.** It carries RQ1-RQ4 with their hypotheses and is the
+spine of the proposal.
+
+**PREV 3 has room.** It is 0.16 page holding five empty `[Citation N]` slots. Five real citations
+at two to three lines each land it near 0.32 page, inside the half-page limit.
+
+**Not a defect:** the 12 pages include the template's verbatim question prompts, its budget sheet
+and the two-page reference list. The template allots roughly 7 pages of narrative and says nothing
+about references, so total length is not itself a problem.
 
 ## Deliberately left as they are
 

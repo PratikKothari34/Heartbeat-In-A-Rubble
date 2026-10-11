@@ -248,6 +248,14 @@ which the `.md` conversion cannot show. Two of the fourteen were disputed by the
 disputes were correct** — the contingency item was an error in the issue, and the footnote's
 ~6.5 dB is right where the audit said 7.43 dB.
 
+**Page limits are met.** Every numbered section now fits the funder template's limit for it
+(`Research proposal format.docx`, repo root), measured by rendering the `.docx` through Word.
+Q1 was 1.77 pages: prior art moved into Q4, page breaks were added so each numbered section
+starts at a page top, sentences stated twice were cut once, and two layout constraints
+(`<w:cantSplit/>` on the research-question rows, widow control on the unmeasured-input paragraph)
+were lifted. No citation or distinguishing claim was lost. The per-section figures are in the
+checklist.
+
 **What is left is not technical.** `docs/proposal/SUBMISSION-CHECKLIST.md` lists the sixteen
 fill-in fields only the applying faculty member can supply: cover-sheet identity, teaching load,
 prior grants, five publications, and the lab lending the drone. It also records what must not be
