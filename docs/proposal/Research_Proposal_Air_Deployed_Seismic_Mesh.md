@@ -20,7 +20,7 @@
 | Total amount requested | **Rs. 1,82,818** (detail on the Proposed Budget page) |
 | Field of research | Near-surface seismic sensing, embedded sensor networks, disaster search-and-rescue technology |
 | Nature of work | Experimental: bench measurement, a campus debris test pile, sensor-node hardware, drop and air-deployment trials, one field trial |
-| Human participants | Yes, minimal risk. Adult volunteers tap on an instrumented plate and on the surface of a test pile. No one is ever placed under debris or load. Institutional ethics approval will be obtained before any participant test. |
+| Human participants | Yes, minimal risk. Adult volunteers tap on an instrumented plate and on the surface of a test pile. No one is ever placed under debris or load. The ethics application is filed in month 1, and no participant test takes place until institutional ethics approval has been granted (month 2 at the earliest). |
 | Drone | Borrowed from [lab / department]. No airframe purchase is requested. |
 
 **Submitted by:** (Signature and printed name: Faculty Member)
@@ -39,9 +39,9 @@ The instruments that help them are listening devices: six to eight cabled sensor
 
 **We propose to drop many small, inexpensive vibration-sensing nodes from a drone.** The array can then be larger and denser than hand placement allows, and nobody has to climb the pile to lay it out. The nodes listen during each All Quiet and report to a ground station. The system then marks each 2–5 m cell of the site as **DETECTED**, **NO DETECTION** or **BLIND** (not covered). Because the nodes stay in place for days, the system can ask whether a signal comes back silence after silence. A trapped survivor stays put; a passing truck does not. A hand-carried instrument leaves with its operator, so it cannot use this repetition to reject false alarms.
 
-This project began as an attempt to detect the **heartbeat** of an unconscious survivor, and training literature still suggests such sensors might pick up "even the vibration of a heartbeat" [21]. Our analysis, checked against heart forces measured in three independent studies [14–16], shows that this cannot work through rubble: the signal falls **38–60 dB short**, roughly 80 to 1,000 times too weak. No filter, averaging scheme or learning algorithm recovers that gap. We will publish this bound as a negative result so others stop designing toward it. The system therefore targets what rescue doctrine already asks survivors to do: **tap or call**.
+This project began as an attempt to detect the **heartbeat** of an unconscious survivor, and training literature still suggests such sensors might pick up "even the vibration of a heartbeat" [21]. Our analysis, checked against heart forces measured in three independent studies [14–16], shows that this cannot work through rubble: against the MEMS accelerometer the original design specified, the signal falls **38–60 dB short**, roughly 80 to 1,000 times too weak. No filter, averaging scheme or learning algorithm recovers that gap. We will publish this bound, computed against measured site noise, as a negative result so others stop designing toward it. The system therefore targets what rescue doctrine already asks survivors to do: **tap**. Calling out is the other half of that doctrine; a voice channel needs a microphone this award does not fund, so it is left to later work.
 
-The project will produce: the first measurements of how an air-dropped sensor couples to **collapsed debris** rather than soil; a measured comparison of location accuracy for a wide, air-deployed array against a compact, hand-placed one; a measured false-alarm rate for the repeated-silence rule; and the published cardiac bound. The work is ordered so that the two cheapest measurements, background vibration on site and the force of a real human tap, are made in the first two months. Either can stop the project before significant money is spent.
+The project will produce: the first measurements of how an air-dropped sensor couples to **collapsed debris** rather than soil; a measured comparison of how much of a debris pile an air-deployed array covers, and how many cells it leaves BLIND, against a compact hand-placed array, with nobody on the pile; a measured false-alarm rate for the repeated-silence rule; and the published cardiac bound. The work is ordered so that the two cheapest measurements, background vibration on site and the force of a real human tap, are made in the first three months, the tap measurement only after ethics approval. Either can stop the project before significant money is spent: until then only the instruments those two measurements need are bought.
 
 **1. *What are your objectives, or the specific questions/problem/hypothesis you will address? (1 page)***
 
@@ -51,86 +51,89 @@ To establish, by measurement, whether an air-deployed mesh of low-cost geophone 
 
 **What changed, and why**
 
-An earlier design for this project aimed to detect heartbeats with MEMS accelerometers behind a 0.5–4 Hz filter. That filter matched the heart's **repetition rate** (60–120 beats per minute), not the **bandwidth** of each beat, which is a broadband impulse with a 50–150 ms rise. The filter kept the rate and discarded the signal. Correcting the error, and using source forces that have since been measured [14–16], put the cardiac signal 38–60 dB below the sensor floor. The same correction reverses the original sensor choice: a geophone (SM-24) is far quieter than the MEMS part in the band where the signal actually lives. Tapping clears that geophone's floor with a predicted margin of +23 to +41 dB.
+An earlier design for this project aimed to detect heartbeats with MEMS accelerometers behind a 0.5–4 Hz filter. That filter matched the heart's **repetition rate** (60–120 beats per minute), not the **bandwidth** of each beat, which is a broadband impulse with a 50–150 ms rise. The filter kept the rate and discarded the signal. Correcting the error, and using source forces that have since been measured [14–16], put the cardiac signal 38–60 dB below that MEMS sensor's floor (ADXL355, 25 µg/√Hz). The same correction reverses the original sensor choice: a geophone (SM-24) is far quieter than the MEMS part in the band where the signal actually lives. A tap at 3 m clears that geophone's assumed floor with a predicted margin of +23 to +41 dB (noise bandwidth and tap force as stated under RQ3).
 
 **Research questions and hypotheses**
 
 | **#** | **Research question** | **Hypothesis / success criterion** |
 | --- | --- | --- |
-| RQ1 | **Capability.** Does air deployment lift the array-extent limit that bounds existing microseismic survivor location [1], and by how much in localization accuracy? | Location error is bounded by node-position uncertainty, as standard geometric-dilution-of-precision (GDOP) analysis predicts; this is stated as an error-budget result, not a discovery. For the same node count, a wider air-placed array assigns a tap source on the test pile to the correct 2–5 m cell more often than a compact, hand-placed one. |
-| RQ2 | **Coupling onto debris.** How does an air-dropped node couple to collapsed structural debris? Published air-deployment work characterises **soil** only [8, 9]; no characterisation on debris was found. | Measured contact resonances for geophones on soil fall at 100–500 Hz [13]. At the low end this is close enough to the tap band to distort amplitude **and phase**. We expect this to be worst for free-laid nodes on fractured debris, which is what air-dropping produces. Success: a measured transfer function for dropped, free-laid and planted nodes against a bolted reference, for each landing type. |
-| RQ3 | **Bounds.** What is the true detection limit through rubble for a cardiac source and for a tap? | H3a: tap and voice from a responsive survivor exceed the geophone noise floor by +23 to +41 dB at relevant ranges [computed; depends on the tap force, which is measured first]. H3b: cardiac signal sits 38–60 dB below the same floor [computed from measured forces] and cannot be recovered. |
-| RQ4 | **False alarms.** Does requiring a detection to persist across repeated All Quiet windows turn an unusable false-alarm rate into a usable one? | With illustrative per-look figures (93% sensitivity, 7% false-positive rate, 1.4% prior), a single look gives a positive predictive value near 16%. Requiring detection in at least 60% of available looks raises it to 70–98%. Target: no more than 1 false detection per node-hour on **empty** rubble, with machinery running. |
+| RQ1 | **Capability.** Does air deployment lift the array-extent limit that bounds existing microseismic survivor location [1]: more of the pile covered, fewer BLIND cells, and no rescuer on the debris? | With the same six nodes, an air-deployed layout leaves fewer of a test area's 2–5 m cells BLIND than a compact, hand-placed layout, and puts nobody on the debris; deployment time is recorded for both. A cell counts as covered when a reference tap at its centre is detected by at least five nodes, the minimum for a TDoA fix with wave velocity unknown. Point accuracy is reported for both layouts but is not the claim: air-node positions carry 2–5 m uncertainty against centimetres for surveyed hand placement, and array geometry moves the total error by under 1 m, less than one cell [computed]. That location error is bounded by node position is standard geometric-dilution-of-precision (GDOP) analysis, stated as an error-budget result, not a discovery. |
+| RQ2 | **Coupling onto debris.** How does an air-dropped node couple to collapsed structural debris? Published air-deployment work characterises **soil** only [8, 9]; no characterisation on debris was found. | Measured contact resonances for geophones on soil fall at 100–500 Hz [13; abstract read, full text not yet retrieved]. At the low end this is close enough to the tap band to distort amplitude **and phase**. We expect this to be worst for free-laid nodes on fractured debris, which is what air-dropping produces. Success: a measured transfer function for dropped, free-laid and planted nodes against a bolted reference, for each landing type. |
+| RQ3 | **Bounds.** What is the true detection limit through rubble for a cardiac source and for a tap? | H3a: a tap from a responsive survivor exceeds the geophone's assumed 0.1 µg/√Hz floor by +23 to +41 dB at 3 m [computed: noise integrated over a 35 Hz bandwidth (5–40 Hz), tap energy assumed at 60–80 Hz; scales with the tap force and spectrum, both measured first].[[1]](#footnote-1) H3b: the cardiac signal sits 38–60 dB below the **MEMS (ADXL355)** floor the original design assumed [computed from measured forces, same bandwidth] and cannot be recovered. A tap and a heartbeat differ by +32 to +56 dB at the same range [computed], which is why retargeting to tapping works. The published bound is computed against the measured site noise floor, not sensor self-noise. |
+| RQ4 | **False alarms.** Does requiring a detection to persist across repeated All Quiet windows turn an unusable false-alarm rate into a usable one? | With illustrative per-look figures (93% sensitivity, 7% false-positive rate, 1.4% prior), a single look gives a positive predictive value near 16%. Requiring detection in at least 60% of available looks raises it to 82% at five looks, 98% at six and above 99% from seven [computed; assumes independent looks, which the test checks]. Target, stated **per look** because nodes listen only about once an hour: on **empty** rubble with machinery running, a per-look false-positive rate no higher than the 7% assumed above, and no correlation of false detections between successive All Quiet windows. |
 
-**Key unmeasured input.** Every tap margin above scales with the force and frequency content of a human tap. The working figures, 50–300 N with energy at 60–80 Hz, have no published source; the nearest published values come from destructive strikes and were rejected. They are therefore measured first (Activity 2).
+**Key unmeasured input.** Every tap margin above scales with the force and frequency content of a human tap. The working figures, 50–300 N with energy at 60–80 Hz, have no published source; the nearest published values come from destructive strikes and were rejected. They are therefore measured first (Activity 3), after ethics approval.
 
 **Prior art, cited and distinguished**
 
 | **Work** | **What it establishes** | **How this project differs** |
 | --- | --- | --- |
-| Arosio et al. 2010 [1] | A hand-placed microseismic array on real rubble locates survivors; 3× faster than incumbent systems; rubble velocity 200–600 m/s. | Closest prior art. We address the array-extent limitation it names. |
+| Arosio et al. 2010 [1] | A hand-placed microseismic array on real rubble locates survivors to within 2 m; 3× faster than incumbent systems; rubble velocity 200–600 m/s. | Closest prior art. Its ≤2 m accuracy already meets our 2–5 m cell, so we do not claim better point accuracy; we address the array-extent limitation it names. |
 | FEMA / UK NFCC doctrine [2, 3]; Delsar LD3, NDRF Type-I [5, 6] | Tapping and voice are the existing target: the "victim must create a recognizable sound pattern". | We do not claim the tap/voice target as new. |
 | INACHUS, EU FP7 607522 [7] | Stated the goal of automated knock localization. | No peer-reviewed accuracy result was located. We claim neither novelty nor that it was achieved. |
-| Stewart et al. 2016 [8]; SeismicDart [9] | Drone-landed and air-dropped geophones work in **soil** (correlation 0.81–0.98 with planted sensors). | Debris, not soil; mesh scale, not a few sensors per sortie. |
+| Stewart et al. 2016 [8]; SeismicDart [9] | Drone-landed [8] and air-dropped [9] geophones work in **soil**; the dropped darts correlate 0.81–0.98 with planted sensors [9]. | Debris, not soil; mesh scale, not a few sensors per sortie. |
 | HeartQuake, Park et al. 2020 [10] | Full ECG shape recovered through a mattress with an SM-24 geophone, the part we use. | Contact-coupled through bedding, not metres of rubble. Consistent with our bound, not a contradiction of it. |
+| Jia et al. 2017 [25]; Dong et al. 2022, PigV² [26] | Cardiac and respiratory rate recovered with geophones, through a mattress and through barn flooring. | Centimetres of bedding or slab, not metres of fractured debris; the deficit is path loss, not sensor capability. |
 | Sabatier & Ekimov 2008 [11] | A signal-equals-noise range bound for footsteps. | The direct methodological ancestor of our cardiac and tap bounds. |
 
 **2. *Describe the methods of investigation and techniques of analysis you intend to use. (1 page)***
 
 **A. Sensor and signal chain**
 
-Each node carries a Geospace SM-24 geophone (10 Hz natural frequency, 28.8 V/(m/s), 375 Ω, 74 g) [20], a low-noise preamplifier, a 24-bit ADC, a microcontroller with an 865–867 MHz radio, and an 18650 cell. The element's own thermal noise, from Johnson-noise analysis (eₙ = √(4kTR), converted to acceleration through the sensitivity), is 0.003–0.005 µg/√Hz across 60–80 Hz. That is 23–30 times quieter than the 0.1 µg/√Hz assumed in the margin calculations. The geophone datasheet gives no noise figure, so the **preamplifier**, not the element, sets the system floor. At 4 nV/√Hz input noise the system sits 12–16× below the assumed floor; the margin is used up near 50 nV/√Hz. The preamplifier is specified and measured first. A microphone channel (200 Hz–3 kHz) covers voice.
+Each node carries a Geospace SM-24 geophone (10 Hz natural frequency, 28.8 V/(m/s), 375 Ω, 74 g) [20], a low-noise preamplifier, a 24-bit ADC, a microcontroller with an 865–868 MHz radio, and an 18650 cell. The element's own thermal noise, from Johnson-noise analysis (eₙ = √(4kTR), converted to acceleration through the sensitivity), rises linearly with frequency: 0.0003–0.0044 µg/√Hz across 5–80 Hz, 23 to 365 times quieter than the 0.1 µg/√Hz assumed in the margin calculations. The geophone datasheet gives no noise figure, so the **preamplifier**, not the element, sets the system floor. At 4 nV/√Hz input noise the system sits 12–16× below the assumed floor across 60–80 Hz, and further below it at lower frequencies; at 80 Hz the margin is used up near 56 nV/√Hz. The preamplifier is specified and measured first. In no candidate band does sensor self-noise set the limit; site background vibration does, which is why it is measured first (Activity 2). Voice (200 Hz–3 kHz) would need a microphone channel, which this award neither funds nor schedules.
 
 **B. Analysis band set by measurement, not assumption**
 
-Timing precision follows the Cramér–Rao bound, σₜ ≈ 1/(B·√SNR), where B is the RMS bandwidth [17, 18]. Narrowing the filter therefore makes location worse, which is the error that sank the original design. The detection band will be fixed from the **measured** tap spectrum (Activity 2). Current working estimates disagree: a 5–40 Hz design band against 60–80 Hz estimated tap energy. The NDRF Type-I specification, meanwhile, filters at 100–600 Hz [5]. Settling this is the first analytical deliverable.
+Timing precision follows the Cramér–Rao bound, σₜ ≈ 1/(B·√SNR), where B is the RMS bandwidth [17, 18]. Narrowing the filter therefore makes location worse, which is the error that sank the original design. Nodes acquire **5–200 Hz**, and the tap detection band is an **output** of the measured tap spectrum (Activity 3), not an input. Where one working figure is unavoidable it is 20–80 Hz [assumed, pending measurement]. Two earlier figures are withdrawn: 5–40 Hz came from seismocardiography, a cardiac band, and 60–80 Hz for tap energy has no published source. The SM-24's 10 Hz corner costs 12 dB at 5 Hz but under 1 dB above 15 Hz, so the sensor choice holds in every candidate band. For comparison, the Delsar LD3 covers 1 Hz–3 kHz [6] and the NDRF Type-I specification filters at 100–600 Hz [5]. Every dB figure in this proposal names the band it was computed in.
 
 **C. Amplitude prediction**
 
-Received amplitude is predicted by **linear transfer-mobility scaling** (the FTA ground-borne vibration method [19]). Elastic wave propagation is linear, so response scales with source force. Scaling is anchored to measured footstep responses: no more than 3 µm/s at 3 m, with a peak near 17 Hz [11, 12]. Wave velocity is measured in place with a hammer source and compared with Arosio's 200–600 m/s for rubble [1].
+Received amplitude is predicted by **linear transfer-mobility scaling** (the FTA ground-borne vibration method [19]). Elastic wave propagation is linear, so response scales with source force. Scaling is anchored to measured footstep responses: no more than 3 µm/s at 3 m [11], with the low-frequency vibration maximum near 40 Hz [12]. Wave velocity is measured in place with a hammer source and compared with Arosio's 200–600 m/s for rubble [1].
 
 **D. Detection and false-alarm control**
 
-Nodes listen only during commanded All Quiet windows, which the incident commander already signals [2, 3]; this gives a duty cycle of roughly 5–13%. Detection uses a matched filter against the impulse shape and, where the survivor can be prompted, against a known tap pattern. Each node-cell detection is scored over repeated windows with a **fraction-of-looks** rule (at least 60% of available looks). A fixed count degrades as looks accumulate. Performance is reported as false detections per node-hour on empty rubble, not as accuracy.
+Nodes listen only during commanded All Quiet windows, which the incident commander already signals [2, 3]; this gives a duty cycle of roughly 5–13% [assumed: doctrine states the cadence, about once an hour, but not the duration]. Detection runs in two stages: a matched filter against the impulse shape, then, where the survivor can be prompted, a test for a known tap pattern over several seconds. Each node-cell detection is scored over repeated windows with a **fraction-of-looks** rule (at least 60% of available looks). A fixed count degrades as looks accumulate. Performance is reported as false detections per look on empty rubble, not as accuracy.
 
 **E. Localization**
 
-Time-difference-of-arrival (TDoA) multilateration, with wave velocity solved as an unknown. GDOP is the stated framework for how array geometry amplifies error. A node's position is taken from the drone's logged release point plus its measured bounce; ground truth comes from a tape or total-station survey. The output is a cell, not a pin. Further spending on clock synchronisation is not justified: below about 2 µs, timing error is negligible against metre-scale node-position error.
+Time-difference-of-arrival (TDoA) multilateration, with wave velocity solved as an unknown. GDOP is the stated framework for how array geometry amplifies error. A node's position is taken from the drone's logged release point plus its measured bounce; ground truth comes from a tape or total-station survey. The output is a cell, not a pin. Air-placed node positions are uncertain by 2–5 m, against centimetres for a surveyed hand-placed array, which is why RQ1 is framed around coverage rather than point accuracy. Further spending on clock synchronisation is not justified: below about 2 µs, timing error is negligible against metre-scale node-position error.
 
 **F. Coupling onto debris (RQ2)**
 
-Node shells (rounded, spiked, weighted foot) are dropped onto the campus debris pile, first from a fixed release rig at measured heights, then from the drone. Each landed node is excited with a hammer source next to a bolted reference geophone. The resulting transfer function gives amplitude and phase error per landing type, including any contact resonance near the tap band [13].
+Node shells (rounded, spiked, weighted foot) are dropped onto the campus debris pile, first from a fixed release rig at measured heights, then from the drone. Each landed node is excited with a hammer source next to a bolted reference geophone. The resulting transfer function gives amplitude and phase error per landing type, including any contact resonance near the tap band [13; abstract only].
 
 **G. Cardiac bound (RQ3)**
 
-The measured site noise floor and the published heart forces (3.7 N, n = 7 [14]; 4.06 ± 1.53 N, n = 26+ [15]; about 2 N peak-to-peak on a force plate [16]) are combined through the same transfer-mobility model. No human is ever placed under debris, and no new cardiac measurement on people is needed.
+The measured site noise floor and the published heart forces (4.06 ± 1.53 N, n = 26+ [15]; 3.7 N, n = 7, from Starr et al. [14] as converted and reported in [15]; about 2 N peak-to-peak on a force plate [16]) are combined through the same transfer-mobility model. No human is ever placed under debris, and no new cardiac measurement on people is needed.
 
 **3. *List the specific activities that you will undertake during the period of funding, noting the anticipated time frame for completion of each activity. Please also describe other activities in which you will participate during the award period that may be bear on your research, for example, summer teaching, conferences, administrative duties, and other comments. (1 page)***
 
-Activities are ordered so that each risk that could stop the project is tested before the money that depends on it is spent. Months 1–4 use a **wired** array, which needs no radio approval and no drone and isolates the sensing problem from radio debugging.
+Activities are ordered so that each risk that could stop the project is tested before the money that depends on it is spent: only the gate instruments are bought before the month-3 go/no-go, and the rest of the array after it. Months 1–4 use a **wired** array, which needs no radio approval and no drone and isolates the sensing problem from radio debugging.
 
 | **Activity** | **1** | **2** | **3** | **4** | **5** | **6** | **7** | **8** | **9** | **10** | **11** | **12** |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Ethics application; buy gate instruments only: 2 reference geophones, 1 node, tap-force plate |  |  |  |  |  |  |  |  |  |  |  |  |
 | Ambient in-band noise survey (campus building, demolition site): **go/no-go** |  |  |  |  |  |  |  |  |  |  |  |  |
-| Tap force and spectrum characterisation (volunteers, instrumented plate): **go/no-go** |  |  |  |  |  |  |  |  |  |  |  |  |
-| Preamplifier design; ethics application; procurement |  |  |  |  |  |  |  |  |  |  |  |  |
+| Tap force and spectrum characterisation (volunteers, after ethics approval; instrumented plate): **go/no-go** |  |  |  |  |  |  |  |  |  |  |  |  |
+| Preamplifier design; single-node wired signal chain; tap detection at 1 / 3 / 10 m on a floor slab |  |  |  |  |  |  |  |  |  |  |  |  |
+| Array procurement after the gate: 7 nodes, ground station, GNSS receiver |  |  |  |  |  |  |  |  |  |  |  |  |
 | Build graded debris test pile on campus |  |  |  |  |  |  |  |  |  |  |  |  |
-| Single-node wired signal chain; tap detection at 1 / 3 / 10 m |  |  |  |  |  |  |  |  |  |  |  |  |
-| Cardiac bound: analysis against measured floor; manuscript draft |  |  |  |  |  |  |  |  |  |  |  |  |
+| Cardiac bound: analysis against measured floor; manuscript |  |  |  |  |  |  |  |  |  |  |  |  |
 | Coupling onto debris: free-laid vs planted vs dropped (RQ2) |  |  |  |  |  |  |  |  |  |  |  |  |
 | Mesh: time sync, TDoA solver, persistence detector; false-alarm test with machinery running (RQ4) |  |  |  |  |  |  |  |  |  |  |  |  |
 | Air deployment: drop mechanism, node survival, landing-position scatter |  |  |  |  |  |  |  |  |  |  |  |  |
-| Field trial on a rubble pile: wide vs compact array, accuracy vs Arosio's benchmark (RQ1) |  |  |  |  |  |  |  |  |  |  |  |  |
+| Field trial on a rubble pile: coverage and BLIND cells, air-deployed vs hand-placed layout, nobody on the pile (RQ1) |  |  |  |  |  |  |  |  |  |  |  |  |
 | Analysis, dataset release, final report, manuscripts |  |  |  |  |  |  |  |  |  |  |  |  |
 
 **Milestones and decision gates**
 
-* **M2: go/no-go.** The measured in-band ambient floor and the measured tap force are compared with the predicted tap amplitude at 3 m. If the floor swamps the tap, or the tap force is far below 50 N, the project stops here, having spent mainly on two geophones and one node.
-* **M4:** measured tap detection margin at 1 / 3 / 10 m against the computed +23 to +41 dB prediction; analysis band fixed.
-* **M6:** coupling-onto-debris result (first publishable result) and cardiac-bound manuscript submitted.
-* **M8:** false-alarm rate measured on empty rubble with machinery running; RQ4 answered.
+* **M3: go/no-go.** The measured in-band ambient floor and the measured tap force and spectrum are compared with the predicted tap amplitude at 3 m, in the band the measured tap spectrum indicates. If the floor swamps the tap, or the tap force is far below 50 N, the project stops here, having spent Rs. 30,301 (16.6% of the request) on two reference geophones, one node and the tap-force plate, plus local travel for the survey.
+* **M4:** measured tap detection margin at 1 / 3 / 10 m on a floor slab, against the prediction recomputed from the measured tap force and spectrum (the +23 to +41 dB in RQ3 is the pre-measurement estimate); detection band fixed.
+* **M6:** cardiac-bound manuscript submitted.
+* **M7:** coupling-onto-debris result (first publishable measurement).
+* **M8:** per-look false-positive rate measured on empty rubble with machinery running; RQ4 answered.
 * **M10:** node-position error budget closed from measured landing scatter.
-* **M12:** field-trial accuracy (RQ1), open dataset, final report, follow-on proposal.
+* **M12:** field-trial coverage result (RQ1), open dataset, final report, follow-on proposal.
 
 **Other activities during the award period**
 
@@ -150,11 +153,11 @@ Students: [number] undergraduate/postgraduate student(s) will work on node hardw
 **5. *What products (i.e., publications, presentations, performances, outside funding, patents) would you anticipate from this project? (1/2 page)***
 
 * **Journal article 1:** the cardiac seismic detection bound through rubble, a negative result publishable on its own.
-* **Journal article 2:** air-deployed array extent and localization accuracy on rubble, with the false-alarm result.
+* **Journal article 2:** air-deployed array extent on rubble: coverage and BLIND-cell reduction with nobody on the pile, with the false-alarm result.
 * **Short measurement paper (possible):** coupling of free-laid and air-dropped geophone nodes onto collapsed debris.
 * **Presentations:** near-surface geophysics and search-and-rescue technology venues; Arosio's line of work appears in *Near Surface Geophysics* and at EAGE meetings.
 * **Open dataset and code:** debris noise recordings, tap-force and tap-spectrum measurements, coupling transfer functions, node firmware and the detection pipeline.
-* **Outside funding:** measured coupling and accuracy results are the precondition for a credible NDRF/NDMA-facing or agency proposal. This project is scoped to produce that evidence.
+* **Outside funding:** measured coupling and coverage results are the precondition for a credible NDRF/NDMA-facing or agency proposal. This project is scoped to produce that evidence.
 * **Patents:** none claimed. Air deployment of seismic sensors is already published [8, 9].
 
 **PREVIOUS RESEARCH AND SUPPORT**
@@ -193,7 +196,7 @@ Please provide a brief description of each item requested in the space provided 
 
 No faculty salary or honorarium is requested. No drone is purchased; air-deployment trials use a drone borrowed from [lab / department].
 
-**Pricing basis.** Imported parts are converted at Rs. 84/USD (rate of 2026-10-07) with **+33% landed cost** added for basic customs duty, social welfare surcharge and IGST. The SM-24 geophone is priced at a current Indian distributor listing. Component prices on this project moved 8–16% in 19 days, so every line will be re-quoted before purchase.
+**Pricing basis.** Imported parts are converted at Rs. 84/USD (rate of 2026-10-07) with **+33% landed cost** added for basic customs duty, social welfare surcharge and IGST; international freight is not yet included. Prices checked on 2026-10-11: the SM-24 lists at USD 69.95 each from SparkFun (USD 66.45 from 25 units), about Rs. 7,815 landed, 9% above the Rs. 7,140 budgeted; the Indian distributor listing that matched Rs. 7,140 now shows Rs. 11,616. At the direct-import price the shortfall for ten units is about Rs. 6,750, which contingency covers. The tap-force plate is an estimate, not a quote. Every line will be re-quoted, with its date, before purchase.
 
 **BUDGET JUSTIFICATION**
 
@@ -234,26 +237,26 @@ About eight visits to demolition or debris sites for the ambient noise survey an
 * **Reference geophones.** A bolted reference is the only way to measure what a dropped node loses in coupling, which is research question RQ2.
 * **Tap-force plate.** Every margin in the design scales with tap force, which has never been measured for this purpose. This is the cheapest item that can stop the project, and it is used first.
 
-**Regulatory items (not requested in this budget)**
+**Regulatory items, including one unfunded cost**
 
 * **Drone.** Importing drones in built-up or kit (CBU/CKD/SKD) form has been prohibited since 9 Feb 2022 [22], so none is bought; the borrowed drone is operated on campus by its registered operator under the Drone Rules, 2021 [23].
-* **Radio.** The 865–867 MHz band is licence-exempt only for type-approved equipment [24]. Months 1–4 use a wired array. Radio modules will be chosen from those holding WPC Equipment Type Approval; if none fits, approval will be sought through the institute before any over-the-air test.
+* **Radio.** The 865–868 MHz band is licence-exempt only for type-approved equipment [24]. Months 1–4 use a wired array; from month 5 the mesh needs an on-air radio. **WPC Equipment Type Approval is not in this budget.** If the chosen radio module does not already hold it, approval for our own module is estimated at Rs. 1,50,000 (application plus an accredited test-lab report; an estimate, not a quote), 82% of this request. Before purchase, the module's approval is checked against the WPC register. If no approved module fits and the institute has not committed approval funding in writing by month 4, nodes do not transmit: they record locally with timestamps and are read out after each trial. Coverage (RQ1), coupling (RQ2) and false-alarm (RQ4) results are then computed offline; live reporting is not demonstrated, and clock offsets for localization are recovered from a hammer shot at a surveyed point, a method the project would first have to validate.
 
 **REFERENCES**
 
 1. Arosio, D., Longoni, L., Papini, M., Scaioni, M., Zanzi, L., & Alba, M. (2010). A microseismic approach to locate survivors trapped under rubble. Near Surface Geophysics, 8(6), 623–633. doi:10.3997/1873-0604.2010051
-2. FEMA National US&R Response System. Structural collapse training material, Module 3 Unit 3 [exact title to be confirmed]. fema.gov/pdf/emergency/usr/mod3\_u3.pdf
+2. Federal Emergency Management Agency. US&R Incident Support Team Training Student Manual, Module 3, Unit III: Operations Functional Training. fema.gov/pdf/emergency/usr/mod3\_u3.pdf
 3. UK National Fire Chiefs Council. National Operational Guidance: Primary search – unstable or collapsed structure.
 4. Macintyre, A. G., Barbera, J. A., & Petinaux, B. P. (2011). Survival interval in earthquake entrapments: research findings reinforced during the 2010 Haiti earthquake response. Disaster Medicine and Public Health Preparedness, 5(1), 13–22. doi:10.1001/dmp.2011.5
 5. National Disaster Response Force. Specification: Human Life Detector Type-I (seismic/acoustic), and CSSR equipment schedule. www.ndrf.gov.in
 6. Savox. Delsar LifeDetector LD3 datasheet (A02005#B).
 7. INACHUS: Technological and methodological solutions for integrated wide area situation awareness and survivor localisation. EU FP7 grant agreement 607522.
-8. Stewart, R. R., et al. (2016). Drone-deployed geophones. SEG Technical Program Expanded Abstracts 2016. [Exact title and DOI to be confirmed.]
-9. Sudarshan, S., et al. A heterogeneous robotics team for large-scale seismic sensing (SeismicDart). NSF award IIS-1553063. [Venue to be confirmed.]
+8. Stewart, R. R., Chang, L., Sudarshan, S. K. V., Becker, A. T., & Huang, L. (2016). An unmanned aerial vehicle with vibration sensing ability (seismic drone). SEG Technical Program Expanded Abstracts 2016, 225–229. doi:10.1190/segam2016-13973407.1
+9. Sudarshan, S. K., Montano, V., Nguyen, A., McClimans, M., Chang, L., Stewart, R. R., & Becker, A. T. (2017). A heterogeneous robotics team for large-scale seismic sensing (SeismicDart). IEEE Robotics and Automation Letters, 2(3), 1328–1335. doi:10.1109/LRA.2017.2666300
 10. Park, J., Cho, H., Balan, R. K., & Ko, J. (2020). HeartQuake: accurate low-cost non-invasive ECG monitoring using bed-mounted geophones. Proc. ACM Interactive, Mobile, Wearable and Ubiquitous Technologies, 4(3). doi:10.1145/3411843
 11. Sabatier, J. M., & Ekimov, A. E. (2008). Range limitation for seismic footstep detection. Proc. SPIE 6963, 69630V. doi:10.1117/12.785235
-12. Ekimov, A., & Sabatier, J. M. (2006). Vibration and sound signatures of human footsteps in buildings. Journal of the Acoustical Society of America, 120(2), 762.
-13. Krohn, C. E. (1984). Geophone ground coupling. Geophysics, 49(6), 722–731. doi:10.1190/1.1441700
+12. Ekimov, A., & Sabatier, J. M. (2006). Vibration and sound signatures of human footsteps in buildings. Journal of the Acoustical Society of America, 120(2), 762–768. doi:10.1121/1.2217371
+13. Krohn, C. E. (1984). Geophone ground coupling. Geophysics, 49(6), 722–731. doi:10.1190/1.1441700 (Abstract read; full text not yet retrieved.)
 14. Starr, I., Rawson, A. J., Schroeder, H. A., & Joseph, N. R. (1939). Studies on the estimation of cardiac output in man … the ballistocardiogram. American Journal of Physiology, 127(1), 1–28. doi:10.1152/ajplegacy.1939.127.1.1
 15. Inan, O. T. (2009). Novel technologies for cardiovascular monitoring using ballistocardiography and electrocardiography. PhD dissertation, Stanford University.
 16. Ashouri, H., Orlandic, L., & Inan, O. T. (2016). Unobtrusive estimation of cardiac contractility and stroke volume changes using ballistocardiogram measurements on a high bandwidth force plate. Sensors, 16(6), 787. doi:10.3390/s16060787
@@ -261,7 +264,11 @@ About eight visits to demolition or debris sites for the ambient noise survey an
 18. Quazi, A. H. (1981). An overview on the time delay estimate in active and passive systems for target localization. IEEE Trans. Acoustics, Speech, and Signal Processing, 29(3), 527–533.
 19. Federal Transit Administration (2018). Transit Noise and Vibration Impact Assessment Manual (ground-borne vibration, transfer mobility method).
 20. Geospace Technologies. SM-24 geophone element brochure.
-21. Donnelly, [initials]. Building collapse: rescue operation's technical search capabilities. Fire Engineering.
+21. Donnelly, T. (2010, October 1). Building collapse: rescue operation's technical search capabilities. Fire Engineering.
 22. Directorate General of Foreign Trade. Notification prohibiting import of drones in CBU/CKD/SKD form, 9 February 2022.
 23. Ministry of Civil Aviation, Government of India. Drone Rules, 2021.
-24. Department of Telecommunications. G.S.R. 564(E), 30 July 2008 (use of 865–867 MHz band).
+24. Department of Telecommunications (WPC Wing). G.S.R. 853(E), 10 December 2021. Use of Low Power Equipment in the Frequency Band 865–868 MHz for Short Range Devices (Exemption from Licence) Rules, 2021.
+25. Jia, Z., Bonde, A., Li, S., Xu, C., Wang, J., Zhang, Y., Howard, R. E., & Zhang, P. (2017). Monitoring a person's heart rate and respiratory rate on a shared bed using geophones. Proc. 15th ACM Conference on Embedded Network Sensor Systems (SenSys '17). doi:10.1145/3131672.3131679
+26. Dong, Y., Codling, J. R., Rohrer, G., Miles, J., Sharma, S., Brown-Brandl, T., Zhang, P., & Noh, H. Y. (2022). PigV²: Monitoring pig vital signs through ground vibrations induced by heartbeat and respiration. arXiv:2212.03378
+
+1. Both margins were computed from a footstep anchor read before a 2026-10-08 correction (Section 2C). The corrected anchor raises every computed amplitude by about 6.5 dB, so the tap margins are conservative by that amount and the cardiac deficit is overstated by it; neither conclusion changes. The figures are deliberately left unrevised: they also scale with a tap force that has not been measured, and are recomputed once, from measured inputs, at M4. [↑](#footnote-ref-1)
