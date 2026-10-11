@@ -56,6 +56,44 @@ fixed.
   ~6.5 dB anchor-correction note) must survive. The footnote is wired to `footnotes.xml` and is the
   only one in the document.
 
+## Page limits against the funder template
+
+Checked by rendering the `.docx` through Word (10 pages) and measuring where each section starts,
+to the nearest few percent of a page. The template states a limit for each numbered section;
+`Research proposal format.docx` in the repo root is the authority.
+
+| Section | Rendered | Template limit | |
+|---|---|---|---|
+| Abstract | 0.59 page | 1 page | OK |
+| **Q1 objectives / questions** | **1.77 pages** | **1 page** | **over by 77%** |
+| Q2 methods | 1.06 pages | 1 page | within noise |
+| Q3 activities + timeframe | 1.06 pages | 1 page | within noise |
+| Q4 new line of inquiry | 0.25 page | 1/2 page | OK |
+| Q5 anticipated products | 0.41 page | 1/2 page | OK |
+| PREV 1 grants received | 0.06 page | 1 page | OK (awaiting content) |
+| PREV 2 pending applications | 0.10 page | 1/2 page | OK (awaiting content) |
+| **PREV 3 five scholarly products** | **0.63 page** | **1/2 page** | **over, and will grow** |
+
+**Q1 is the one real overrun.** It holds the overall aim, the what-changed paragraph, the
+four-row research-question/hypothesis table, the unmeasured-input note and the five-row prior-art
+table. The prior-art table alone is 0.39 page. Options, cheapest first:
+
+- Move the **prior-art table into Q1's prose** as two or three sentences, keeping the citations.
+  That recovers most of a page and the distinguishing argument survives.
+- Or move prior art to **Q4** (*new line of inquiry*), which is only 0.25 of its half-page and is
+  where the "this is new for this group" case already sits.
+- Do **not** cut the research-question table. It carries RQ1-RQ4 with their hypotheses and is the
+  spine of the proposal.
+
+**PREV 3 will get worse, not better.** It is 0.63 page while holding five *empty* `[Citation N]`
+slots. Five real citations at two to three lines each put it near 0.79 page against a half-page
+limit. Tighten the citation format when filling it, or ask whether the scheme accepts the
+"additional paper" the template's own note allows.
+
+**Not a defect:** the proposal's 10 pages include the template's verbatim question prompts, its
+budget sheet and its two-page reference list. The template allots roughly 7 pages of narrative and
+says nothing about references, so total length is not itself a problem.
+
 ## Deliberately left as they are
 
 - **`38–60 dB` and `+23/+41 dB` are frozen.** The corrected anchor would improve both by about
