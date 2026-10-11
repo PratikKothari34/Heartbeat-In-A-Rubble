@@ -241,13 +241,22 @@ So: branch, open a PR, get a review. Don't expect to push to `main`.
 your PR.** The tracker is kept short on purpose: it holds only live work, and finished or superseded
 items are **deleted**, not closed, with anything worth keeping written into `docs/` first.
 
-**Current work is #8:** revise the research proposal `.docx` to merge-ready, verified in a PR. It
-starts from tadiPro250's existing draft (already on `main`) rather than a rewrite, and the issue
-states all fourteen fixes inline with their line numbers — **work from the issue, not from the
-docs.** Background and arithmetic, if you want it: `docs/critique/12-closed-work-archive.md` §§3-4 and
-`docs/critique/09-pr3-citation-audit.md`.
+**The tracker is empty. The proposal is technically done.** Issue #8 (fourteen fixes to the
+research proposal) was taken by tadiPro250, delivered as PR #9 and **merged as `977f284`**. All
+fourteen items were verified against the `.docx` itself, including the Gantt chart's cell shading,
+which the `.md` conversion cannot show. Two of the fourteen were disputed by the author and **both
+disputes were correct** — the contingency item was an error in the issue, and the footnote's
+~6.5 dB is right where the audit said 7.43 dB.
 
-It is assigned to **both** collaborators: whoever is free takes it, claiming it in a comment first.
+**What is left is not technical.** `docs/proposal/SUBMISSION-CHECKLIST.md` lists the sixteen
+fill-in fields only the applying faculty member can supply: cover-sheet identity, teaching load,
+prior grants, five publications, and the lab lending the drone. It also records what must not be
+touched — the frozen margins, the band as an output rather than an input, and the two prices that
+need re-quoting before purchase.
+
+**Editing the proposal:** change the **`.docx`**, then regenerate the `.md` beside it. The `.md` is
+a markitdown conversion kept for review and diffing; the Gantt is cell shading and converts to
+blank cells, so a Gantt change is invisible in it.
 
 ### If you are an agent
 
