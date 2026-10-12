@@ -10,6 +10,14 @@ technical gap, and nothing here can be filled from the repository.
 cell shading and does not survive the conversion. Regenerate the `.md` after editing so the two
 stay in step.
 
+**Never open the `.docx` in Word to measure it.** Word re-saves on open even when asked for
+read-only: it rewrites every zip part, drops the archive's 5 directory entries (24 entries -> 15)
+and silently alters text. It has already corrupted this file once, inverting "nobody has to climb"
+to "nobody must climb". Copy the file elsewhere and measure the copy.
+
+**[`DETAILS-NEEDED.txt`](DETAILS-NEEDED.txt) is the version to hand to the faculty member** — same
+17 placeholders, written as plain prose with a paste-back form. This checklist is the working copy.
+
 ---
 
 ## Page 1 — the cover sheet (5 fields)
@@ -29,16 +37,22 @@ participant test, month 2 at the earliest) and the borrowed-drone line. The ethi
 the Gantt and the M3 gate; editing one without the other reintroduces the defect that was just
 fixed.
 
-## Elsewhere in the document (11 fields)
+## Elsewhere in the document (10 placeholders)
 
 | Line | Field | Notes |
 |---|---|---|
-| 24, 179 | **[lab / department]** lending the drone | Appears **twice** — both must name the same lab. The operator must be the drone's registered operator under the Drone Rules, 2021 |
+| 24, 177 | **[lab / department]** lending the drone | Appears **twice** — both must name the same lab. The operator must be the drone's registered operator under the Drone Rules, 2021 |
 | 124 | **Teaching load, administrative duties, planned conferences** | Suggested venues are already drafted (Near Surface Geophysics / EAGE, IEEE Sensors) — keep or replace |
 | 124 | **[number] of students** | Same line as the teaching load now.  The budget funds no student stipend, so this is project work, not hired labour. Keep it consistent with that |
+
+**Line 124 is the tightest fill-in in the document.** Measured in Word, it is the last line on
+page 7 and ends 1.8 pt from the bottom margin, with Q3 at 0.94 of its one-page limit. All four
+values — teaching load, administrative duties, conferences, student count — share that one line,
+about 150 characters. A longer answer takes Q3 over its limit and needs text tightened elsewhere
+to pay for it.
 | 128 | **"Adapt to the faculty member's background"** | The paragraph after it argues the gap from prior art and needs no change; only the opening clause is yours |
-| 151 | **Prior / current grants** | `[None / or list: title, source, period, amount, products, relation to this proposal]`. "None" is an acceptable answer — write it explicitly rather than leaving the bracket |
-| 155 | **Pending applications** + follow-on `[agency]`, `[period]`, `[amount]` | Three sub-fields. NDRF or a State Disaster Response Force is already suggested as the operational partner |
+| 151 | **Prior / current grants** | `[None. / or, for each award: ...]`. "None." is acceptable — write it explicitly. The funder **bolds** the requirement to answer in detail *for each* related award, so treat it as scored, not a formality. Currently the last line on page 8 |
+| 155 | **Pending applications** + follow-on `[agency]`, `[period]`, `[amount]`, `[follow-on project title]` | **Four** sub-fields — the title was added in v19 because the template requires it. NDRF or a State Disaster Response Force is already suggested as the operational partner; if the target agency *is* NDRF the sentence names it twice and should collapse to one mention |
 | 159–163 | **Five publications** | The most-missed section. Five slots, all empty |
 
 ## Before submitting
@@ -59,9 +73,10 @@ fixed.
 
 ## Page limits against the funder template
 
-**Every section is now within its limit.** Measured by rendering the `.docx` through Word (12
-pages) and taking each section from its heading to its last line of content.
-`Research proposal format.docx` in the repo root is the authority on the limits.
+**Every section is now within its limit.** Re-measured 2026-10-11 against the current file (12
+pages, 4,782 words) by rendering a *copy* through Word and taking each section from its heading to
+its last line of content plus one line. `Research proposal format.docx` in the repo root is the
+authority on the limits, and is also the only way to tell the funder's own wording from ours.
 
 | Section | Rendered | Template limit | |
 |---|---|---|---|
@@ -71,8 +86,8 @@ pages) and taking each section from its heading to its last line of content.
 | Q3 activities + timeframe | 0.94 page | 1 page | OK |
 | Q4 new line of inquiry | 0.39 page | 1/2 page | OK |
 | Q5 anticipated products | 0.29 page | 1/2 page | OK |
-| PREV 1 grants received | 0.05 page | 1 page | OK (awaiting content) |
-| PREV 2 pending applications | 0.06 page | 1/2 page | OK (awaiting content) |
+| PREV 1 grants received | 0.12 page | 1 page | OK (awaiting content) |
+| PREV 2 pending applications | 0.10 page | 1/2 page | OK (awaiting content) |
 | PREV 3 five scholarly products | 0.16 page | 1/2 page | OK (awaiting content) |
 
 ### How Q1 was brought inside one page
@@ -106,6 +121,43 @@ at two to three lines each land it near 0.32 page, inside the half-page limit.
 **Not a defect:** the 12 pages include the template's verbatim question prompts, its budget sheet
 and the two-page reference list. The template allots roughly 7 pages of narrative and says nothing
 about references, so total length is not itself a problem.
+
+## Restored to match the funder's blank form — do not re-cut
+
+Diffing against `Research proposal format.docx` found four places where the proposal had departed
+from the form. All four are fixed; they are listed so the edits are not reversed.
+
+- **Previous Research question 1 prompt** had been truncated. The funder's required-field
+  enumeration (project title, source of support, period of support, amount awarded, products,
+  relation to the proposed project) and a sentence the form puts in **bold** — "If you have
+  received awards related in any way to this proposal, you should answer this question in detail
+  for each such award" — had both been cut. Restored verbatim. Cost: PREV 1 went 0.05 -> 0.12 page,
+  against a 1-page limit, so no page-limit argument justified the truncation.
+- **Previous Research question 2 prompt** had the same enumeration missing, and the answer never
+  supplied the follow-on *project title* the form asks for. Prompt restored; the title is now a
+  fill-in. PREV 2 went 0.06 -> 0.10 page against 1/2 page.
+- **The Contingency label** had been rewritten from the form's "Contingency (for field work and
+  research purposes only)" to "(field work and research purposes only, 12% of direct costs)".
+  Rewriting a funder's own budget-category label is what a compliance check catches. Restored; the
+  12% basis already appears in the budget justification prose, so nothing was lost.
+- **The attached-sheet instruction** under PROPOSED BUDGET was deleted. There is no attached sheet
+  — BUDGET JUSTIFICATION is an inline continuation — so the retained instruction described a
+  structure the document does not have.
+
+**Kept deliberately:** the NOTE reading "You may omit this question and the next if they are not
+applicable." An earlier pass deleted it on the reasoning that both questions are answered; that
+was wrong, because the likely answer to question 1 is "None." — exactly the not-applicable case the
+NOTE authorises. The nine italic question prompts and their page allowances stay: they are the
+form's questions and reviewers score answers against them. The typo "that may be bear on your
+research" in the Q3 prompt is the funder's own — reproduce it, do not correct it.
+
+## Open — not acted on
+
+**The Gantt chart carries no text.** Its 12-month schedule is encoded purely as grey shading across
+44 cells. A plain-text extract, a monochrome print or a screen reader shows an empty 13 x 12 grid,
+so the section spends a large share of its one-page limit on a table that then conveys nothing.
+Putting an `X` in each shaded cell would fix all three at once. It changes the table's appearance,
+so it is left to the applicant's call.
 
 ## Deliberately left as they are
 

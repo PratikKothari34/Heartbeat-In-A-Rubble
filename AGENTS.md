@@ -248,17 +248,30 @@ which the `.md` conversion cannot show. Two of the fourteen were disputed by the
 disputes were correct** — the contingency item was an error in the issue, and the footnote's
 ~6.5 dB is right where the audit said 7.43 dB.
 
-**Page limits are met.** Every numbered section now fits the funder template's limit for it
-(`Research proposal format.docx`, repo root), measured by rendering the `.docx` through Word.
+**Page limits are met.** Every numbered section fits the funder template's limit for it
+(`Research proposal format.docx`, repo root), re-measured 2026-10-11 against the current file at
+12 pages / 4,782 words. Measure a **copy**: opening the `.docx` in Word re-saves it even in
+read-only mode, rewriting every zip part and altering text — it corrupted this file once.
 Q1 was 1.77 pages: prior art moved into Q4, page breaks were added so each numbered section
 starts at a page top, sentences stated twice were cut once, and two layout constraints
 (`<w:cantSplit/>` on the research-question rows, widow control on the unmeasured-input paragraph)
 were lifted. No citation or distinguishing claim was lost. The per-section figures are in the
 checklist.
 
-**What is left is not technical.** `docs/proposal/SUBMISSION-CHECKLIST.md` lists the sixteen
-fill-in fields only the applying faculty member can supply: cover-sheet identity, teaching load,
-prior grants, five publications, and the lab lending the drone. It also records what must not be
+**The proposal was also diffed against the blank funder form, and four departures were fixed.**
+Both Previous-Research prompts had their required-field enumerations truncated — question 1 had
+lost a sentence the form prints in **bold** — the Contingency budget label had been reworded, and
+an instruction describing a nonexistent attached sheet was carried over. The prompts and the label
+are now verbatim from the form; the stray instruction is gone. Diffing against that blank form is
+the only way to tell the funder's wording from ours, and it is worth doing before any submission.
+
+**What is left is not technical.** `docs/proposal/DETAILS-NEEDED.txt` is the hand-off document:
+seventeen placeholders, sixteen values (the lab name is used twice), each with its page, its
+section and what the template asks for, plus a paste-back form.
+`docs/proposal/SUBMISSION-CHECKLIST.md` is the working copy of the same list with line numbers.
+Only the applying faculty member can supply them: cover-sheet identity, teaching load, prior
+grants, the follow-on project's title and agency, five publications, and the lab lending the
+drone. It also records what must not be
 touched — the frozen margins, the band as an output rather than an input, and the two prices that
 need re-quoting before purchase.
 

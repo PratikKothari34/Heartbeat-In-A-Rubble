@@ -1,0 +1,283 @@
+DETAILS NEEDED FROM THE FACULTY MEMBER
+Research Proposal - Air-Deployed Seismic Sensor Mesh
+Generated 2026-10-11 from docs/proposal/Research_Proposal_Air_Deployed_Seismic_Mesh.docx
+
+17 placeholders, 16 values (the lab name is used in two places).
+Page numbers are the printed pages of the .docx, measured in Word from a
+copy of the file on 2026-10-11 (12 pages, 4,782 words). They are not
+estimates.
+Where something does not apply, write "none" - do not leave it blank.
+An explicit "None." reads better to a reviewer than an empty bracket.
+
+
+==========================================================================
+PAGE 1  -  COVER PAGE
+==========================================================================
+
+1. Name                          [Faculty member's full name]
+   Field:  "Name:" at the top of the page
+   Detail: Full name as it should appear on the award.
+
+2. Department                    [Department / School]
+   Field:  "Department:"
+   Detail: Department or School.
+
+3. E-mail                        [institutional e-mail]
+   Field:  "E-mail ID:"
+   Detail: Institutional address, not personal.
+
+4. Address                       [Office address]
+   Field:  "Address:"
+   Detail: Office address.
+
+5. Phone                         Home [  ]  Office [  ]  Fax [  ]
+   Field:  "Phone:"
+   Detail: Three boxes. Give whichever numbers you want shown and say
+           which is which; the rest stay as empty boxes.
+
+6. Lab / department (drone)      [lab / department]
+   Field:  Summary table, "Drone" row -
+           "Borrowed from [lab / department]. No airframe purchase is
+           requested."
+   Detail: The lab or department the drone is borrowed from.
+           This same value also appears on PAGE 10. Both must read
+           identically - give it once, it is written to both places.
+
+7. Printed name                  [Printed name of faculty member]
+   Field:  "Submitted by" signature block, under the signature rule
+   Detail: Name for the signature line. Usually the same as item 1 - say
+           if it differs. The date is deliberately left blank, for the
+           day of submission.
+
+
+==========================================================================
+PAGE 7  -  SECTION 3, "List the specific activities..."
+          subheading "Other activities during the award period"
+==========================================================================
+
+One paragraph, four values.
+
+8. Teaching load
+   Detail: Courses per semester, for each semester.
+           e.g. "Two courses per semester (Soil Mechanics, Engineering
+           Geology)".
+
+9. Administrative duties
+   Detail: Committee or lab-coordination roles, or "none".
+
+10. Planned conferences
+   Detail: Currently drafted as "EAGE Near Surface meetings / IEEE
+           Sensors". Keep as drafted, or give your intended venues.
+
+11. Number of students           [number]
+   Field:  same paragraph - "Students: [number] undergraduate/postgraduate
+           student(s) will work on node hardware, field recording and the
+           detection software as part of their project work."
+   Detail: How many, and undergraduate / postgraduate / both.
+           The budget funds no student stipend, so this is project work,
+           not paid labour. Keep the answer consistent with that.
+
+   CAUTION - measured, not estimated: this paragraph is currently the
+            LAST LINE on page 7 (it ends 1.8 pt from the bottom margin, and
+            the next paragraph starts page 8). It fits on one line today.
+            Section 3 is at 0.94 of its 1-page limit, so a long answer here
+            runs the section over. Aim for one line - roughly 150
+            characters for all four values together. If you need more, say
+            so: the section can be tightened elsewhere to make room, but it
+            has to be done deliberately, not absorbed.
+            Every section is re-measured after the fill-in either way.
+
+
+==========================================================================
+PAGE 8  -  SECTION 4, "If this is a new line of inquiry for you..."
+==========================================================================
+
+12. Background clause            [Adapt to the faculty member's background.]
+   Field:  the opening clause, before the three bullets
+   Detail: One line on your actual field, so the move to debris reads
+           honestly. The stub currently reads "[Adapt to the faculty
+           member's background.] It is a new line for this group."
+           e.g. "My work has been in near-surface geophysics for soil
+           characterisation, so debris is a new medium for this group."
+   The three bullets after it - array extent, the coupling gap, the
+   negative result - are already written and need no change.
+
+
+==========================================================================
+PAGE 8  -  PREVIOUS RESEARCH AND SUPPORT, question 1
+==========================================================================
+
+13. Grants received
+   Field:  "[None. / or, for each award: project title, source of support,
+           period of support, amount awarded, products resulting from the
+           project, and a statement explaining how it relates to this
+           proposal.]"
+   Detail: "None." is a perfectly good answer and will be written as a
+           sentence.
+           If there ARE any, the funder's own prompt requires, for EACH
+           award separately:
+             - project title
+             - source of support
+             - period of support
+             - amount awarded
+             - products (books or articles published, inventions)
+             - a statement of how it relates to the proposed project
+           The form bolds this instruction: "If you have received awards
+           related in any way to this proposal, you should answer this
+           question in detail for each such award." Treat that as a
+           scoring criterion, not a formality.
+   CAUTION: like item 11, this answer is currently the LAST LINE on page 8.
+            A one-line "None." is safe. A detailed multi-award answer will
+            reflow onto page 9 and push everything after it down - which is
+            fine for the 1-page allowance here, but it is re-measured.
+
+
+==========================================================================
+PAGE 9  -  PREVIOUS RESEARCH, question 2
+==========================================================================
+
+14. Pending applications         [None pending.]
+   Detail: "None pending" is fine.
+
+15. Follow-on application        [agency], [period], [amount],
+                                 [follow-on project title]
+   Field:  same paragraph - "...we intend to apply for a follow-on project
+           on field deployment with an operational partner (NDRF or a
+           State Disaster Response Force) to [agency], for [period] and
+           [amount], under the title [follow-on project title]."
+   Detail: FOUR sub-fields. The funder's prompt requires project title,
+           agency/foundation, period of support, amount requested, and how
+           it relates to this proposal (the relation sentence is already
+           written).
+           OR say "cut" and the whole follow-on sentence is removed.
+   NOTE:   If your target agency IS the NDRF, the sentence names it twice
+           and reads redundantly. Say so and it collapses to one mention.
+
+
+==========================================================================
+PAGE 9  -  PREVIOUS RESEARCH, question 3
+==========================================================================
+
+16. Five publications            [Citation 1] .. [Citation 5]
+   Field:  "Please list your five most recent scholarly products, e.g.,
+           books, journal articles... with complete citations."
+   Detail: Five most recent, complete citations, any format - they are
+           normalised to one consistent style. Books, journal articles,
+           conference papers and datasets all count.
+           Plenty of room: this section is at 0.16 of its 1/2 page.
+
+
+==========================================================================
+PAGE 10  -  BUDGET JUSTIFICATION
+==========================================================================
+
+(second use of item 6 - no new value needed)
+   Field:  closing line - "No faculty salary or honorarium is requested.
+           No drone is purchased; air-deployment trials use a drone
+           borrowed from [lab / department]."
+   Detail: Same lab name as PAGE 1, written from the single value in
+           item 6.
+
+
+==========================================================================
+PASTE-BACK FORM
+==========================================================================
+
+name:
+dept:
+email:
+address:
+phone:        office=            home=            fax=
+lab:
+printed:
+
+teaching:
+admin:
+conferences:
+students:
+
+background:
+
+grants:
+pending:
+followon:     title=                      agency=
+              period=                     amount=
+
+pubs:
+  1.
+  2.
+  3.
+  4.
+  5.
+
+
+==========================================================================
+NOT PLACEHOLDERS - DO NOT FILL IN OR DELETE
+==========================================================================
+
+The other square brackets in the document are deliberate and must stay:
+
+  [1]  [2, 3]  [14-16]                 reference numbers
+  [assumed, pending measurement]       provenance tags that qualify a
+  [computed: ...]                      technical claim and keep the dB
+  [13; abstract only]                  figures honest
+  [abstract read, full text not yet retrieved]
+
+A find-and-replace that strips square brackets would delete the
+qualifications that make those numbers defensible.
+
+Also frozen, do not reword: "38-60 dB", "+23 to +41 dB", "+32 to +56 dB".
+
+
+==========================================================================
+ALREADY FIXED - no action needed, recorded so it is not undone
+==========================================================================
+
+The proposal had departed from the funder's blank form in four places.
+All four are now restored or resolved:
+
+1. PAGE 8, Previous Research question 1 - the prompt had been truncated.
+   The funder's required-field list and a sentence the form puts in BOLD
+   ("...you should answer this question in detail for each such award")
+   had been cut. Both restored verbatim.
+
+2. PAGE 9, Previous Research question 2 - same problem. The required-field
+   list was missing, and the answer never gave the follow-on project title
+   the form asks for. Prompt restored; the title is now item 15.
+
+3. PAGE 10, budget table - the Contingency label had been rewritten from
+   the form's "Contingency (for field work and research purposes only)" to
+   "(field work and research purposes only, 12% of direct costs)". Editing
+   a funder's category label is what a compliance check against the blank
+   form catches. Label restored verbatim; the 12% basis already appears in
+   the budget justification prose, so nothing was lost.
+
+4. PAGE 10, under PROPOSED BUDGET - the instruction "Please provide a
+   brief description of each item requested... Use an attached sheet..."
+   was deleted. There is no attached sheet: BUDGET JUSTIFICATION is an
+   inline continuation, so the retained instruction described a structure
+   the document does not have.
+
+Kept deliberately: the NOTE on PAGE 8 reading "You may omit this question
+and the next if they are not applicable." It is the clause that authorises
+a "None." answer to question 1, so it is doing real work and stays.
+
+The nine italic question prompts and their page allowances are KEPT - they
+are the form's questions and reviewers score the answers against them.
+The typo "that may be bear on your research" in the Section 3 prompt is
+the funder's own and is reproduced faithfully. Do not correct it.
+
+
+==========================================================================
+ONE OPEN RISK - your call, not acted on
+==========================================================================
+
+The 12-month Gantt chart in Section 3 encodes its schedule purely as
+grey cell shading (44 shaded cells). There is no text in the cells.
+Anyone reading a plain-text extract, a monochrome print or a screen
+reader sees an empty 13 x 12 grid, and the section spends a large part of
+its one-page limit on a table that then conveys nothing.
+
+Putting an "X" in each shaded cell would make the schedule survive
+conversion, printing and accessibility. It is a visible change to the
+look of the table, so it has not been made.

@@ -146,13 +146,13 @@ Activities are ordered so that each risk that could stop the project is tested b
 
 *NOTE: You may omit this question and the next if they are not applicable. You may use additional paper to answer these questions if necessary.*
 
-**1. *List any grants that you have received that relate in any way to the project you are proposing. (1 page)***
+**1. *List any grants that you have received that relate in any way to the project you are proposing. Please include the following information: project title, source of support, period of support, amount awarded, products (books or articles published, inventions) resulting from the project, and a statement explaining how the previous project relates to the proposed project. If you have received awards related in any way to this proposal, you should answer this question in detail for each such award. (1 page)***
 
-[None / or list: project title, source of support, period, amount awarded, products, and how it relates to this proposal.]
+[None. / or, for each award: project title, source of support, period of support, amount awarded, products resulting from the project, and a statement explaining how it relates to this proposal.]
 
-**2. *Please list any grants or awards for which you intend to apply or for which applications are pending that would bear in any way upon the project you are proposing in this application. (1/2 page)***
+**2. *Please list any grants or awards for which you intend to apply or for which applications are pending that would bear in any way upon the project you are proposing in this application. Please include the following information: project title, agency/foundation to which you are applying, period of support, amount of support requested, and a statement explaining how the project relates to this proposal? (1/2 page)***
 
-[None pending.] On successful completion we intend to apply for a follow-on project on field deployment with an operational partner (NDRF or a State Disaster Response Force) to [agency], for [period] and [amount]. It would build directly on the coupling, false-alarm and accuracy results established here.
+[None pending.] On successful completion we intend to apply for a follow-on project on field deployment with an operational partner (NDRF or a State Disaster Response Force) to [agency], for [period] and [amount], under the title [follow-on project title]. It would build directly on the coupling, false-alarm and accuracy results established here.
 
 **3. *Please list your five most recent scholarly products, e.g., books, journal articles, art exhibitions, performances, etc., with complete citations. (1/2 page)***
 
@@ -164,14 +164,12 @@ Activities are ordered so that each risk that could stop the project is tested b
 
 **PROPOSED BUDGET**
 
-Please provide a brief description of each item requested in the space provided on this sheet. Use an attached sheet to provide a brief statement of justification for each item requested, including faculty salary.
-
 | **Category** | **Amount** |
 | --- | --- |
 | 1. Consumables | Rs. 23,100 |
 | 2. Equipment | Rs. 1,13,850 |
 | 3. Services (PCB assembly, machining) | Rs. 9,240 |
-| 4. Contingency (field work and research purposes only, 12% of direct costs) | Rs. 19,588 |
+| 4. Contingency (for field work and research purposes only) | Rs. 19,588 |
 | 5. Supplies | Rs. 5,040 |
 | 6. Other (specify): local travel to field sites | Rs. 12,000 |
 | **TOTAL AMOUNT REQUESTED** | **Rs. 1,82,818** |
