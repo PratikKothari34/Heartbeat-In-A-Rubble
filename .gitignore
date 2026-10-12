@@ -24,3 +24,6 @@ docs/decisions/
 # Faculty proposal template: third-party form, not ours to redistribute.
 # Lives in the repo root for local reference only.
 Research proposal format.docx
+
+# Local restore points for the proposal .docx - never published
+docs/proposal/.restore/

@@ -249,14 +249,22 @@ disputes were correct** — the contingency item was an error in the issue, and 
 ~6.5 dB is right where the audit said 7.43 dB.
 
 **Page limits are met.** Every numbered section fits the funder template's limit for it
-(`Research proposal format.docx`, repo root), re-measured 2026-10-11 against the current file at
-12 pages / 4,782 words. Measure a **copy**: opening the `.docx` in Word re-saves it even in
+(`Research proposal format.docx`, repo root), re-measured 2026-10-12 against the current file at
+12 pages / 4,671 words. Measure a **copy**: opening the `.docx` in Word re-saves it even in
 read-only mode, rewriting every zip part and altering text — it corrupted this file once.
 Q1 was 1.77 pages: prior art moved into Q4, page breaks were added so each numbered section
 starts at a page top, sentences stated twice were cut once, and two layout constraints
 (`<w:cantSplit/>` on the research-question rows, widow control on the unmeasured-input paragraph)
-were lifted. No citation or distinguishing claim was lost. The per-section figures are in the
-checklist.
+were lifted. That Q1 paragraph has since been deleted — it answered none of Q1's prompt and its
+content was already stated in the RQ3 cell, the M3 gate and the budget justification — which
+took Q1 to 0.77 page and cleared a single orphaned line off page 4. **Section G of Q2 still
+disables widow control deliberately: restoring it puts Q2 at 1.02, over limit, and G's cited
+heart-force data is unique.** No citation or distinguishing claim was lost. The per-section
+figures are in the checklist.
+
+**Prose trimming does not recover page space here.** A 22-edit rewording pass on 2026-10-12 took
+out 416 characters and 72 words and moved no section's measured span at all. Spans change when a
+line crosses a page boundary, not when word count drops.
 
 **The proposal was also diffed against the blank funder form, and four departures were fixed.**
 Both Previous-Research prompts had their required-field enumerations truncated — question 1 had

@@ -1,10 +1,10 @@
 DETAILS NEEDED FROM THE FACULTY MEMBER
 Research Proposal - Air-Deployed Seismic Sensor Mesh
-Generated 2026-10-11 from docs/proposal/Research_Proposal_Air_Deployed_Seismic_Mesh.docx
+Generated 2026-10-12 from docs/proposal/Research_Proposal_Air_Deployed_Seismic_Mesh.docx
 
 17 placeholders, 16 values (the lab name is used in two places).
 Page numbers are the printed pages of the .docx, measured in Word from a
-copy of the file on 2026-10-11 (12 pages, 4,782 words). They are not
+copy of the file on 2026-10-12 (12 pages, 4,671 words). They are not
 estimates.
 Where something does not apply, write "none" - do not leave it blank.
 An explicit "None." reads better to a reviewer than an empty bracket.
@@ -77,14 +77,15 @@ One paragraph, four values.
            The budget funds no student stipend, so this is project work,
            not paid labour. Keep the answer consistent with that.
 
-   CAUTION - measured, not estimated: this paragraph is currently the
-            LAST LINE on page 7 (it ends 1.8 pt from the bottom margin, and
-            the next paragraph starts page 8). It fits on one line today.
-            Section 3 is at 0.94 of its 1-page limit, so a long answer here
-            runs the section over. Aim for one line - roughly 150
-            characters for all four values together. If you need more, say
-            so: the section can be tightened elsewhere to make room, but it
-            has to be done deliberately, not absorbed.
+   CAUTION - measured, not estimated: this is the LAST paragraph on
+            page 7, ending 41.2 pt (about 3.3 lines) above the bottom
+            margin; the next paragraph starts page 8. Section 3 is at 0.94
+            of its 1-page limit, so a long answer here can still run the
+            section over. About 300 characters are available for all four
+            values together before the paragraph takes a fourth line. If
+            you need more, say so: the section can be tightened elsewhere
+            to make room, but it has to be done deliberately, not
+            absorbed.
             Every section is re-measured after the fill-in either way.
 
 

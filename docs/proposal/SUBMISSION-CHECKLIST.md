@@ -45,11 +45,12 @@ fixed.
 | 124 | **Teaching load, administrative duties, planned conferences** | Suggested venues are already drafted (Near Surface Geophysics / EAGE, IEEE Sensors) — keep or replace |
 | 124 | **[number] of students** | Same line as the teaching load now.  The budget funds no student stipend, so this is project work, not hired labour. Keep it consistent with that |
 
-**Line 124 is the tightest fill-in in the document.** Measured in Word, it is the last line on
-page 7 and ends 1.8 pt from the bottom margin, with Q3 at 0.94 of its one-page limit. All four
-values — teaching load, administrative duties, conferences, student count — share that one line,
-about 150 characters. A longer answer takes Q3 over its limit and needs text tightened elsewhere
-to pay for it.
+**Line 124 is the tightest fill-in in the document.** Measured in Word 2026-10-12, it is the
+last paragraph on page 7, ending 41.2 pt — about 3.3 lines — above the bottom margin, with Q3
+at 0.94 of its one-page limit. All four values (teaching load, administrative duties,
+conferences, student count) share it. Roughly 300 characters are available before the paragraph
+takes a fourth line and risks pushing Q3 over; aim well inside that. Re-measure after filling
+in, whatever the length.
 | 128 | **"Adapt to the faculty member's background"** | The paragraph after it argues the gap from prior art and needs no change; only the opening clause is yours |
 | 151 | **Prior / current grants** | `[None. / or, for each award: ...]`. "None." is acceptable — write it explicitly. The funder **bolds** the requirement to answer in detail *for each* related award, so treat it as scored, not a formality. Currently the last line on page 8 |
 | 155 | **Pending applications** + follow-on `[agency]`, `[period]`, `[amount]`, `[follow-on project title]` | **Four** sub-fields — the title was added in v19 because the template requires it. NDRF or a State Disaster Response Force is already suggested as the operational partner; if the target agency *is* NDRF the sentence names it twice and should collapse to one mention |
@@ -73,15 +74,15 @@ to pay for it.
 
 ## Page limits against the funder template
 
-**Every section is now within its limit.** Re-measured 2026-10-11 against the current file (12
-pages, 4,782 words) by rendering a *copy* through Word and taking each section from its heading to
+**Every section is now within its limit.** Re-measured 2026-10-12 against the current file (12
+pages, 4,671 words) by rendering a *copy* through Word and taking each section from its heading to
 its last line of content plus one line. `Research proposal format.docx` in the repo root is the
 authority on the limits, and is also the only way to tell the funder's own wording from ours.
 
 | Section | Rendered | Template limit | |
 |---|---|---|---|
-| Abstract | 0.53 page | 1 page | OK |
-| Q1 objectives / questions | 0.89 page | 1 page | OK |
+| Abstract | 0.51 page | 1 page | OK |
+| Q1 objectives / questions | 0.77 page | 1 page | OK |
 | Q2 methods | 0.99 page | 1 page | OK — least headroom of any section |
 | Q3 activities + timeframe | 0.94 page | 1 page | OK |
 | Q4 new line of inquiry | 0.39 page | 1/2 page | OK |
@@ -89,6 +90,33 @@ authority on the limits, and is also the only way to tell the funder's own wordi
 | PREV 1 grants received | 0.12 page | 1 page | OK (awaiting content) |
 | PREV 2 pending applications | 0.10 page | 1/2 page | OK (awaiting content) |
 | PREV 3 five scholarly products | 0.16 page | 1/2 page | OK (awaiting content) |
+
+### The orphaned line on page 4, and why Q1 now reads 0.77
+
+Q1's closing paragraph ("Key unmeasured input...") had widow/orphan control disabled and spilled
+a single line onto an otherwise empty page 4. It was **deleted**, not re-laid-out, because it
+answered none of Q1's prompt and its content was already stated in three stronger places: the
+RQ3 hypothesis cell, the M3 go/no-go gate, and the budget justification for the tap-force plate.
+Only one clause was unique to it — that published tap-force values were rejected because they
+come from destructive strikes — and that was folded into the RQ3 cell, which makes the same point
+and sits on page 3. Q1 went 0.89 -> 0.77 page and page 4 now carries no text.
+
+**Section G's `widowControl w:val="0"` is deliberate and load-bearing. Do not restore it.**
+Restoring it was tested and puts Q2 at **1.02 — over limit**. Unlike the Q1 paragraph, G's
+content is unique and uncuttable: three cited heart-force measurements with their sample sizes
+(4.06 +/- 1.53 N n=26+ [15]; 3.7 N n=7 Starr [14]; ~2 N peak-to-peak [16]) and the ethics
+sentence that no human is ever placed under debris. It is the only paragraph in the document
+still carrying the flag.
+
+### Rewording pass, 2026-10-12
+
+22 edits across the abstract, Q1, Q2 (B, C, D, E, F), Q3, Q4 and the budget justification:
+tightened prose, plainer wording in the lay-facing abstract, and sharper framing in Q4.
+**Net effect on layout: none.** 416 characters and 72 words came out, every section's measured
+span is unchanged to the pixel, and no section gained or lost a line — the cuts were spread thin
+enough that no paragraph crossed a line boundary. Treat this as a readability change, not as
+recovered headroom. The frozen margins, the provenance tags, the nine funder prompts and all 17
+placeholders were asserted unchanged before and after.
 
 ### How Q1 was brought inside one page
 
@@ -106,11 +134,17 @@ Q1 was 1.77 pages. Four changes, in order of how much each recovered:
 - **Three layout constraints were relieved**, which is what actually fixed the last 2%:
   `<w:cantSplit/>` on the research-question rows, and widow/orphan control on the
   unmeasured-input paragraph (Q1) and on section G (Q2). Each was relocating a whole block to
-  the next page, so trimming text near them changed nothing until they were lifted.
+  the next page, so trimming text near them changed nothing until they were lifted. The Q1
+  paragraph has since been deleted outright (see above); only section G still carries the flag.
 
 **If you add text, check Q2 first.** It has 0.01 page of headroom. Adding a sentence to any of
-sections A-G pushes section G onto the next page and takes Q2 over. Q1 has 0.11 page spare and
+sections A-G pushes section G onto the next page and takes Q2 over. Q1 has 0.23 page spare and
 Q3 has 0.06.
+
+**Do not expect prose trimming to recover a page.** The 2026-10-12 pass removed 416 characters
+across 17 paragraphs and moved no section's measured span at all. Page limits here are a layout
+property: what changes a span is a line crossing a boundary, a page break, a table row, or a
+widow-control flag — not word count. Measure in Word from a copy before and after, every time.
 
 **The research-question table was not cut.** It carries RQ1-RQ4 with their hypotheses and is the
 spine of the proposal.
