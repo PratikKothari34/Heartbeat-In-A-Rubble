@@ -54,7 +54,7 @@ in, whatever the length.
 | 128 | **"Adapt to the faculty member's background"** | The paragraph after it argues the gap from prior art and needs no change; only the opening clause is yours |
 | 151 | **Prior / current grants** | `[None. / or, for each award: ...]`. "None." is acceptable — write it explicitly. The funder **bolds** the requirement to answer in detail *for each* related award, so treat it as scored, not a formality. Currently the last line on page 8 |
 | 155 | **Pending applications** + follow-on `[agency]`, `[period]`, `[amount]`, `[follow-on project title]` | **Four** sub-fields — the title was added in v19 because the template requires it. NDRF or a State Disaster Response Force is already suggested as the operational partner; if the target agency *is* NDRF the sentence names it twice and should collapse to one mention |
-| 159–163 | **Five publications** | The most-missed section. Five slots, all empty |
+| 157 | **Five scholarly products** | **Answered — nothing to fill in.** The applicant has no publications yet, so the five empty `[Citation N]` slots were replaced with "None to date. This application is for a first research project..." The form's own NOTE above these questions permits it: *"You may omit this question and the next if they are not applicable."* Only revisit if the applicant does in fact have publications |
 
 ## Before submitting
 
@@ -76,7 +76,7 @@ in, whatever the length.
 ## Page limits against the funder template
 
 **Every section is now within its limit, and the document is 9 pages against the funder's 10-page
-maximum.** Re-measured 2026-10-12 against the current file (9 pages, 4,671 words) by rendering a
+maximum.** Re-measured 2026-10-12 against the current file (9 pages, 4,687 words) by rendering a
 *copy* through Word and taking each section from its heading to its last line of content plus one
 line. Word's page count and the rendered PDF agree at 9. `Research proposal format.docx` in the repo root is the
 authority on the limits, and is also the only way to tell the funder's own wording from ours.
@@ -91,7 +91,7 @@ authority on the limits, and is also the only way to tell the funder's own wordi
 | Q5 anticipated products | 0.29 page | 1/2 page | OK |
 | PREV 1 grants received | 0.12 page | 1 page | OK (awaiting content) |
 | PREV 2 pending applications | 0.10 page | 1/2 page | OK (awaiting content) |
-| PREV 3 five scholarly products | 0.16 page | 1/2 page | OK (awaiting content) |
+| PREV 3 five scholarly products | 0.06 page | 1/2 page | OK (answered "None to date.") |
 
 ### The orphaned line on page 4, and why Q1 now reads 0.77
 
@@ -151,8 +151,13 @@ widow-control flag — not word count. Measure in Word from a copy before and af
 **The research-question table was not cut.** It carries RQ1-RQ4 with their hypotheses and is the
 spine of the proposal.
 
-**PREV 3 has room.** It is 0.16 page holding five empty `[Citation N]` slots. Five real citations
-at two to three lines each land it near 0.32 page, inside the half-page limit.
+**PREV 3 is answered, not awaiting content.** The applicant has no publications, so the five empty
+`[Citation N]` slots became one sentence and the section fell from 0.16 to 0.06 page. Empty brackets
+read as an unfinished form; the funder's NOTE above these questions explicitly allows the
+not-applicable answer. If publications are ever added, the binding limit is **not** the funder's
+half page — that would allow 13 more lines — but the bottom of page 7, which has about 200 pt
+(roughly 11 lines) free before `BUDGET JUSTIFICATION` is pushed down. Past that the proposal spends
+its last page of headroom against the 10-page maximum. Re-measure after any such edit.
 
 **Not a defect:** the 9 pages include the template's verbatim question prompts, its budget sheet
 and the reference list. The template allots roughly 7 pages of narrative and says nothing about

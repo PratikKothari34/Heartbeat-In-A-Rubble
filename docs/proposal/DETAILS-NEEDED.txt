@@ -2,9 +2,10 @@ DETAILS NEEDED FROM THE FACULTY MEMBER
 Research Proposal - Air-Deployed Seismic Sensor Mesh
 Generated 2026-10-12 from docs/proposal/Research_Proposal_Air_Deployed_Seismic_Mesh.docx
 
-17 placeholders, 16 values (the lab name is used in two places).
+15 items outstanding, 14 values (the lab name is used in two places).
+Question 3 (five scholarly products) is already answered - see PAGE 7.
 Page numbers are the printed pages of the .docx, measured in Word from a
-copy of the file on 2026-10-12 (9 pages, 4,671 words). They are not
+copy of the file on 2026-10-12 (9 pages, 4,687 words). They are not
 estimates.
 Where something does not apply, write "none" - do not leave it blank.
 An explicit "None." reads better to a reviewer than an empty bracket.
@@ -162,13 +163,26 @@ PAGE 7  -  PREVIOUS RESEARCH, question 2
 PAGE 7  -  PREVIOUS RESEARCH, question 3
 ==========================================================================
 
-16. Five publications            [Citation 1] .. [Citation 5]
+ANSWERED - no value needed      question 3, five scholarly products
    Field:  "Please list your five most recent scholarly products, e.g.,
            books, journal articles... with complete citations."
-   Detail: Five most recent, complete citations, any format - they are
-           normalised to one consistent style. Books, journal articles,
-           conference papers and datasets all count.
-           Plenty of room: this section is at 0.16 of its 1/2 page.
+   Status: The five empty [Citation N] slots have been replaced with:
+             "None to date. This application is for a first research
+              project; no scholarly products have been published yet.
+              Products arising from the work proposed here are listed
+              under question 5 above."
+           The applicant has no publications yet.  The form's own NOTE
+           above these questions permits this: "You may omit this
+           question and the next if they are not applicable."
+   If that is wrong: send the citations in any format and they are
+           normalised to the style the reference list uses -
+             Author, A. B., & Author, C. D. (Year). Title of the work.
+             Venue, volume(issue), pages. doi:...
+           Room is 14 lines total (~320 characters each).  The binding
+           limit is not the funder's 1/2 page but the bottom of page 7,
+           which has ~200 pt free before BUDGET JUSTIFICATION is pushed
+           down.  The proposal is at 9 pages against a 10-page maximum.
+           Re-measure after filling.
 
 
 ==========================================================================
@@ -207,12 +221,8 @@ pending:
 followon:     title=                      agency=
               period=                     amount=
 
-pubs:
-  1.
-  2.
-  3.
-  4.
-  5.
+pubs:         ANSWERED in the document - "None to date."  Only fill
+              this in if you DO have publications, one per line.
 
 
 ==========================================================================

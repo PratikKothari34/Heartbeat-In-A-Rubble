@@ -154,11 +154,7 @@ Activities are ordered so every risk that could stop the project is tested befor
 
 **3. *Please list your five most recent scholarly products, e.g., books, journal articles, art exhibitions, performances, etc., with complete citations. (1/2 page)***
 
-1. [Citation 1]
-2. [Citation 2]
-3. [Citation 3]
-4. [Citation 4]
-5. [Citation 5]
+None to date. This application is for a first research project; no scholarly products have been published yet. Products arising from the work proposed here are listed under question 5 above.
 
 **PROPOSED BUDGET**
 

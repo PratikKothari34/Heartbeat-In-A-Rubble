@@ -250,7 +250,7 @@ disputes were correct** — the contingency item was an error in the issue, and 
 
 **Page limits are met, and the document is 9 pages against the funder's 10-page maximum.** Every
 numbered section fits the funder template's limit for it (`Research proposal format.docx`, repo
-root), re-measured 2026-10-12 against the current file at 9 pages / 4,671 words; Word's count and
+root), re-measured 2026-10-12 against the current file at 9 pages / 4,687 words; Word's count and
 the rendered PDF agree. Measure a **copy**: opening the `.docx` in Word re-saves it even in
 read-only mode, rewriting every zip part and altering text — it corrupted this file once.
 Q1 was 1.77 pages: prior art moved into Q4, page breaks were added so each numbered section
@@ -292,8 +292,11 @@ are now verbatim from the form; the stray instruction is gone. Diffing against t
 the only way to tell the funder's wording from ours, and it is worth doing before any submission.
 
 **What is left is not technical.** `docs/proposal/DETAILS-NEEDED.txt` is the hand-off document:
-seventeen placeholders, sixteen values (the lab name is used twice), each with its page, its
-section and what the template asks for, plus a paste-back form.
+fifteen items outstanding, fourteen values (the lab name is used twice), each with its page, its
+section and what the template asks for, plus a paste-back form. Previous-research question 3 (five
+scholarly products) is **answered, not outstanding**: the applicant has no publications, so the five
+empty `[Citation N]` slots were replaced with an explicit "None to date." The form's own NOTE above
+those questions permits it, and empty brackets read as an unfinished form.
 `docs/proposal/SUBMISSION-CHECKLIST.md` is the working copy of the same list with line numbers.
 Only the applying faculty member can supply them: cover-sheet identity, teaching load, prior
 grants, the follow-on project's title and agency, five publications, and the lab lending the
