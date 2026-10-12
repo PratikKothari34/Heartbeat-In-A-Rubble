@@ -4,7 +4,7 @@ Generated 2026-10-12 from docs/proposal/Research_Proposal_Air_Deployed_Seismic_M
 
 17 placeholders, 16 values (the lab name is used in two places).
 Page numbers are the printed pages of the .docx, measured in Word from a
-copy of the file on 2026-10-12 (12 pages, 4,671 words). They are not
+copy of the file on 2026-10-12 (9 pages, 4,671 words). They are not
 estimates.
 Where something does not apply, write "none" - do not leave it blank.
 An explicit "None." reads better to a reviewer than an empty bracket.
@@ -40,7 +40,7 @@ PAGE 1  -  COVER PAGE
            "Borrowed from [lab / department]. No airframe purchase is
            requested."
    Detail: The lab or department the drone is borrowed from.
-           This same value also appears on PAGE 10. Both must read
+           This same value also appears on PAGE 7. Both must read
            identically - give it once, it is written to both places.
 
 7. Printed name                  [Printed name of faculty member]
@@ -51,7 +51,7 @@ PAGE 1  -  COVER PAGE
 
 
 ==========================================================================
-PAGE 7  -  SECTION 3, "List the specific activities..."
+PAGE 5  -  SECTION 3, "List the specific activities..."
           subheading "Other activities during the award period"
 ==========================================================================
 
@@ -77,20 +77,20 @@ One paragraph, four values.
            The budget funds no student stipend, so this is project work,
            not paid labour. Keep the answer consistent with that.
 
-   CAUTION - measured, not estimated: this is the LAST paragraph on
-            page 7, ending 41.2 pt (about 3.3 lines) above the bottom
-            margin; the next paragraph starts page 8. Section 3 is at 0.94
-            of its 1-page limit, so a long answer here can still run the
-            section over. About 300 characters are available for all four
-            values together before the paragraph takes a fourth line. If
-            you need more, say so: the section can be tightened elsewhere
-            to make room, but it has to be done deliberately, not
-            absorbed.
+   CAUTION - measured, not estimated: this paragraph now sits mid-page
+            (page 6, 676 pt above the bottom margin), so it is no longer
+            pinned against a page break. The binding constraint is the
+            section limit, not the page: section 3 is at 0.97 of its
+            1-page allowance, which is its tightest reading yet. A long
+            answer here will take the section over even though the page
+            looks empty below it. Keep all four values inside about
+            300 characters; if you need more, say so, and the section gets
+            tightened elsewhere deliberately rather than absorbing it.
             Every section is re-measured after the fill-in either way.
 
 
 ==========================================================================
-PAGE 8  -  SECTION 4, "If this is a new line of inquiry for you..."
+PAGE 6  -  SECTION 4, "If this is a new line of inquiry for you..."
 ==========================================================================
 
 12. Background clause            [Adapt to the faculty member's background.]
@@ -105,7 +105,7 @@ PAGE 8  -  SECTION 4, "If this is a new line of inquiry for you..."
 
 
 ==========================================================================
-PAGE 8  -  PREVIOUS RESEARCH AND SUPPORT, question 1
+PAGE 7  -  PREVIOUS RESEARCH AND SUPPORT, question 1
 ==========================================================================
 
 13. Grants received
@@ -127,14 +127,17 @@ PAGE 8  -  PREVIOUS RESEARCH AND SUPPORT, question 1
            related in any way to this proposal, you should answer this
            question in detail for each such award." Treat that as a
            scoring criterion, not a formality.
-   CAUTION: like item 11, this answer is currently the LAST LINE on page 8.
-            A one-line "None." is safe. A detailed multi-award answer will
-            reflow onto page 9 and push everything after it down - which is
-            fine for the 1-page allowance here, but it is re-measured.
+   CAUTION: this answer now sits mid-page 7 with room below it, so a
+            detailed multi-award answer no longer immediately reflows the
+            following pages. A one-line "None." is still safe. The 1-page
+            allowance here is generous (currently 0.12), but the document
+            is 9 pages against a 10-page maximum, so a long answer spends
+            part of that one page of headroom. It is re-measured either
+            way.
 
 
 ==========================================================================
-PAGE 9  -  PREVIOUS RESEARCH, question 2
+PAGE 7  -  PREVIOUS RESEARCH, question 2
 ==========================================================================
 
 14. Pending applications         [None pending.]
@@ -156,7 +159,7 @@ PAGE 9  -  PREVIOUS RESEARCH, question 2
 
 
 ==========================================================================
-PAGE 9  -  PREVIOUS RESEARCH, question 3
+PAGE 7  -  PREVIOUS RESEARCH, question 3
 ==========================================================================
 
 16. Five publications            [Citation 1] .. [Citation 5]
@@ -169,7 +172,7 @@ PAGE 9  -  PREVIOUS RESEARCH, question 3
 
 
 ==========================================================================
-PAGE 10  -  BUDGET JUSTIFICATION
+PAGE 7  -  BUDGET JUSTIFICATION
 ==========================================================================
 
 (second use of item 6 - no new value needed)
@@ -237,29 +240,29 @@ ALREADY FIXED - no action needed, recorded so it is not undone
 The proposal had departed from the funder's blank form in four places.
 All four are now restored or resolved:
 
-1. PAGE 8, Previous Research question 1 - the prompt had been truncated.
+1. PAGE 7, Previous Research question 1 - the prompt had been truncated.
    The funder's required-field list and a sentence the form puts in BOLD
    ("...you should answer this question in detail for each such award")
    had been cut. Both restored verbatim.
 
-2. PAGE 9, Previous Research question 2 - same problem. The required-field
+2. PAGE 7, Previous Research question 2 - same problem. The required-field
    list was missing, and the answer never gave the follow-on project title
    the form asks for. Prompt restored; the title is now item 15.
 
-3. PAGE 10, budget table - the Contingency label had been rewritten from
+3. PAGE 7, budget table - the Contingency label had been rewritten from
    the form's "Contingency (for field work and research purposes only)" to
    "(field work and research purposes only, 12% of direct costs)". Editing
    a funder's category label is what a compliance check against the blank
    form catches. Label restored verbatim; the 12% basis already appears in
    the budget justification prose, so nothing was lost.
 
-4. PAGE 10, under PROPOSED BUDGET - the instruction "Please provide a
+4. PAGE 7, under PROPOSED BUDGET - the instruction "Please provide a
    brief description of each item requested... Use an attached sheet..."
    was deleted. There is no attached sheet: BUDGET JUSTIFICATION is an
    inline continuation, so the retained instruction described a structure
    the document does not have.
 
-Kept deliberately: the NOTE on PAGE 8 reading "You may omit this question
+Kept deliberately: the NOTE on PAGE 7 reading "You may omit this question
 and the next if they are not applicable." It is the clause that authorises
 a "None." answer to question 1, so it is doing real work and stays.
 

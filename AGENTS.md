@@ -248,9 +248,10 @@ which the `.md` conversion cannot show. Two of the fourteen were disputed by the
 disputes were correct** — the contingency item was an error in the issue, and the footnote's
 ~6.5 dB is right where the audit said 7.43 dB.
 
-**Page limits are met.** Every numbered section fits the funder template's limit for it
-(`Research proposal format.docx`, repo root), re-measured 2026-10-12 against the current file at
-12 pages / 4,671 words. Measure a **copy**: opening the `.docx` in Word re-saves it even in
+**Page limits are met, and the document is 9 pages against the funder's 10-page maximum.** Every
+numbered section fits the funder template's limit for it (`Research proposal format.docx`, repo
+root), re-measured 2026-10-12 against the current file at 9 pages / 4,671 words; Word's count and
+the rendered PDF agree. Measure a **copy**: opening the `.docx` in Word re-saves it even in
 read-only mode, rewriting every zip part and altering text — it corrupted this file once.
 Q1 was 1.77 pages: prior art moved into Q4, page breaks were added so each numbered section
 starts at a page top, sentences stated twice were cut once, and two layout constraints
@@ -265,6 +266,23 @@ figures are in the checklist.
 **Prose trimming does not recover page space here.** A 22-edit rewording pass on 2026-10-12 took
 out 416 characters and 72 words and moved no section's measured span at all. Spans change when a
 line crosses a page boundary, not when word count drops.
+
+**12 pages became 9 by deleting three forced page breaks, with no text cut.** Word count is
+unchanged at 4,671. A standalone break paragraph must itself occupy a line box on some page, so
+when the content before it ends low, the break paragraph lands alone at the top of the next page
+and *then* advances again — it becomes a blank page. That was the empty page 4 (Q2's break is now
+`<w:pageBreakBefore/>` on its heading, a paragraph property that cannot strand a page). The break
+before `PROPOSED BUDGET` left the Previous Research tail on a page with 469 pt empty, and the break
+before Q3 left 620 pt of page 5 empty after section G's straddle; both were removed, so the budget
+follows Previous Research and Q3 follows section G. Count the breaks before assuming a long
+document needs its prose cut.
+
+**Two things that look like they should work here and do not.** Two-column references: scoped to
+the entries, the section break before `REFERENCES` forces a fresh page and saves nothing; scoped
+loosely, the column property applies *backwards* over the whole document and narrows every page to
+~55-character lines, which Word's page count does not reveal — only the rendered PDF does. And
+trimming section G: its straddle is set by the 19 pt left at the bottom of page 4, so cutting
+101 characters from it changed nothing.
 
 **The proposal was also diffed against the blank funder form, and four departures were fixed.**
 Both Previous-Research prompts had their required-field enumerations truncated — question 1 had

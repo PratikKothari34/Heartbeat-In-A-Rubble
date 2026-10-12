@@ -68,15 +68,17 @@ in, whatever the length.
 - **The WPC ETA at `Rs. 1,50,000` is deliberately unfunded**, with a local-logging fallback if the
   institute has not committed the funding in writing by month 4. If the institute *will* commit,
   get it in writing and say so — that is the single biggest weakness a referee can press on.
-- **Check the PDF export**, not just the `.docx`: 5 tables, 5 page breaks and one footnote (the
+- **Check the PDF export**, not just the `.docx`: 5 tables, 2 page breaks, one `pageBreakBefore`
+  and one footnote (the
   ~6.5 dB anchor-correction note) must survive. The footnote is wired to `footnotes.xml` and is the
   only one in the document. The Gantt is cell shading: 44 shaded cells across 13 rows.
 
 ## Page limits against the funder template
 
-**Every section is now within its limit.** Re-measured 2026-10-12 against the current file (12
-pages, 4,671 words) by rendering a *copy* through Word and taking each section from its heading to
-its last line of content plus one line. `Research proposal format.docx` in the repo root is the
+**Every section is now within its limit, and the document is 9 pages against the funder's 10-page
+maximum.** Re-measured 2026-10-12 against the current file (9 pages, 4,671 words) by rendering a
+*copy* through Word and taking each section from its heading to its last line of content plus one
+line. Word's page count and the rendered PDF agree at 9. `Research proposal format.docx` in the repo root is the
 authority on the limits, and is also the only way to tell the funder's own wording from ours.
 
 | Section | Rendered | Template limit | |
@@ -84,7 +86,7 @@ authority on the limits, and is also the only way to tell the funder's own wordi
 | Abstract | 0.51 page | 1 page | OK |
 | Q1 objectives / questions | 0.77 page | 1 page | OK |
 | Q2 methods | 0.99 page | 1 page | OK — least headroom of any section |
-| Q3 activities + timeframe | 0.94 page | 1 page | OK |
+| Q3 activities + timeframe | 0.97 page | 1 page | OK |
 | Q4 new line of inquiry | 0.39 page | 1/2 page | OK |
 | Q5 anticipated products | 0.29 page | 1/2 page | OK |
 | PREV 1 grants received | 0.12 page | 1 page | OK (awaiting content) |
@@ -139,7 +141,7 @@ Q1 was 1.77 pages. Four changes, in order of how much each recovered:
 
 **If you add text, check Q2 first.** It has 0.01 page of headroom. Adding a sentence to any of
 sections A-G pushes section G onto the next page and takes Q2 over. Q1 has 0.23 page spare and
-Q3 has 0.06.
+Q3 has 0.03.
 
 **Do not expect prose trimming to recover a page.** The 2026-10-12 pass removed 416 characters
 across 17 paragraphs and moved no section's measured span at all. Page limits here are a layout
@@ -152,9 +154,38 @@ spine of the proposal.
 **PREV 3 has room.** It is 0.16 page holding five empty `[Citation N]` slots. Five real citations
 at two to three lines each land it near 0.32 page, inside the half-page limit.
 
-**Not a defect:** the 12 pages include the template's verbatim question prompts, its budget sheet
-and the two-page reference list. The template allots roughly 7 pages of narrative and says nothing
-about references, so total length is not itself a problem.
+**Not a defect:** the 9 pages include the template's verbatim question prompts, its budget sheet
+and the reference list. The template allots roughly 7 pages of narrative and says nothing about
+references.
+
+### How 12 pages became 9 — all layout, no text cut
+
+The funder's maximum is 10 pages. Three forced page breaks were doing nothing but stranding
+near-empty pages; removing them cost no wording and no content. Word count is unchanged at 4,671.
+
+1. **The empty page 4.** A standalone break paragraph `<w:p><w:r><w:br w:type="page"/></w:r></w:p>`
+   sat between Q1's closing table (plus its 2 pt spacer) and Q2's heading. A paragraph must occupy
+   a line box on some page; the table ended low on page 3, so the break paragraph itself landed at
+   the top of page 4 (measured y=52.2) and *then* advanced to page 5 — the break paragraph **was**
+   the blank page. Replaced with `<w:pageBreakBefore/>` on Q2's heading, which is a paragraph
+   property and cannot strand a page. 12 -> 11.
+2. **Page 9's wasted two-thirds.** A break between `[Citation 5]` and `PROPOSED BUDGET` left the
+   Previous Research tail alone on a page ending at y=276 — 469 pt empty. Removed; the budget now
+   follows on the same page. 11 -> 10.
+3. **Page 5's wasted 620 pt.** Section G straddles pages 4/5 (it starts at y=726 with 19 pt of room
+   and spills about three lines), and a break then sent Q3 to page 6, leaving the rest of page 5
+   empty. The straddle itself cannot be trimmed away — 19 pt is under two lines — so the break went
+   instead and Q3 now begins under section G. 10 -> 9.
+
+**Two-column references were tried and rejected.** Scoped correctly (columns around the entries
+only), the section break before `REFERENCES` forces it onto a fresh page and saves nothing. Scoped
+loosely, the two-column property applies backwards to the whole document and narrows every page to
+~55-character lines — visible only in the rendered PDF, not in Word's page count. If anyone retries
+this, export to PDF and check the line lengths on pages 3 and 6.
+
+**Trimming section G was also tried and rejected.** Cutting 101 characters from it shrank page 5's
+content but did not remove the page, because the straddle is governed by the 19 pt left on page 4,
+not by the paragraph's length. The full wording is retained.
 
 ## Restored to match the funder's blank form — do not re-cut
 
