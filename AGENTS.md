@@ -241,7 +241,12 @@ So: branch, open a PR, get a review. Don't expect to push to `main`.
 your PR.** The tracker is kept short on purpose: it holds only live work, and finished or superseded
 items are **deleted**, not closed, with anything worth keeping written into `docs/` first.
 
-**The tracker is empty. The proposal is technically done.** Issue #8 (fourteen fixes to the
+**The tracker is empty. The proposal is with the faculty member.** A first draft was e-mailed
+to them on 2026-10-12 at `d048cb9` — 9 pages, 4,687 words — with the 15 identity and
+teaching-load placeholders deliberately still in it, since only they can supply those. Their
+feedback is the live input now: ask what they said before reshaping the document, and
+re-measure the page count after any change, because Q2 sits at 0.99 and Q3 at 0.97 of a
+one-page allowance. Issue #8 (fourteen fixes to the
 research proposal) was taken by tadiPro250, delivered as PR #9 and **merged as `977f284`**. All
 fourteen items were verified against the `.docx` itself, including the Gantt chart's cell shading,
 which the `.md` conversion cannot show. Two of the fourteen were disputed by the author and **both
