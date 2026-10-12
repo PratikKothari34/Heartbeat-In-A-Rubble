@@ -248,7 +248,11 @@ which the `.md` conversion cannot show. Two of the fourteen were disputed by the
 disputes were correct** — the contingency item was an error in the issue, and the footnote's
 ~6.5 dB is right where the audit said 7.43 dB.
 
-**Page limits are met, and the document is 9 pages against the funder's 10-page maximum.** Every
+**Page limits are met, and the document is 9 pages against the funder's 10-page maximum.** Three
+headings (`PREVIOUS RESEARCH AND SUPPORT`, `BUDGET JUSTIFICATION`, `REFERENCES`) were stranded at
+the foot of a page with a fragment under them; a single `<w:pageBreakBefore/>` on the first of them
+cascaded and fixed all three at no page cost. Displaced content does not stack — each break absorbs
+slack further down — so build the variants and measure them rather than estimating the reflow. Every
 numbered section fits the funder template's limit for it (`Research proposal format.docx`, repo
 root), re-measured 2026-10-12 against the current file at 9 pages / 4,687 words; Word's count and
 the rendered PDF agree. Measure a **copy**: opening the `.docx` in Word re-saves it even in

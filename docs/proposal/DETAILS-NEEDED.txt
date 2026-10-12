@@ -128,7 +128,8 @@ PAGE 7  -  PREVIOUS RESEARCH AND SUPPORT, question 1
            related in any way to this proposal, you should answer this
            question in detail for each such award." Treat that as a
            scoring criterion, not a formality.
-   CAUTION: this answer now sits mid-page 7 with room below it, so a
+   CAUTION: this answer sits mid-page 7 (562 pt above the bottom
+            margin, re-measured after the heading fix), so a
             detailed multi-award answer no longer immediately reflows the
             following pages. A one-line "None." is still safe. The 1-page
             allowance here is generous (currently 0.12), but the document
@@ -186,7 +187,7 @@ ANSWERED - no value needed      question 3, five scholarly products
 
 
 ==========================================================================
-PAGE 7  -  BUDGET JUSTIFICATION
+PAGE 8  -  BUDGET JUSTIFICATION
 ==========================================================================
 
 (second use of item 6 - no new value needed)

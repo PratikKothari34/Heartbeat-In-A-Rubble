@@ -68,7 +68,7 @@ in, whatever the length.
 - **The WPC ETA at `Rs. 1,50,000` is deliberately unfunded**, with a local-logging fallback if the
   institute has not committed the funding in writing by month 4. If the institute *will* commit,
   get it in writing and say so — that is the single biggest weakness a referee can press on.
-- **Check the PDF export**, not just the `.docx`: 5 tables, 2 page breaks, one `pageBreakBefore`
+- **Check the PDF export**, not just the `.docx`: 5 tables, 2 page breaks, two `pageBreakBefore`
   and one footnote (the
   ~6.5 dB anchor-correction note) must survive. The footnote is wired to `footnotes.xml` and is the
   only one in the document. The Gantt is cell shading: 44 shaded cells across 13 rows.
@@ -162,6 +162,22 @@ its last page of headroom against the 10-page maximum. Re-measure after any such
 **Not a defect:** the 9 pages include the template's verbatim question prompts, its budget sheet
 and the reference list. The template allots roughly 7 pages of narrative and says nothing about
 references.
+
+### Three orphaned headings, fixed with one property
+
+`PREVIOUS RESEARCH AND SUPPORT` sat at y=627.6 on page 6 with only its NOTE beneath it;
+`BUDGET JUSTIFICATION` at y=639.4 on page 7 and `REFERENCES` at y=655.5 on page 8 had the same
+defect — a heading stranded at the foot of a page with a fragment under it.
+
+**One `<w:pageBreakBefore/>`, on `PREVIOUS RESEARCH AND SUPPORT`, fixed all three.** Moving it to
+the top of page 7 cascaded: `BUDGET JUSTIFICATION` landed at the top of page 8 and `REFERENCES` at
+the top of page 9 without being touched. Variants carrying two or three properties were built and
+measured and produce an *identical* layout, so the extra ones are redundant.
+
+Still 9 pages. The naive arithmetic says otherwise — the three headings displace 312 pt and page 9
+had only 170 pt free, predicting a 10th page. That is wrong because displaced content does not
+stack: each break absorbs slack already present further down. **Measure the variants; do not
+estimate the reflow.**
 
 ### How 12 pages became 9 — all layout, no text cut
 
