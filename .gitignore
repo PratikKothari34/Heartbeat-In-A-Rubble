@@ -8,6 +8,8 @@ data/raw/
 *.wav
 .DS_Store
 Thumbs.db
+# Folder view/icon metadata, written by Explorer and Google Drive File Stream.
+desktop.ini
 
 # local-only: instructions and tooling
 .claude/
